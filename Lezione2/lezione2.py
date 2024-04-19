@@ -50,8 +50,8 @@ print('# Exercise 3-1:\n')
 
 names: list = ["Gianfranco","Totti","Ludovico","Marie Curie"]
 
-for i in names:
-    print(i)
+for name in names:
+    print(name)
 
 print("")
 
@@ -61,8 +61,8 @@ print("")
 #       the person’s name.
 print('# Exercise 3-2:\n')
 
-for i in names:
-    print(f"Hey {i}, hope you are well!")
+for name in names:
+    print(f"Hey {name}, hope you are well!")
 
 print("")
 
@@ -74,8 +74,8 @@ print('# Exercise 3-3:\n')
 
 veichle_list: list = ['train','airplane','motorcycle']
 
-for i in veichle_list:
-    print(f'I would like to own a {i}')
+for veichle in veichle_list:
+    print(f'I would like to own a {veichle}')
 
 print("")
 
@@ -87,8 +87,8 @@ print('# Exercise 3-4:\n')
 
 guest_list: list = ['Charlie Chaplin','Leonardo da Vinci','Freddie Mercury']
 
-for i in guest_list:
-    print(f"{i} you are hereby invited to the dinner of the dead")
+for guest in guest_list:
+    print(f"{guest} you are hereby invited to the dinner of the dead")
 
 print("")
 
@@ -106,8 +106,8 @@ print(f"It appears that {guest_list[0]} cannot make it.")
 
 guest_list[0] = 'Cleopatra'
 
-for i in guest_list:
-    print(f"Since one of our guest isn't able to come anymore, you {i} are hereby invited to the dinner of the dead")
+for guest in guest_list:
+    print(f"Since one of our guest isn't able to come anymore, you {guest} are hereby invited to the dinner of the dead")
 
 print("")
 
@@ -129,8 +129,8 @@ guest_list.insert(0,'Alan Turing')
 guest_list.insert(len(guest_list)//2, 'Marilyn Monroe')
 guest_list.append('Giovanna D\'Arco')
 
-for i in guest_list:
-    print(f"Sorry for the spam but, {i}, you are hereby invited to the dinner of the dead")
+for guest in guest_list:
+    print(f"Sorry for the spam but, {guest}, you are hereby invited to the dinner of the dead")
 
 print("")
 
@@ -149,13 +149,13 @@ print('# Exercise 3-7:\n')
 
 print(f"Aww! The new table won't come in time! Only two of you can be invited!")
 
-for i in range(len(guest_list)-2):
+for _ in range(len(guest_list)-2):
     print(f"I'm sorry {guest_list.pop(0)}, your invitation is, as of now, revoked.")
 
 print("")
 
-for i in guest_list:
-    print(f"Hello {i}, just so you know, you are still invited!")
+for guest in guest_list:
+    print(f"Hello {guest}, just so you know, you are still invited!")
 
 del guest_list[:]
 
@@ -248,8 +248,8 @@ personal_information1: dict = {'first_name':'Valerio','last_name':'Serra','age':
 
 print(f"These are the personal informations that you required: ",end="")
 
-for i in personal_information1.values():
-    print(f"{i} ",end="")
+for info in personal_information1.values():
+    print(f"{info} ",end="")
 
 print("\n")
 
@@ -264,8 +264,8 @@ favorite_numbers: dict = {'Valerio':17,'Federico':3,'Riccardo':8,'Lorenzo':7,'Ch
 
 print(f"Here are the names of your friends and their favorite number: ")
 
-for i in favorite_numbers.items():
-    print(f"{i[0]} : {i[1]}")
+for info in favorite_numbers.items():
+    print(f"{info[0]} : {info[1]}")
 
 print("")
 
@@ -287,8 +287,8 @@ glossary: dict = {
         '\\n':'a special character used for printing a new line'
     }
 
-for i in glossary.items():
-    print(f"{i[0]}: {i[1]}\n")
+for info in glossary.items():
+    print(f"{info[0]}: {info[1]}\n")
 
 print("")
 
@@ -302,9 +302,9 @@ personal_information2: dict = {'first_name':'Federico','last_name':'Lattanzio','
 personal_information3: dict = {'first_name':'Damiano','last_name':'Mindrila','age':24,'city':'Rome'}
 people: list = [personal_information1,personal_information2,personal_information3]
 
-for i in people:
-    for j in i.items():
-        print(f"{j[0]}: {j[1]}")
+for person in people:
+    for info in person.items():
+        print(f"{info[0]}: {info[1]}")
     print("")
 
 print("")
@@ -322,9 +322,9 @@ pets_information4: dict = {'pet_name':'Pluto','pet_kind':'dog','pet_owner':'John
 pets_information5: dict = {'pet_name':'ScoobyDoo','pet_kind':'horse','pet_owner':'Marcus Rothschild'}
 pets: list = [pets_information1,pets_information2,pets_information3,pets_information4,pets_information5]
 
-for i in pets:
-    for j in i.items():
-        print(f"{j[0]}: {j[1]}")
+for pet in pets:
+    for info in pet.items():
+        print(f"{info[0]}: {info[1]}")
     print("")
 
 print("")
@@ -338,8 +338,8 @@ print('# Exercise 6-9:\n')
 
 favorite_places: dict = {'Marco':['Spain','Greece','Italy'],'Jessica':['India','South Africa'],'Lorenzo':'Japan'}
 
-for i in favorite_places.items():
-    print(f"{i[0]}'s favorite places are: {i[1]}")
+for info in favorite_places.items():
+    print(f"{info[0]}'s favorite places are: {info[1]}")
 
 print("")
 
@@ -348,14 +348,14 @@ print("")
 #       Then print each person’s name along with their favorite numbers.
 print('# Exercise 6-10:\n')
 
-for i in favorite_numbers.items():
-    j = i[0]
-    favorite_numbers[j] = [i[1],i[1]**2,(i[1]**2)//2]
+for info in favorite_numbers.items():
+    key = info[0]
+    favorite_numbers[key] = [info[1],info[1]**2,(info[1]**2)//2]
 
 print(f"Here are the names of your friends and their favorite numbers: ")
 
-for i in favorite_numbers.items():
-    print(f"{i[0]}: {i[1]}")
+for info in favorite_numbers.items():
+    print(f"{info[0]}: {info[1]}")
     
 print("")
 
@@ -373,10 +373,10 @@ cities: dict = {
         'Singapore':{'country':'Singapore','population':'5.6 million','fact':'One of the world\'s greenest cities'}
     }
 
-for i in cities.items():
-    print(f"{i[0]} is a city located in {i[1]['country']}",
-          f"with a population of {i[1]['population']} people",
-          f"and it is {i[1]['fact']}")
+for city in cities.items():
+    print(f"{info[0]} is a city located in {info[1]['country']}",
+          f"with a population of {info[1]['population']} people",
+          f"and it is {info[1]['fact']}")
     
 print("")
 
@@ -386,12 +386,12 @@ print("")
 #       changing the context of the program, or improving the formatting of the output.
 print('# Exercise 6-12:\n')
 
-for i in favorite_numbers.items():
-    i[1].append(8086)
+for info in favorite_numbers.items():
+    info[1].append(8086)
 
 print(f"Your friends added a new favorite number: ")
 
-for i in favorite_numbers.items():
-    print(f"{i[0]}: {i[1]}")
+for info in favorite_numbers.items():
+    print(f"{info[0]}: {info[1]}")
     
 print("")
