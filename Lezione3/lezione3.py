@@ -1,7 +1,8 @@
 # Gioele Amendola
 # 19/04/2024
 
-# 4-1.  Pizzas: Think of at least three kinds of your favorite pizza. Store these pizza names in a list, 
+# 4-1.  Pizzas: 
+#       Think of at least three kinds of your favorite pizza. Store these pizza names in a list, 
 #       and then use a for loop to print the name of each pizza.
 #
 #       • Modify your for loop to print a sentence using the name of the pizza, instead of printing just the name of the pizza.
@@ -9,55 +10,82 @@
 #       • Add a line at the end of your program, outside the for loop, that states how much you like pizza. 
 #         The output should consist of three or more lines about the kinds of pizza you like and then an additional sentence, 
 #         such as I really love pizza!
+print("# Esercizio 4-1:\n")
+
+pizza_list: list = ['Diavola','Boscaiola','Capricciosa']
+
+for pizza in pizza_list:
+    print(pizza)
+
+print("")
+
+for pizza in pizza_list:
+    print(f"I like {pizza} pizza.")
+
+print(f"I really like {pizza_list[0]} for its spicyness.\n",
+      f"\r{pizza_list[1]} is great and fullfilling.\n",
+      f"\rEverything is on {pizza_list[2]}!\n",
+      "\rI really love pizza!")
 
 
-
-
-# 4-2.  Animals: Think of at least three different animals that have a common characteristic. 
+# 4-2.  Animals: 
+#       Think of at least three different animals that have a common characteristic. 
 #       Store the names of these animals in a list, and then use a for loop to print out the name of each animal.
 #
 #       • Modify your program to print a statement about each animal, such as A dog would make a great pet.
 #       • Add a line at the end of your program, stating what these animals have in common. You could print a sentence, 
 #         such as Any of these animals would make a great pet!
+print("# Esercizio 4-2:\n")
+
+animals_list: list = ['dog','dolphin','crow']
+
+for animal in animals_list:
+    print(animal)
+
+
+# 4-3.  Counting to Twenty: 
+#       Use a for loop to print the numbers from 1 to 20, inclusive.
 
 
 
-
-# 4-3.  Counting to Twenty: Use a for loop to print the numbers from 1 to 20, inclusive.
-
-
-
-# 4-4.  One Million: Make a list of the numbers from one to one million, and then use a for loop to print the numbers. 
+# 4-4.  One Million: 
+#       Make a list of the numbers from one to one million, and then use a for loop to print the numbers. 
 #       (If the output is taking too long, stop it by pressing CTRL-C or by closing the output window.)
 
 
 
-# 4-5.  Summing a Million: Make a list of the numbers from one to one million, and then use min() and max() to make sure
+# 4-5.  Summing a Million: 
+#       Make a list of the numbers from one to one million, and then use min() and max() to make sure
 #       your list actually starts at one and ends at one million. Also, use the sum() function to see how quickly 
 #       Python can add a million numbers.
 
 
 
-# 4-6.  Odd Numbers: Use the third argument of the range() function to make a list of the odd numbers from 1 to 20. 
+# 4-6.  Odd Numbers: 
+#       Use the third argument of the range() function to make a list of the odd numbers from 1 to 20. 
 #       Use a for loop to print each number.
 
 
 
-# 4-7.  Threes: Make a list of the multiples of 3, from 3 to 30. Use a for loop to print the numbers in your list.
+# 4-7.  Threes: 
+#       Make a list of the multiples of 3, from 3 to 30. Use a for loop to print the numbers in your list.
 
 
 
-# 4-8.  Cubes: A number raised to the third power is called a cube. For example, the cube of 2 is written as 2**3 in Python. 
+# 4-8.  Cubes: 
+#       A number raised to the third power is called a cube. For example, the cube of 2 is written as 2**3 in Python. 
 #       Make a list of the first 10 cubes (that is, the cube of each integer from 1 through 10), 
 #       and use a for loop to print out the value of each cube.
 
 
 
-# 4-9.  Cube Comprehension: Use a list comprehension to generate a list of the first 10 cubes.
+# 4-9.  Cube Comprehension: 
+#       Use a list comprehension to generate a list of the first 10 cubes.
 
 
 
-# 4-10. Slices: Using one of the programs you wrote in this chapter, add several lines to the end of the program that
+# 4-10. Slices: 
+#       Using one of the programs you wrote in this chapter, add several lines to the end of the program that
 #       do the following:
 #
 #       • Print the message The first three items in the list are:. Then use a slice to print the first three items 
@@ -68,7 +96,8 @@
 
 
 
-# 4-11. My Pizzas, Your Pizzas: Start with your program from Exercise 4-1. Make a copy of the list of pizzas, 
+# 4-11. My Pizzas, Your Pizzas: 
+#       Start with your program from Exercise 4-1. Make a copy of the list of pizzas, 
 #       and call it friend_pizzas. Then, do the following:
 #
 #       • Add a new pizza to the original list.
@@ -80,21 +109,25 @@
 
 
 
-# 4-12. More Loops: All versions of foods.py in this section have avoided using for loops when printing, to save space. 
+# 4-12. More Loops: 
+#       All versions of foods.py in this section have avoided using for loops when printing, to save space. 
 #       Choose a version of foods.py, and write two for loops to print each list of foods.
 
 
 
-# 4-14. PEP 8: Look through the original PEP 8 style guide at https://python.org/dev/peps/pep-0008. 
+# 4-14. PEP 8: 
+#       Look through the original PEP 8 style guide at https://python.org/dev/peps/pep-0008. 
 #       You won’t use much of it now, but it might be interesting to skim through it.
 
 
 
-# 4-15. Code Review: Choose three of the programs you’ve written in this chapter and modify each one to comply with PEP 8.
+# 4-15. Code Review: 
+#       Choose three of the programs you’ve written in this chapter and modify each one to comply with PEP 8.
 
 
 
-# 5-1.  Conditional Tests: Write a series of conditional tests. Print a statement
+# 5-1.  Conditional Tests: 
+#       Write a series of conditional tests. Print a statement
 #       describing each test and your prediction for the results of each test. Your code
 #       should look something like this:
 #
@@ -111,7 +144,8 @@
 
 
 
-# 5-2.  More Conditional Tests: You don’t have to limit the number of tests you create to 10.
+# 5-2.  More Conditional Tests: 
+#       You don’t have to limit the number of tests you create to 10.
 #       If you want to try more comparisons, write more tests and add them to conditional_tests.py.
 #       Have at least one True and one False result for each of the following:
 #
@@ -125,7 +159,8 @@
 
 
 
-# 5-3.  Alien Colors #1: Imagine an alien was just shot down in a game. 
+# 5-3.  Alien Colors #1: 
+#       Imagine an alien was just shot down in a game. 
 #       Create a variable called alien_color and assign it a value of 'green', 'yellow', or 'red'.
 #
 #       • Write an if statement to test whether the alien’s color is green. If it is, print a message that the player 
@@ -135,7 +170,8 @@
 
 
 
-# 5-4.  Alien Colors #2: Choose a color for an alien as you did in Exercise 5-3, and write an if-else chain.
+# 5-4.  Alien Colors #2: 
+#       Choose a color for an alien as you did in Exercise 5-3, and write an if-else chain.
 #
 #       • If the alien’s color is green, print a statement that the player just earned 5 points for shooting the alien.
 #       • If the alien’s color isn’t green, print a statement that the player just earned 10 points.
@@ -143,7 +179,8 @@
 
 
 
-# 5-5.  Alien Colors #3: Turn your if-else chain from Exercise 5-4 into an if-elif-else chain.
+# 5-5.  Alien Colors #3: 
+#       Turn your if-else chain from Exercise 5-4 into an if-elif-else chain.
 #
 #       • If the alien is green, print a message that the player earned 5 points.
 #       • If the alien is yellow, print a message that the player earned 10 points.
@@ -152,7 +189,8 @@
 
 
 
-# 5-6.  Stages of Life: Write an if-elif-else chain that determines a person’s stage of life.
+# 5-6.  Stages of Life: 
+#       Write an if-elif-else chain that determines a person’s stage of life.
 #       Set a value for the variable age, and then:
 #
 #       • If the person is less than 2 years old, print a message that the person is a baby.
@@ -164,7 +202,8 @@
 
 
 
-# 5-7.  Favorite Fruit: Make a list of your favorite fruits, and then write a series of independent if statements 
+# 5-7.  Favorite Fruit: 
+#       Make a list of your favorite fruits, and then write a series of independent if statements 
 #       that check for certain fruits in your list.
 #
 #       • Make a list of your three favorite fruits and call it favorite_fruits.
@@ -173,7 +212,8 @@
 
 
 
-# 5-8.  Hello Admin: Make a list of five or more usernames, including the name 'admin'. 
+# 5-8.  Hello Admin: 
+#       Make a list of five or more usernames, including the name 'admin'. 
 #       Imagine you are writing code that will print a greeting to each user after they log in to a website. 
 #       Loop through the list, and print a greeting to each user.
 #
@@ -182,14 +222,16 @@
 
 
 
-# 5-9.  No Users: Add an if test to hello_admin.py to make sure the list of users is not empty.
+# 5-9.  No Users: 
+#       Add an if test to hello_admin.py to make sure the list of users is not empty.
 #
 #       • If the list is empty, print the message We need to find some users!
 #       • Remove all of the usernames from your list, and make sure the correct message is printed.
 
 
 
-# 5-10. Checking Usernames: Do the following to create a program that simulates how websites ensure that everyone 
+# 5-10. Checking Usernames: 
+#       Do the following to create a program that simulates how websites ensure that everyone 
 #       has a unique username.
 #
 #       • Make a list of five or more usernames called current_users.
@@ -203,7 +245,8 @@
 
 
 
-# 5-11. Ordinal Numbers: Ordinal numbers indicate their position in a list, such as 1st or 2nd. Most ordinal numbers end in th, 
+# 5-11. Ordinal Numbers: 
+#       Ordinal numbers indicate their position in a list, such as 1st or 2nd. Most ordinal numbers end in th, 
 #       except 1, 2, and 3.
 #
 #       • Store the numbers 1 through 9 in a list.
