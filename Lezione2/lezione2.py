@@ -85,9 +85,9 @@ print("")
 #       Then use your list to print a message to each person, inviting them to dinner.
 print('# Exercise 3-4:\n')
 
-guest_list: list = ['Charlie Chaplin','Leonardo da Vinci','Freddie Mercury']
+guests_list: list = ['Charlie Chaplin','Leonardo da Vinci','Freddie Mercury']
 
-for guest in guest_list:
+for guest in guests_list:
     print(f"{guest} you are hereby invited to the dinner of the dead")
 
 print("")
@@ -102,11 +102,11 @@ print("")
 #       • Print a second set of invitation messages, one for each person who is still in your list.
 print('# Exercise 3-5:\n')
 
-print(f"It appears that {guest_list[0]} cannot make it.")
+print(f"It appears that {guests_list[0]} cannot make it.")
 
-guest_list[0] = 'Cleopatra'
+guests_list[0] = 'Cleopatra'
 
-for guest in guest_list:
+for guest in guests_list:
     print(f"Since one of our guest isn't able to come anymore, you {guest} are hereby invited to the dinner of the dead")
 
 print("")
@@ -125,11 +125,11 @@ print('# Exercise 3-6:\n')
 
 print(f"Good news everyone! I found a bigger table so that more guests can come!")
 
-guest_list.insert(0,'Alan Turing')
-guest_list.insert(len(guest_list)//2, 'Marilyn Monroe')
-guest_list.append('Giovanna D\'Arco')
+guests_list.insert(0,'Alan Turing')
+guests_list.insert(len(guests_list)//2, 'Marilyn Monroe')
+guests_list.append('Giovanna D\'Arco')
 
-for guest in guest_list:
+for guest in guests_list:
     print(f"Sorry for the spam but, {guest}, you are hereby invited to the dinner of the dead")
 
 print("")
@@ -149,17 +149,17 @@ print('# Exercise 3-7:\n')
 
 print(f"Aww! The new table won't come in time! Only two of you can be invited!")
 
-for _ in range(len(guest_list)-2):
-    print(f"I'm sorry {guest_list.pop(0)}, your invitation is, as of now, revoked.")
+for _ in range(len(guests_list)-2):
+    print(f"I'm sorry {guests_list.pop(0)}, your invitation is, as of now, revoked.")
 
 print("")
 
-for guest in guest_list:
+for guest in guests_list:
     print(f"Hello {guest}, just so you know, you are still invited!")
 
-del guest_list[:]
+del guests_list[:]
 
-print(f"\nThe remaining list is: {guest_list}\n")
+print(f"\nThe remaining list is: {guests_list}\n")
 
 
 # 3-8.  Seeing the World: Think of at least five places in the world you’d like to visit.

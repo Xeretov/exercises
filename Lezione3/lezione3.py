@@ -10,22 +10,24 @@
 #       • Add a line at the end of your program, outside the for loop, that states how much you like pizza. 
 #         The output should consist of three or more lines about the kinds of pizza you like and then an additional sentence, 
 #         such as I really love pizza!
-print("# Esercizio 4-1:\n")
+print("# Excercise 4-1:\n")
 
-pizza_list: list = ['Diavola','Boscaiola','Capricciosa']
+pizzas_list: list = ['Diavola','Boscaiola','Capricciosa']
 
-for pizza in pizza_list:
+for pizza in pizzas_list:
     print(pizza)
 
 print("")
 
-for pizza in pizza_list:
+for pizza in pizzas_list:
     print(f"I like {pizza} pizza.")
 
-print(f"I really like {pizza_list[0]} for its spicyness.\n",
-      f"\r{pizza_list[1]} is great and fullfilling.\n",
-      f"\rEverything is on {pizza_list[2]}!\n",
-      "\rI really love pizza!")
+print("")
+
+print(f"I really like {pizzas_list[0]} for its spicyness.\n",
+      f"\r{pizzas_list[1]} is great and fullfilling.\n",
+      f"\rEverything is on {pizzas_list[2]}!\n\n",
+      "\rI really love pizza!\n")
 
 
 # 4-2.  Animals: 
@@ -35,53 +37,109 @@ print(f"I really like {pizza_list[0]} for its spicyness.\n",
 #       • Modify your program to print a statement about each animal, such as A dog would make a great pet.
 #       • Add a line at the end of your program, stating what these animals have in common. You could print a sentence, 
 #         such as Any of these animals would make a great pet!
-print("# Esercizio 4-2:\n")
+print("# Excercise 4-2:\n")
 
 animals_list: list = ['dog','dolphin','crow']
 
 for animal in animals_list:
     print(animal)
 
+print("")
+
+for animal in animals_list:
+    print(f"A {animal} would make a great pet!")
+
+print("")
+
+print("All these pets are really smart!\n")
+
 
 # 4-3.  Counting to Twenty: 
 #       Use a for loop to print the numbers from 1 to 20, inclusive.
+print("# Excercise 4-3:\n")
 
+for number in range(1,21):
+    print(number)
 
+print("")
 
 # 4-4.  One Million: 
 #       Make a list of the numbers from one to one million, and then use a for loop to print the numbers. 
 #       (If the output is taking too long, stop it by pressing CTRL-C or by closing the output window.)
+print("# Excercise 4-4:\n")
 
+numbers_list1: list = [number for number in range(1,11)] # One million and one has been replaced by eleven
+
+for number in numbers_list1:
+    print(number)
+
+print("")
 
 
 # 4-5.  Summing a Million: 
 #       Make a list of the numbers from one to one million, and then use min() and max() to make sure
 #       your list actually starts at one and ends at one million. Also, use the sum() function to see how quickly 
 #       Python can add a million numbers.
+print("# Excercise 4-5:\n")
 
+numbers_list2: list = [number for number in range(1,10**6+1)]
+
+print(f"somma di una lista da {min(numbers_list2)} a {max(numbers_list2)}: {sum(numbers_list2)}")       
+
+print("")
 
 
 # 4-6.  Odd Numbers: 
 #       Use the third argument of the range() function to make a list of the odd numbers from 1 to 20. 
 #       Use a for loop to print each number.
+print("# Excercise 4-6:\n")
 
+numbers_list3: list = [number for number in range(1,20,2)]
+
+for number in numbers_list3:
+    print(number)
+
+print("")
 
 
 # 4-7.  Threes: 
 #       Make a list of the multiples of 3, from 3 to 30. Use a for loop to print the numbers in your list.
+print("# Excercise 4-7:\n")
 
+numbers_list4: list = [number for number in range(3,31,3)]
+
+for number in numbers_list4:
+    print(number)
+
+print("")
 
 
 # 4-8.  Cubes: 
 #       A number raised to the third power is called a cube. For example, the cube of 2 is written as 2**3 in Python. 
 #       Make a list of the first 10 cubes (that is, the cube of each integer from 1 through 10), 
 #       and use a for loop to print out the value of each cube.
+print("# Excercise 4-8:\n")
 
+numbers_list5: list = [number**3 for number in range(1,11)]
+
+for number in numbers_list5:
+    print(number)
+
+print("")
 
 
 # 4-9.  Cube Comprehension: 
 #       Use a list comprehension to generate a list of the first 10 cubes.
 
+# Already done above ^^ but i'll swap them
+print("# Excercise 4-9:\n")
+
+numbers_list6: list = []
+
+for number in range(1,11):
+    numbers_list6.append(number**3)
+
+print(f"{numbers_list6}\n")
 
 
 # 4-10. Slices: 
@@ -93,7 +151,11 @@ for animal in animals_list:
 #       • Print the message Three items from the middle of the list are:. Then use a slice to print three items 
 #         from the middle of the list.
 #       • Print the message The last three items in the list are:. Then use a slice to print the last three items in the list.
+print("# Excercise 4-10:\n")
 
+print(f"The first three items in the list are: {numbers_list5[:3]}\n",
+      f"\rThree items from the middle of the list are: {numbers_list5[len(numbers_list5)//2-1:len(numbers_list5)//2+2]}\n",
+      f"\rThe last three items in the list are: {numbers_list5[-3:]}\n")
 
 
 # 4-11. My Pizzas, Your Pizzas: 
@@ -105,25 +167,44 @@ for animal in animals_list:
 #       • Prove that you have two separate lists. Print the message My favorite pizzas are:, 
 #         and then use a for loop to print the first list. Print the message My friend’s favorite pizzas are:, 
 #         and then use a for loop to print the second list. Make sure each new pizza is stored in the appropriate list.
+print("# Excercise 4-11:",end="")
 
+friend_pizzas: list = pizzas_list[:]
 
+pizzas_list.append("Quattro formaggi")
+friend_pizzas.append("Margherita")
+
+for count in range(2):
+    print("\n")
+    if count == 0:
+        print("My favorite pizzas are:")
+        for pizza in pizzas_list:
+            print(f"{pizza}",end=" ")
+    else:
+        print("My friend's favorite pizzas are:")
+        for pizza in friend_pizzas:
+            print(f"{pizza}",end=" ")
+print("\n")
 
 
 # 4-12. More Loops: 
 #       All versions of foods.py in this section have avoided using for loops when printing, to save space. 
 #       Choose a version of foods.py, and write two for loops to print each list of foods.
 
+# Cannot be done
 
 
 # 4-14. PEP 8: 
 #       Look through the original PEP 8 style guide at https://python.org/dev/peps/pep-0008. 
 #       You won’t use much of it now, but it might be interesting to skim through it.
 
+# Done, Thank you
 
 
 # 4-15. Code Review: 
 #       Choose three of the programs you’ve written in this chapter and modify each one to comply with PEP 8.
 
+# Already done
 
 
 # 5-1.  Conditional Tests: 
@@ -141,7 +222,49 @@ for animal in animals_list:
 #         evaluates to True or False.
 #       • Create at least 10 tests. Have at least 5 tests evaluate to True and another
 #         5 tests evaluate to False.
+print("# Exercise 5-1:\n")
 
+print("\nTest 1:")
+
+car: str = 'subaru'
+print("Is car == 'subaru'? I predict True.")
+print(car == 'subaru')
+print("\nIs car == 'audi'? I predict False.")
+print(car == 'audi')
+
+print("\nTest 2:")
+
+motorcycle: str = 'suzuki'
+print("Is motorcycle == 'suzuki'? I predict True.")
+print(motorcycle == 'suzuki')
+print("\nIs motorcycle == 'ducati'? I predict False.")
+print(motorcycle == 'ducati')
+
+print("\nTest 3:")
+
+tank: str = 'leopard 1'
+print("Is tank == 'leopard 1'? I predict True.")
+print(tank == 'leopard 1')
+print("\nIs tank == 'M60'? I predict False.")
+print(tank == 'M60')
+
+print("\nTest 4:")
+
+city: str = 'sydney'
+print("Is city == 'sydney'? I predict True.")
+print(city == 'sydney')
+print("\nIs city == 'rome'? I predict False.")
+print(city == 'rome')
+
+print("\nTest 5:")
+
+mountain: str = 'mont blanc'
+print("Is mountain == 'mont blanc'? I predict True.")
+print(mountain == 'mont blanc')
+print("\nIs mountain == 'everest'? I predict False.")
+print(mountain == 'everest')
+
+print("")
 
 
 # 5-2.  More Conditional Tests: 
@@ -156,8 +279,32 @@ for animal in animals_list:
 #       • Tests using the and keyword and the or keyword
 #       • Test whether an item is in a list
 #       • Test whether an item is not in a list
+print("# Exercise 5-2:\n")
 
+conditional_string1: str = 'Puma'
+conditional_string2: str = 'Cheeta'
+conditional_string3: str = 'puMA'
+conditional_number1: int = 12
+conditional_number2: int = 5
+conditional_list1: list = [3,6,'Puma',37,'cheeta']
 
+print("Test for equality with 'Puma' and 'puMA':\n",
+      f"\r'Puma' == 'puMA': {conditional_string1 == conditional_string3}")
+print("\nTest for inequality with 'Puma' and 'Cheeta':\n",
+      f"\r'Puma' == 'Cheeta': {conditional_string1 != conditional_string2}")
+print("\nTest for equality with 'Puma' and 'puMA' both using lower() method:\n",
+      f"\r'Puma.lower()' == 'puMA.lower()': {conditional_string1.lower() == conditional_string3.lower()}")
+print("\nTests for equality, inequality, greater than, less than, greater or equal than, less or equal than with '12' and '5':\n",
+      f"\r'5' == '12': {conditional_number1 == conditional_number2}\n",
+      f"\r'5' != '12': {conditional_number1 != conditional_number2}\n",
+      f"\r'5'  > '12': {conditional_number1 > conditional_number2}\n",
+      f"\r'5'  < '12': {conditional_number1 < conditional_number2}\n",
+      f"\r'5' >= '12': {conditional_number1 >= conditional_number2}\n",
+      f"\r'5' <= '12': {conditional_number1 <= conditional_number2}\n")
+print("Test using the AND and OR keywords:\n",
+      f"\r('5' >= 0 or '12' < 15) and '12' > '5': {(conditional_number1 >= 0 or conditional_number2 < 15) and conditional_number2 > conditional_number1}\n")
+print("Test wheter an item is in a list or not:\n",
+      f"")
 
 # 5-3.  Alien Colors #1: 
 #       Imagine an alien was just shot down in a game. 
