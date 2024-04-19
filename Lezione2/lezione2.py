@@ -81,7 +81,7 @@ print("")
 #       of invitations. You’ll have to think of someone else to invite.
 #
 #       • Start with your program from Exercise 3-4. Add a print() call at the end of your program, stating the name of  
-#           the guest who can’t make it.
+#         the guest who can’t make it.
 #       • Modify your list, replacing the name of the guest who can’t make it with the name of the new person you are inviting.
 #       • Print a second set of invitation messages, one for each person who is still in your list.
 print('Exercise 3-5:\n')
@@ -96,7 +96,7 @@ print("")
 #       to dinner.
 #
 #       • Start with your program from Exercise 3-4 or 3-5. Add a print() call to the end of your program, informing people that
-#       you found a bigger table.
+#         you found a bigger table.
 #       • Use insert() to add one new guest to the beginning of your list.
 #       • Use insert() to add one new guest to the middle of your list.
 #       • Use append() to add one new guest to the end of your list.
@@ -114,12 +114,12 @@ print("")
 #       and now you have space for only two guests.
 #
 #       • Start with your program from Exercise 3-6. Add a new line that prints a message saying that you can invite only
-#       two people for dinner.
+#         two people for dinner.
 #       • Use pop() to remove guests from your list one at a time until only two names remain in your list. Each time you pop a 
-#       name from your list, print a message to that person letting them know you’re sorry you can’t invite them to dinner.
+#         name from your list, print a message to that person letting them know you’re sorry you can’t invite them to dinner.
 #       • Print a message to each of the two people still on your list, letting them know they’re still invited.
 #       • Use del to remove the last two names from your list, so you have an empty list. Print your list to make sure 
-#       you actually have an empty list at the end of your program.
+#         you actually have an empty list at the end of your program.
 print('Exercise 3-7:\n')
 print(f"Aww! The new table won't come in time! Only two of you can be invited!")
 for i in range(len(guest_list)-2):
@@ -141,9 +141,9 @@ print(f"\nThe remaining list is: {guest_list}\n")
 #       • Use reverse()  to change the order of your list. Print the list to show that its order has changed.
 #       • Use reverse() to change the order of your list again. Print the list to show it’s back to its original order.
 #       • Use sort() to change your list so it’s stored in alphabetical order. Print the list to show that its order
-#       has been changed.
+#         has been changed.
 #       • Use sort() to change your list so it’s stored in reverse-alphabetical order.
-#       Print the list to show that its order has changed.
+#         Print the list to show that its order has changed.
 print('Exercise 3-8:\n')
 locations_list: list = ['Japan','Iceland','New Zealand','Maldives','Qatar']
 print(f"Here is the unmodified list: {locations_list}")
@@ -211,10 +211,10 @@ print("")
 # 6-3.  Glossary: A Python dictionary can be used to model an actual dictionary. However, to avoid confusion,
 #       let’s call it a glossary.
 #       • Think of five programming words you’ve learned about in the previous chapters. Use these words as the keys 
-#       in your glossary, and store their meanings as values.
+#         in your glossary, and store their meanings as values.
 #       • Print each word and its meaning as neatly formatted output. You might print the word followed by a colon and
-#       then its meaning, or print the word on one line and then print its meaning indented on a second line. 
-#       Use the newline character (\n) to insert a blank line between each word-meaning pair in your output.
+#         then its meaning, or print the word on one line and then print its meaning indented on a second line. 
+#         Use the newline character (\n) to insert a blank line between each word-meaning pair in your output.
 print('Exercise 6-3:\n')
 glossary: dict = {'print':'prints a specified message to the screen','del':'a keyword used to delete objects','append':'adds a single item to certain collection types','insert':'adds a single item in a speciefied position to certain collection types','\\n':'a special character used for printing a new line'}
 for i in glossary.items():
