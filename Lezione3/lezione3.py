@@ -284,8 +284,8 @@ print("# Exercise 5-2:\n")
 conditional_string1: str = 'Puma'
 conditional_string2: str = 'Cheeta'
 conditional_string3: str = 'puMA'
-conditional_number1: int = 12
-conditional_number2: int = 5
+conditional_number1: int = 5
+conditional_number2: int = 12
 conditional_list1: list = [3,6,'Puma',37,'cheeta']
 
 print("Test for equality with 'Puma' and 'puMA':\n",
@@ -302,7 +302,7 @@ print("\nTests for equality, inequality, greater than, less than, greater or equ
       f"\r'5' >= '12': {conditional_number1 >= conditional_number2}\n",
       f"\r'5' <= '12': {conditional_number1 <= conditional_number2}\n")
 print("Test using the AND and OR keywords:\n",
-      f"\r('5' >= 0 or '12' < 15) and '12' > '5': {(conditional_number1 >= 0 or conditional_number2 < 15) and conditional_number2 > conditional_number1}\n")
+      f"\r('5' >= 0 or '12' < 15) and '12' > '5': {((conditional_number1 >= 0) or (conditional_number2 < 15)) and (conditional_number2 > conditional_number1)}\n")
 print("Test wheter an item is in a list or not:\n",
       f"")
 
