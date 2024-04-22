@@ -1,5 +1,5 @@
 # Gioele Amendola
-# 19/04/2024
+# 22/04/2024
 
 # 8-1. Message: Write a function called display_message() that prints one sentence telling everyone what you are learning about in 
 # this chapter. Call the function, and make sure the message displays correctly.
@@ -185,7 +185,7 @@ def build_profile(first_name: str, last_name: str, **kwargs) -> str:
             message += f", {item[0]} {item[1]}"
     return message
 
-print(f"\n{build_profile('Gioele','Amendola',age = 24,hair = 'dark brown',weight = 60)}\n")
+print(f"{build_profile('Gioele','Amendola',age = 24,hair = 'dark brown',weight = 60)}\n")
 
 
 # 8-14. Cars: Write a function that stores information about a car in a dictionary.
@@ -204,7 +204,7 @@ def make_car(manufacturer: str,model_name: str, **kwargs) -> dict:
         dictionary = dictionary | kwargs
     return dictionary
 
-print(f"\n{make_car('subaru','outback',color='blue',tow_package=True)}\n")
+print(f"{make_car('subaru','outback',color='blue',tow_package=True)}\n")
 
 
 # 8-15. Printing Models: Put the functions for the example printing_models.py in a separate file called printing_functions.py.
@@ -219,8 +219,11 @@ print(f"\n{make_car('subaru','outback',color='blue',tow_package=True)}\n")
 # from module_name import function_name as fn
 # import module_name as mn
 # from module_name import *
+print("# Exercise 8-16:\n")
+import modulo_8_16
+from modulo_8_16 import summation
 
-# Too much of a hussle
+print(summation(3.7,14),end="\n\n")
 
 # 8-17. Styling Functions: Choose any three programs you wrote for this chapter, 
 # and make sure they follow the styling guidelines described in this section.
