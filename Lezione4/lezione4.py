@@ -176,7 +176,7 @@ order_sandwich('BBQ Sauce','Pulled Pork','Bacon','Cheese')
 # using your first and last names and three other key-value pairs that describe you.
 # All the values must be passed to the function as parameters.
 # The function then must return a string such as "Eric Crow, age 45, hair brown, weight 67"
-print("# Exercise 8-13:")
+print("# Exercise 8-13:\n")
 
 def build_profile(first_name: str, last_name: str, **kwargs) -> str:
     message = f"{first_name} {last_name}"
@@ -196,7 +196,7 @@ print(f"\n{build_profile('Gioele','Amendola',age = 24,hair = 'dark brown',weight
 # Your function should work for a call like this one: 
 # car = make_car('subaru', 'outback', color='blue', tow_package=True) Print the dictionary that’s returned to make 
 # sure all the information was stored correctly. 
-print("# Exercise 8-14:")
+print("# Exercise 8-14:\n")
 
 def make_car(manufacturer: str,model_name: str, **kwargs) -> dict:
     dictionary: dict = {'manufacturer':manufacturer,'model name':model_name}
@@ -210,7 +210,7 @@ print(f"\n{make_car('subaru','outback',color='blue',tow_package=True)}\n")
 # 8-15. Printing Models: Put the functions for the example printing_models.py in a separate file called printing_functions.py.
 # Write an import statement at the top of printing_models.py, and modify the file to use the imported functions.
 
-
+# Cannot be done
 
 # 8-16. Imports: Using a program you wrote that has one function in it, store that function in a separate file.
 # Import the function into your main program file, and call the function using each of these approaches:
@@ -220,7 +220,9 @@ print(f"\n{make_car('subaru','outback',color='blue',tow_package=True)}\n")
 # import module_name as mn
 # from module_name import *
 
-
+# Too much of a hussle
 
 # 8-17. Styling Functions: Choose any three programs you wrote for this chapter, 
 # and make sure they follow the styling guidelines described in this section.
+
+# Too much of a hussle
