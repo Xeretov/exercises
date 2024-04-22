@@ -106,7 +106,7 @@ print("")
 #       Make a list of the multiples of 3, from 3 to 30. Use a for loop to print the numbers in your list.
 print("# Exercise 4-7:\n")
 
-numbers_list4: list = [number for number in range(3,31,3)]
+numbers_list4: list = [number for number in range(3,31) if number%3 == 0]
 
 for number in numbers_list4:
     print(number)
