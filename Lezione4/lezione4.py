@@ -180,7 +180,7 @@ print("# Exercise 8-13:\n")
 
 def build_profile(first_name: str, last_name: str, **kwargs) -> str:
     message = f"{first_name} {last_name}"
-    if len(kwargs) != 0:
+    if kwargs:
         for item in kwargs.items():
             message += f", {item[0]} {item[1]}"
     return message
@@ -200,7 +200,7 @@ print("# Exercise 8-14:\n")
 
 def make_car(manufacturer: str,model_name: str, **kwargs) -> dict:
     dictionary: dict = {'manufacturer':manufacturer,'model name':model_name}
-    if len(kwargs) != 0:
+    if kwargs:
         dictionary = dictionary | kwargs
     return dictionary
 
