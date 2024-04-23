@@ -220,6 +220,7 @@ print(f"{make_car('subaru','outback',color='blue',tow_package=True)}\n")
 # import module_name as mn
 # from module_name import *
 print("# Exercise 8-16:\n")
+
 import modulo_8_16
 from modulo_8_16 import summation
 
