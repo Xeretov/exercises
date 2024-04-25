@@ -8,7 +8,8 @@
 
 
 # Main Menu for interactive ecommerce shopping
-def shopping_cart(products_dictionary: dict,discount: int = None, taxes: int = None):
+# Parameters: Products_dictionary, Optional: taxes and discount
+def shopping_cart(products_dictionary: dict,taxes: int = None, discount: int = None):
     print("\nWelcome to the CYB3R.SH0P!\n")
     cart_list: dict = {}
     choose: int = 0
@@ -25,12 +26,13 @@ def shopping_cart(products_dictionary: dict,discount: int = None, taxes: int = N
         elif choose == 3:
             products_dictionary,cart_list = remove_from_cart(products_dictionary,cart_list)
         elif choose == 5:
-            check = check_out(products_dictionary,cart_list,discount,taxes)
+            check = check_out(products_dictionary,cart_list,taxes,discount)
             if check:
                 return
 
 
 # Looks through the products given, the names, prices and quantities
+# Parameters: Products_dictionary
 def product_information(products_dictionary: dict):
     print("\nHere are all the informations about available products: (Press Enter to continue)\n")
     for product_key,product_value in products_dictionary.items():
@@ -39,6 +41,8 @@ def product_information(products_dictionary: dict):
     return 
 
 # Menu to add a product to cart given a name and its quantity
+# Parameters: Products_dictionary, cart_list
+# Returns: Products_dictionary, cart_list
 def add_to_cart(products_dictionary: dict, cart_list: dict) -> dict:
     while True:
         print("***REMEMBER: Insert -1 to go back***")
@@ -78,6 +82,8 @@ def add_to_cart(products_dictionary: dict, cart_list: dict) -> dict:
         products_dictionary[choose_name][1] -= choose_quantity
 
 # Menu for removing products from the cart given name and its quantity
+# Parameters: Products_dictionary, cart_list
+# Returns: Products_dictionary, cart_list
 def remove_from_cart(products_dictionary:dict,cart_list: dict) -> dict:
     while True:
         print("***REMEMBER: Insert -1 to go back***")
@@ -112,7 +118,10 @@ def remove_from_cart(products_dictionary:dict,cart_list: dict) -> dict:
         products_dictionary[choose_name][1] += choose_quantity    
 
 # Check for price of cart and check out
-def check_out(products_dictionary:dict, cart_list: dict, discount: int = 0, taxes: int = 0) -> bool:
+# Parameters: products_dictionary, cart_list
+# Default: taxes, discount
+# Returns: check
+def check_out(products_dictionary:dict, cart_list: dict, taxes: int = 0, discount: int = 0) -> bool:
     sum: float = 0
     check: str = ''
     print("\nHere is the content of the cart and its cost:\n")
@@ -139,6 +148,6 @@ def check_out(products_dictionary:dict, cart_list: dict, discount: int = 0, taxe
             return False
 
 
-
+# Products_dictionary needs to be {"Name_Product":[Price,Quantity]}
 products_dictionary: dict = {"Pizza":[5.25,10],"Pasta":[3.00,25],"Vegetable":[2.00,7],"Sweet":[10.60,3],"Wine":[25.99,1]}
-shopping_cart(products_dictionary,25,10)
+shopping_cart(products_dictionary,10,25)
