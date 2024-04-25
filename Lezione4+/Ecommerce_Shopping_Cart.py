@@ -8,7 +8,8 @@
 
 
 # Main Menu for interactive ecommerce shopping
-# Parameters: Products_dictionary, Optional: taxes and discount
+# Parameters: Products_dictionary
+# Optional: taxes and discount
 def shopping_cart(products_dictionary: dict,taxes: int = None, discount: int = None):
     print("\nWelcome to the CYB3R.SH0P!\n")
     cart_list: dict = {}
