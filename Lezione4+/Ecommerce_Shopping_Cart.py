@@ -135,8 +135,8 @@ def check_out(products_dictionary:dict, cart_list: dict, taxes: int = 0, discoun
     print(f"\nBase price:\t\t {sum:.2f}€")
 
     # Calculation of discount and taxes
-    print(f"With {taxes}% Taxes:\t\t {(sum+((sum*taxes)/100)):.2f} ")
-    print(f"With {discount}% Discount:\t {((sum+((sum*taxes)/100))-((sum*discount)/100)):.2f}")
+    print(f"With {taxes}% Taxes:\t\t {(sum+((sum*taxes)/100)):.2f}€")
+    print(f"With {discount}% Discount:\t {((sum+((sum*taxes)/100))-((sum*discount)/100)):.2f}€")
 
     # Control for checkout
     while check != 'Y' or check != 'n':
