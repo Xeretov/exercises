@@ -123,6 +123,8 @@
 >
 > ---
 > 6-12. Extensions: We’re now working with examples that are complex enough that they can be extended in any number of ways. Use one of the example programs from this chapter, and extend it by adding new keys and values, changing the context of the program, or improving the formatting of the output.
+>
+> ---
 </details>
 
 ###### 19/04/2024
@@ -302,7 +304,8 @@ describing each test and your prediction for the results of each test. Your code
 > • Loop through the list.
 >
 > • Use an if-elif-else chain inside the loop to print the proper ordinal ending for each number. Your output should read "1st 2nd 3rd 4th 5th 6th 7th 8th 9th", and each result should be on a separate line.
-
+>
+> ---
 </details>
 
 ###### 22/04/2024
@@ -366,7 +369,8 @@ describing each test and your prediction for the results of each test. Your code
 >
 > ---
 > 8-17. Styling Functions: Choose any three programs you wrote for this chapter, and make sure they follow the styling guidelines described in this section.
-
+>
+> ---
 </details>
 
 ###### 23/04/2024
@@ -447,3 +451,5 @@ describing each test and your prediction for the results of each test. Your code
 > 15. Text Editor with Basic Functionality:
 >
 >Create a simple text editor that allows the user to open, edit, and save text files. Implement basic functionality such as inserting, deleting, and copying text. Provide undo/redo functionality to allow users to reverse actions. Save the edited text to a file when the user chooses to save.
+>
+> ---
