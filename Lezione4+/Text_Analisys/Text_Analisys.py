@@ -43,7 +43,7 @@ def countWords(file_name: str):
                 # If it is, adds 1 to occurance
                 # Otherwise adds the word to the dictionary
                 word = word.lower()
-                # 
+                # Removes special characters from the string
                 if word[-1] in exclude:
                     word = word[:-1]
                 if word.lower() in words_occurrance.keys():
