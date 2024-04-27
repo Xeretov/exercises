@@ -12,7 +12,7 @@ import string
 from pathlib import Path
 
 
-def countWords(file_name: str):
+def count_words(file_name: str):
 
 
     # If name or path of the file given to the function is not correct, catches the except and exits
@@ -69,4 +69,4 @@ def countWords(file_name: str):
 
         
 
-countWords("Lorem_Ipsum.txt")
+count_words("Lorem_Ipsum.txt")
