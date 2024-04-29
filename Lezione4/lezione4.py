@@ -68,7 +68,7 @@ print(city_country('Santiago','Chile'))
 print(city_country('Rome','Italy'))
 print(city_country('Tokyo','Japan'))
 
-print("")
+print()
 
 # 8-7. Album: Write a function called make_album() that builds a dictionary describing a music album. 
 # The function should take in an artist name and an album title, and it should return a dictionary containing 
@@ -92,7 +92,7 @@ print(make_album('The Beatles','White Album'))
 print(make_album('Prince','Purple Rain'))
 print(make_album('Pink Floyd','The Dark Side of the Moon',9))
 
-print("")
+print()
 # 8-8. User Albums: Start with your program from Exercise 8-7. 
 # Write a while loop that allows users to enter an album’s artist and title. 
 # Once you have that information, call make_album() with the user’s input and print the dictionary that’s created. 
@@ -121,7 +121,7 @@ messages_list1: list = ['I love Python','The abyss stared back','101001001011','
 def show_messages(messages: list):
     for message in messages:
         print(f"{message}")
-    print("")
+    print()
 
 show_messages(messages_list1)
 
@@ -136,14 +136,14 @@ def send_messages(messages: list) -> list:
     for message in messages:
         print(f"{message}")
         sent_messages.append(message)
-    print("")
+    print()
     return sent_messages
 
 messages_list2: list = send_messages(messages_list1)
 
 print(f"{messages_list1}\n{messages_list2}")
 
-print("")
+print()
 
 # 8-11. Archived Messages: Start with your work from Exercise 8-10.
 # Call the function send_messages() with a copy of the list of messages.
@@ -154,7 +154,7 @@ messages_list3: list = send_messages(messages_list2)
 
 print(f"{messages_list1}\n{messages_list3}")
 
-print("")
+print()
 
 
 # 8-12. Sandwiches: Write a function that accepts a list of items a person wants on a sandwich. 

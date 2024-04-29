@@ -17,12 +17,12 @@ pizzas_list: list = ['Diavola','Boscaiola','Capricciosa']
 for pizza in pizzas_list:
     print(pizza)
 
-print("")
+print()
 
 for pizza in pizzas_list:
     print(f"I like {pizza} pizza.")
 
-print("")
+print()
 
 print(f"I really like {pizzas_list[0]} for its spicyness.\n",
       f"\r{pizzas_list[1]} is great and fullfilling.\n",
@@ -44,12 +44,12 @@ animals_list: list = ['dog','dolphin','crow']
 for animal in animals_list:
     print(animal)
 
-print("")
+print()
 
 for animal in animals_list:
     print(f"A {animal} would make a great pet!")
 
-print("")
+print()
 
 print("All these pets are really smart!\n")
 
@@ -61,7 +61,7 @@ print("# Exercise 4-3:\n")
 for number in range(1,21):
     print(number)
 
-print("")
+print()
 
 # 4-4.  One Million: 
 #       Make a list of the numbers from one to one million, and then use a for loop to print the numbers. 
@@ -73,7 +73,7 @@ numbers_list1: list = [number for number in range(1,11)] # One million and one h
 for number in numbers_list1:
     print(number)
 
-print("")
+print()
 
 
 # 4-5.  Summing a Million: 
@@ -86,7 +86,7 @@ numbers_list2: list = [number for number in range(1,10**6+1)]
 
 print(f"somma di una lista da {min(numbers_list2)} a {max(numbers_list2)}: {sum(numbers_list2)}")       
 
-print("")
+print()
 
 
 # 4-6.  Odd Numbers: 
@@ -99,7 +99,7 @@ numbers_list3: list = [number for number in range(1,20,2)]
 for number in numbers_list3:
     print(number)
 
-print("")
+print()
 
 
 # 4-7.  Threes: 
@@ -111,7 +111,7 @@ numbers_list4: list = [number for number in range(3,31) if number%3 == 0]
 for number in numbers_list4:
     print(number)
 
-print("")
+print()
 
 
 # 4-8.  Cubes: 
@@ -125,7 +125,7 @@ numbers_list5: list = [number**3 for number in range(1,11)]
 for number in numbers_list5:
     print(number)
 
-print("")
+print()
 
 
 # 4-9.  Cube Comprehension: 
@@ -264,7 +264,7 @@ print(mountain == 'mont blanc')
 print("\nIs mountain == 'everest'? I predict False.")
 print(mountain == 'everest')
 
-print("")
+print()
 
 
 # 5-2.  More Conditional Tests: 

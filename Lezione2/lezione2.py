@@ -53,7 +53,7 @@ names: list = ["Gianfranco","Totti","Ludovico","Marie Curie"]
 for name in names:
     print(name)
 
-print("")
+print()
 
 
 # 3-2.  Greetings: Start with the list you used in Exercise 3-1, but instead of just printing each person’s name,
@@ -64,7 +64,7 @@ print('# Exercise 3-2:\n')
 for name in names:
     print(f"Hey {name}, hope you are well!")
 
-print("")
+print()
 
 
 # 3-3.  Your Own List: Think of your favorite mode of transportation, such as a motorcycle or a car, and make a list
@@ -77,7 +77,7 @@ veichle_list: list = ['train','airplane','motorcycle']
 for veichle in veichle_list:
     print(f'I would like to own a {veichle}')
 
-print("")
+print()
 
 
 # 3-4.  Guest List: If you could invite anyone, living or deceased, to dinner, who would you invite?
@@ -90,7 +90,7 @@ guests_list: list = ['Charlie Chaplin','Leonardo da Vinci','Freddie Mercury']
 for guest in guests_list:
     print(f"{guest} you are hereby invited to the dinner of the dead")
 
-print("")
+print()
 
 
 # 3-5.  Changing Guest List: You just heard that one of your guests can’t make the dinner, so you need to send out a new set
@@ -109,7 +109,7 @@ guests_list[0] = 'Cleopatra'
 for guest in guests_list:
     print(f"Since one of our guest isn't able to come anymore, you {guest} are hereby invited to the dinner of the dead")
 
-print("")
+print()
 
 
 # 3-6.  More Guests: You just found a bigger dinner table, so now more space is available. Think of three more guests to invite
@@ -132,7 +132,7 @@ guests_list.append('Giovanna D\'Arco')
 for guest in guests_list:
     print(f"Sorry for the spam but, {guest}, you are hereby invited to the dinner of the dead")
 
-print("")
+print()
 
 
 # 3-7.  Shrinking Guest List: You just found out that your new dinner table won’t arrive in time for the dinner,
@@ -152,7 +152,7 @@ print(f"Aww! The new table won't come in time! Only two of you can be invited!")
 for _ in range(len(guests_list)-2):
     print(f"I'm sorry {guests_list.pop(0)}, your invitation is, as of now, revoked.")
 
-print("")
+print()
 
 for guest in guests_list:
     print(f"Hello {guest}, just so you know, you are still invited!")
@@ -267,7 +267,7 @@ print(f"Here are the names of your friends and their favorite number: ")
 for info in favorite_numbers.items():
     print(f"{info[0]} : {info[1]}")
 
-print("")
+print()
 
 
 # 6-3.  Glossary: A Python dictionary can be used to model an actual dictionary. However, to avoid confusion,
@@ -290,7 +290,7 @@ glossary: dict = {
 for info in glossary.items():
     print(f"{info[0]}: {info[1]}\n")
 
-print("")
+print()
 
 
 # 6-7.  People: Start with the program you wrote for Exercise 6-1. Make two new dictionaries representing different people, 
@@ -305,9 +305,9 @@ people: list = [personal_information1,personal_information2,personal_information
 for person in people:
     for info in person.items():
         print(f"{info[0]}: {info[1]}")
-    print("")
+    print()
 
-print("")
+print()
 
 
 # 6-8.  Pets: Make several dictionaries, where each dictionary represents a different pet. In each dictionary, include 
@@ -325,9 +325,9 @@ pets: list = [pets_information1,pets_information2,pets_information3,pets_informa
 for pet in pets:
     for info in pet.items():
         print(f"{info[0]}: {info[1]}")
-    print("")
+    print()
 
-print("")
+print()
 
 
 # 6-9.  Favorite Places: Make a dictionary called favorite_places. Think of three names to use as keys in the dictionary, 
@@ -341,7 +341,7 @@ favorite_places: dict = {'Marco':['Spain','Greece','Italy'],'Jessica':['India','
 for info in favorite_places.items():
     print(f"{info[0]}'s favorite places are: {info[1]}")
 
-print("")
+print()
 
 
 # 6-10. Favorite Numbers: Modify your program from Exercise 6-2 so each person can have more than one favorite number. 
@@ -357,7 +357,7 @@ print(f"Here are the names of your friends and their favorite numbers: ")
 for info in favorite_numbers.items():
     print(f"{info[0]}: {info[1]}")
     
-print("")
+print()
 
 
 # 6-11. Cities: Make a dictionary called cities. Use the names of three cities as keys in your dictionary. 
@@ -374,11 +374,11 @@ cities: dict = {
     }
 
 for city in cities.items():
-    print(f"{info[0]} is a city located in {info[1]['country']}",
-          f"with a population of {info[1]['population']} people",
-          f"and it is {info[1]['fact']}")
+    print(f"{city[0]} is a city located in {city[1]['country']}",
+          f"with a population of {city[1]['population']} people",
+          f"and it is {city[1]['fact']}")
     
-print("")
+print()
 
 
 # 6-12. Extensions: We’re now working with examples that are complex enough that they can be extended in any number of ways.
@@ -394,4 +394,4 @@ print(f"Your friends added a new favorite number: ")
 for info in favorite_numbers.items():
     print(f"{info[0]}: {info[1]}")
     
-print("")
+print()
