@@ -1,5 +1,5 @@
 # Gioele Amendola
-# Data
+# 29/04/2024
 
 # Create a function that generates a random password with a specified length and desired character types
 # (lowercase letters, uppercase letters, numbers, symbols). 
