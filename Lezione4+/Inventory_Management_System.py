@@ -11,7 +11,7 @@ def inventory(inventory_database: dict = {}):
     print("\nWelcome to the Inventory Management System!\n")
     choose: int = -1
     while True:
-        print("\nPlease type one of these:\n1. Add item\n2. Remove item\n3. Search Item\n4. Update Item\n0. Esci")
+        print("\nPlease type one of these:\n1. Add item\n2. Remove item\n3. Search Item\n4. Update Item\n0. Exit")
         # Select the function to go to based on input number
         try:
             choose = int(input("\n> "))
