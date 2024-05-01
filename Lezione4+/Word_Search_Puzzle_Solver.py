@@ -15,11 +15,13 @@
 # example:  word_index['piccolo']['start'][0] is a tuple of the starting points
 #           word_index['piccolo']['end'][0] is a list of tuples of the ending points
 # The ending points will always be added in order (right,down,left,up)
+
 def word_search(grid: list, words: list | set = {str}) -> dict:
 
     # Transform words list in set
     if not type(words) == set:
         words = set(words)
+
     # Check if grid has every row with same size
     it = iter(grid)
     default_len = len(next(it)) # takes lenght of first row
@@ -171,7 +173,8 @@ def word_search(grid: list, words: list | set = {str}) -> dict:
             continue
 
     return dictionary
-    
+
+# Example test:    
 grid: list = [
     ['a','l','i','t','o','s','i'],
     ['l','i','l','u','r','p','i'],
@@ -180,4 +183,3 @@ grid: list = [
     ['g','e','e','o','r','t','o']]
 
 word_search(grid,['alitosi','ululato','illuminato','zebra','il','TUOno','orto','ora','apnea'])
-

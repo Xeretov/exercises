@@ -7,7 +7,8 @@
 # Create a for loop to iterate over a list of students and scores, calling the function for each student.
 
 def average_score(scores: list) -> float:
-
+    
+    # Calculates the average given a list of numbers
     scores_sum: int = sum(scores)
     scores_average: float = scores_sum/len(scores)
 
@@ -15,12 +16,15 @@ def average_score(scores: list) -> float:
 
 def check_student(student: str,scores: list):
 
+    # Checks if average is above 60 and prints result
     average: float = average_score(scores)
     if average >= 60:
         print(f"{student}, {average}.\nThe student passed the exam.")
     else:
         print(f"{student}, {average}.\nThe student didn't pass the exam.")
 
+
+# Example Test:
 students_list: list = ['Gabriel','Gabriele','Giuseppe','Angelo']
 grades_list: list = [[60,55,80,60],[100,100,70,40],[20,50,90,55],[60,55,45,75]]
 

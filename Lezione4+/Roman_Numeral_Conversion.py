@@ -6,12 +6,11 @@
 
 
 def roman_conversion(number: int) -> str | None:
-    try:
-        if number < 1 or number > 3999:
-            raise ValueError
-    except ValueError:
-        print("\nInvalid Number.")
-        return None
+
+    # Checks if number given is between 1 and 3999
+    if number < 1 or number > 3999:
+        raise ValueError("number given is not between 1 and 3999.")
+    
     print("\nRoman numeral conversion:")
     print(f"{number}")
 
@@ -77,4 +76,5 @@ def roman_conversion(number: int) -> str | None:
 
     return roman
 
+# Example Test:
 print(roman_conversion(int(input("> "))),end="\n\n")

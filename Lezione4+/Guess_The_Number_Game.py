@@ -8,15 +8,20 @@
 
 import random
 
+# Generate random number
 def generate_number() -> int:
+
     start_number: int = int(input("\nInsert the start of the range of numbers: "))
     end_number: int = int(input("Insert the end of the range of numbers: "))+1
 
     return random.randrange(start_number,end_number)
 
+
 def guessing(number: int = generate_number()):
+
     max_attempts: int = 3
     guessed: int = 0
+
     while max_attempts > 0:
         print(f"\nMax attempts: {max_attempts}")
         guessed = int(input("\n\tGuess the number: "))
@@ -32,8 +37,11 @@ def guessing(number: int = generate_number()):
         else:
             print("\n\tAlmost! (>)")
         max_attempts -= 1
-    if max_attempts == 0:
-        print("\nYou didn't guess the number!\n")
 
+    print("\nYou didn't guess the number!\n")
+
+    return
+
+# Example Test:
 guessing()
 

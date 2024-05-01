@@ -8,8 +8,11 @@
 
 # Main menu for the management system
 def inventory(inventory_database: dict = {}):
+
     print("\nWelcome to the Inventory Management System!\n")
+
     choose: int = -1
+
     while True:
         print("\nPlease type one of these:\n1. Add item\n2. Remove item\n3. Search Item\n4. Update Item\n0. Exit")
         # Select the function to go to based on input number
@@ -17,6 +20,7 @@ def inventory(inventory_database: dict = {}):
             choose = int(input("\n> "))
         except:
             print("Input Not Valid. Retry.")
+
         if choose == 1:
             add_item(inventory_database)
             inventory_database = dict(sorted(inventory_database.items()))
@@ -35,6 +39,7 @@ def inventory(inventory_database: dict = {}):
 # Paramaters: inventory_database
 # Returns: inventory_database        
 def add_item(inventory_database: dict) -> dict:
+
     while True:
 
         item_name: str = ""
@@ -46,6 +51,7 @@ def add_item(inventory_database: dict) -> dict:
         # Check for item in database
         while check:
             print("\nAdd item to the database:\n")
+
             item_name = input("Insert Name > ").capitalize()
             if item_name in inventory_database.keys():
                 print("Item alreay in database\n")
@@ -53,6 +59,7 @@ def add_item(inventory_database: dict) -> dict:
                 print("Item cannot be called 0")
             else:
                 print(f"\nItem name: {item_name}")
+
                 while check:
                     check = input(f"Is this correct? (Y/n) ")
                     if check == 'Y':
@@ -66,6 +73,7 @@ def add_item(inventory_database: dict) -> dict:
         check: str = True
         print()
         while check_retry:
+
             check = True
             while check:
                 try:
@@ -74,6 +82,7 @@ def add_item(inventory_database: dict) -> dict:
                     print("Invalid price Input. Retry")
                 else:
                     check = False
+
             check = True
             while check:
                 try:
@@ -82,7 +91,9 @@ def add_item(inventory_database: dict) -> dict:
                     print("Invalid quantity Input. Retry")
                 else:
                     check = False
+
             print(f"\n\nName: {item_name}\nPrice: {item_price:.2f}€\nQuantity: {item_quantity}\n")
+
             while check_retry:
                 check_retry = input(f"Is this correct? (Y/n) ")
                 if check_retry == 'Y':
@@ -105,6 +116,7 @@ def add_item(inventory_database: dict) -> dict:
 # Parameters: inventory_database
 # Returns: inventory_database        
 def remove_item(inventory_database: dict) -> dict:
+
     while True:
 
         # Check if in database
@@ -112,8 +124,10 @@ def remove_item(inventory_database: dict) -> dict:
         while check:
             print("\nRemove item from database:\n")
             item_name = input("Insert Name > ").capitalize()
+
             if item_name in inventory_database.keys():
                 print(f"\nItem name: {item_name}")
+
                 while check:
                     check = input("\nAre you sure you want to remove it? (Y/n) ")
                     if check == 'Y':
@@ -137,6 +151,7 @@ def remove_item(inventory_database: dict) -> dict:
 # View item
 # Parameters: inventory_database        
 def view_item(inventory_database: dict):
+
     while True:
 
         # Menu for the two options
@@ -152,6 +167,7 @@ def view_item(inventory_database: dict):
                 for item in inventory_database.items():
                     print(f"{item[0]:<15}\t\t {item[1]['price']:<10.2f} {item[1]['quantity']:<10}\t {'...':<5}\t {item[1]['code']:<30}")
                 input("\n\nPress Enter to continue...\n")
+
             # Searches for singular item in the database    
             elif choose == 2:
                 check: bool = True
@@ -162,6 +178,7 @@ def view_item(inventory_database: dict):
                         print(f"{item_name}: {inventory_database[item_name]['price']:.2f}€ {inventory_database[item_name]['quantity']}# {'...':<5}\t {inventory_database[item_name]['code']:<30}")
                     else:
                         print("No item found by that name.")
+                        
                     while check:
                         check = input("\nDo you want to search another item? (Y/n) ")
                         if check == 'Y':
@@ -176,6 +193,7 @@ def view_item(inventory_database: dict):
 # Parameters: inventory_database
 # Returns: inventory_database            
 def update_item(inventory_database: dict) -> dict:
+
     while True:
         # Search for item in database
         print("Update Database:  **Insert 0 to exit**\n")
@@ -187,13 +205,16 @@ def update_item(inventory_database: dict) -> dict:
             except:
                 print("Invalid input. Retry")
             else:
+
                 if choose == 0:
                     return inventory_database
+                
                 elif choose == 1:
                     item_new_name: str = input("Insert new Name > ").capitalize()
                     item_code: int = hash(item_new_name)
                     inventory_database[item_new_name] = inventory_database.pop(item_name)
                     inventory_database[item_new_name]['code'] = item_code
+
                 elif choose == 2:
                     try:
                         item_quantity: int = int(input("Insert quantity > "))
@@ -201,6 +222,7 @@ def update_item(inventory_database: dict) -> dict:
                         print("Invalid quantity Input.")
                     else:
                         inventory_database[item_name]['quantity'] = item_quantity
+
                 elif choose == 3:
                     try:
                         item_price: float = float(input("Insert price > "))
@@ -208,6 +230,7 @@ def update_item(inventory_database: dict) -> dict:
                         print("Invalid price Input.")
                     else:
                         inventory_database[item_name]['price'] = item_price
+                        
         elif item_name == '0':
             return inventory_database
         else:
@@ -217,4 +240,6 @@ def update_item(inventory_database: dict) -> dict:
 # Parameter must adhere to this template:
 # {name:{"price":price,"quantity":quantity,"code":code}}
 # code is hash(name)
+
+# Example Test:
 inventory()

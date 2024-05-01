@@ -11,10 +11,13 @@
 import random
 
 def ATM_machine(balance:float = random.randint(1000,10000)):
+
     print("Welcome to the ATM machine")
+
     funds: float = balance
     transaction: float = 0
     choose: int = -1
+
     while True:
         print("\nChoose a transaction:\n1. Deposit\n2. Withdraw\n3. Check Balance\n0. Exit")
         # Select the function to go to based on input number
@@ -22,10 +25,12 @@ def ATM_machine(balance:float = random.randint(1000,10000)):
             choose = int(input("\n> "))
         except:
             print("Input Not Valid. Retry.")
+
         if choose == 1:
             transaction = deposit(balance)
             balance += transaction
             print("\nTransaction Accepted")
+
         elif choose == 2:
             if funds <= 10:
                 print("\nImpossible transaction.")
@@ -34,12 +39,15 @@ def ATM_machine(balance:float = random.randint(1000,10000)):
                 funds -= transaction
                 balance -= transaction
                 print("\nTransaction Accepted")
+
         elif choose == 3:
             check_balance(balance,funds)
+
         elif choose == 0:
             return
         
 def deposit(balance: float) -> float:
+
     print("Deposit")
     print(f"current balance: ${balance:.2f}")
 
@@ -56,6 +64,7 @@ def deposit(balance: float) -> float:
     return transaction
 
 def withdraw(funds:float) -> float:
+
     print("Withdraw")
     print(f"current available funds: ${funds:.2f}")
 
@@ -74,9 +83,11 @@ def withdraw(funds:float) -> float:
     return transaction
 
 def check_balance(balance:float,funds:float):
+
     print(f"\t\t{'Account Balance':<10}")
     print(f"balance:\t ${balance:<10.2f}")
     print(f"available funds: ${funds:<10.2f}\n")
     input()
 
+# Example Test:
 ATM_machine()

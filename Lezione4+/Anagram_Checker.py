@@ -9,14 +9,17 @@
 import string
 
 def isanagram(string1:str,string2:str) -> bool:
+
     string1 = ''.join(char.lower() for char in string1 if char.isalpha())
     string2 = ''.join(char.lower() for char in string2 if char.isalpha())
     string1 = sorted(string1)
     string2 = sorted(string2)
+
     if string1 == string2:
         return True
     else:
         return False
 
+# Example Test:
 print(isanagram("coolbeaa.21!","ciao"))
 print(isanagram('Pi1ll03!ola','lliP!.,lao'))

@@ -15,6 +15,7 @@ class TooLong(Exception):
     pass
 
 def generate_random_password(length: int = None, desired_char: str | list = None)  -> str:
+
     print("\nGenerating a random password")
 
     # variable of all characters
@@ -65,6 +66,7 @@ def generate_random_password(length: int = None, desired_char: str | list = None
     
     return password
 
+# Example Test:
 length: int = 10
 desired_char: str = "p3'!.DD1"
 

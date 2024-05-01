@@ -9,17 +9,14 @@
 import string
 
 def en_dec(message:str,shift:int = None):
-    try:
-        if not message.isascii():
-            raise ValueError
-    except ValueError:
-        print("\nMessage not valid")
-        return
+
+    # Check if message is an ASCII char
+    if not message.isascii():
+        raise ValueError("message not valid.")
     
     print("\nWelcome to the Ceasar Chiper Encryption/Decryption\n")
 
-
-
+    # Checks if shift has been passed as an argument
     if shift is None:
         while True:
             try:
@@ -29,7 +26,8 @@ def en_dec(message:str,shift:int = None):
             else:
                 break
     
-    
+    # Asks if the message needs to be encrypted or decrypted
+    # They do the exact same thing but opposite of eachother
     while True:
         print(f"Message given:\n {message}\nPosition shift:\n {shift}\n")
         try:
@@ -63,6 +61,7 @@ def encrypt(message: str,shift: int) -> str:
             endec_message += lowercase[pos] if char.islower() else uppercase[pos]
         else:
             endec_message += char
+
     return endec_message
 
 def decrypt(message: str,shift: int) -> str:
@@ -79,9 +78,10 @@ def decrypt(message: str,shift: int) -> str:
             endec_message += lowercase[pos] if char.islower() else uppercase[pos]
         else:
             endec_message += char
+
     return endec_message
 
-
+# Example Test:
 text1: str = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 print(en_dec(text1,10))
 text2: str = "Vycow szdfw nyvyc dse kwoe, myxdomeoefc knszsdmsxq ovse, don ny osfdwyn eowzyc sxmsnsnfxe fe vklyco oe nyvyco wkqxk kvsbfk."

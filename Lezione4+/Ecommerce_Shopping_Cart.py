@@ -11,10 +11,13 @@
 # Parameters: Products_dictionary
 # Optional: taxes and discount
 def shopping_cart(products_dictionary: dict,taxes: int = None, discount: int = None):
+
     print("\nWelcome to the CYB3R.SH0P!\n")
+
     cart_list: dict = {}
     choose: int = 0
     check: bool = False
+    
     while True:
         print("\nPlease type one of these:\n1. Add item\n2. View item\n3. Remove Item\n5. Check Out")
 
@@ -150,5 +153,6 @@ def check_out(products_dictionary:dict, cart_list: dict, taxes: int = 0, discoun
 
 
 # Products_dictionary needs to be {"Name_Product":[Price,Quantity]}
+# Example Test:
 products_dictionary: dict = {"Pizza":[5.25,10],"Pasta":[3.00,25],"Vegetable":[2.00,7],"Sweet":[10.60,3],"Wine":[25.99,1]}
 shopping_cart(products_dictionary,10,25)
