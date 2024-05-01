@@ -152,7 +152,7 @@ def word_search(grid: list, words: list | set = {str}) -> dict:
     # Shows the 2D grid and the words that have a starting and ending point
     while True:
         try:
-            choose: str = input("Do you want to print the result? (Y/n)")
+            choose: str = input("Do you want to print the result? (Y/n) ")
             if choose in ['Y','n']:
                 if choose == 'Y':
                     print()
