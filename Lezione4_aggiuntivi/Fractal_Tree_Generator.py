@@ -29,7 +29,7 @@ def fractal_tree(length = 100, angle = 20,limit_length=10):
     # length: The length of a branch
     # angle: The angle at which the branch starts
     # limit_branch: (length-limit_branch)>0 determins how many branches there are on the tree
-    # (ex: length = 20, limit_branch = 5 then there are a maximum of 4 branches) 
+    # (ex: length = 20, limit_branch = 5 then there are a maximum of 4 branches [20/5 = 4]) 
     # t: pen
     tree(length,angle,limit_length,t)
 
