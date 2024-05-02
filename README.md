@@ -376,7 +376,7 @@ describing each test and your prediction for the results of each test. Your code
 ###### 23/04/2024
 
 <details>
-  <summary>Lezione 4+</summary>
+  <summary>Lezione 4 - aggiuntivi</summary>
 
 > 1. School Grading System:
 >
