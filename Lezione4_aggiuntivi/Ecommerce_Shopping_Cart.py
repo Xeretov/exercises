@@ -10,7 +10,7 @@
 # Main Menu for interactive ecommerce shopping
 # Parameters: Products_dictionary
 # Optional: taxes and discount
-def shopping_cart(products_dictionary: dict,taxes: int = None, discount: int = None):
+def shopping_cart(products_dictionary: dict, taxes: int = None, discount: int = None):
 
     print("\nWelcome to the CYB3R.SH0P!\n")
 
@@ -24,13 +24,13 @@ def shopping_cart(products_dictionary: dict,taxes: int = None, discount: int = N
         # Select the function to go to based on input number
         choose = int(input("\n> "))
         if choose == 1:
-            products_dictionary,cart_list = add_to_cart(products_dictionary,cart_list)
+            products_dictionary,cart_list = add_to_cart(products_dictionary, cart_list)
         elif choose == 2:
             product_information(products_dictionary)
         elif choose == 3:
-            products_dictionary,cart_list = remove_from_cart(products_dictionary,cart_list)
+            products_dictionary,cart_list = remove_from_cart(products_dictionary, cart_list)
         elif choose == 5:
-            check = check_out(products_dictionary,cart_list,taxes,discount)
+            check = check_out(products_dictionary, cart_list, taxes, discount)
             if check:
                 return
 
@@ -88,7 +88,7 @@ def add_to_cart(products_dictionary: dict, cart_list: dict) -> dict:
 # Menu for removing products from the cart given name and its quantity
 # Parameters: Products_dictionary, cart_list
 # Returns: Products_dictionary, cart_list
-def remove_from_cart(products_dictionary:dict,cart_list: dict) -> dict:
+def remove_from_cart(products_dictionary:dict, cart_list: dict) -> dict:
     while True:
         print("***REMEMBER: Insert -1 to go back***")
         print("Insert name to remove from the cart:\n")
@@ -155,4 +155,4 @@ def check_out(products_dictionary:dict, cart_list: dict, taxes: int = 0, discoun
 # Products_dictionary needs to be {"Name_Product":[Price,Quantity]}
 # Example Test:
 products_dictionary: dict = {"Pizza":[5.25,10],"Pasta":[3.00,25],"Vegetable":[2.00,7],"Sweet":[10.60,3],"Wine":[25.99,1]}
-shopping_cart(products_dictionary,10,25)
+shopping_cart(products_dictionary, 10, 25)

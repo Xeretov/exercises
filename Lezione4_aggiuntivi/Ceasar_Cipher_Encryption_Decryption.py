@@ -46,7 +46,7 @@ def en_dec(message:str,shift:int = None):
     return endec_message
 
 
-def encrypt(message: str,shift: int) -> str:
+def encrypt(message: str, shift: int) -> str:
 
     endec_message: str = ""
     uppercase: str = string.ascii_uppercase
@@ -64,7 +64,7 @@ def encrypt(message: str,shift: int) -> str:
 
     return endec_message
 
-def decrypt(message: str,shift: int) -> str:
+def decrypt(message: str, shift: int) -> str:
     endec_message: str = ""
     uppercase: str = string.ascii_uppercase
     lowercase: str = string.ascii_lowercase

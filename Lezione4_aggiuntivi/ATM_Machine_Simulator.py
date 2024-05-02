@@ -10,7 +10,7 @@
 # This is only for example purposes
 import random
 
-def ATM_machine(balance:float = random.randint(1000,10000)):
+def atm_machine(balance:float = random.randint(1000,10000)):
 
     print("Welcome to the ATM machine")
 
@@ -82,7 +82,7 @@ def withdraw(funds:float) -> float:
     
     return transaction
 
-def check_balance(balance:float,funds:float):
+def check_balance(balance:float, funds:float):
 
     print(f"\t\t{'Account Balance':<10}")
     print(f"balance:\t ${balance:<10.2f}")
@@ -90,4 +90,4 @@ def check_balance(balance:float,funds:float):
     input()
 
 # Example Test:
-ATM_machine()
+atm_machine()

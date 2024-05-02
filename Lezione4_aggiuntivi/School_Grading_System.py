@@ -14,7 +14,7 @@ def average_score(scores: list) -> float:
 
     return scores_average
 
-def check_student(student: str,scores: list):
+def check_student(student: str, scores: list):
 
     # Checks if average is above 60 and prints result
     average: float = average_score(scores)
@@ -29,4 +29,4 @@ students_list: list = ['Gabriel','Gabriele','Giuseppe','Angelo']
 grades_list: list = [[60,55,80,60],[100,100,70,40],[20,50,90,55],[60,55,45,75]]
 
 for i in range(len(students_list)):
-    check_student(students_list[i],grades_list[i])
+    check_student(students_list[i], grades_list[i])
