@@ -1,3 +1,6 @@
+'''
+Module providing a backtracking function that can solve a sudoku grid
+'''
 # Gioele Amendola
 # 06/05/2024
 
@@ -12,14 +15,31 @@ M: int = 9
 
 # Function to print grid
 def print_sudoku(grid: list[list[int]]):
+    '''
+    Prints the sudoku grid
+
+    Args:
+        grid (list[list[int]]): 9x9 grid. (2D list)
+    '''
     for x in range(M):
         for y in range(M):
             print(grid[x][y], end=" ")
         print()
     print()
 
-# Function to check if a cell is safe
 def is_safe(grid: list[list[int]], num: int, row: int, col: int) -> bool:
+    '''
+    Checks if given number is unique on the row, column and grid.
+
+    Args:
+        grid (list[list[int]]): sudoku grid.
+        num (int): number to check.
+        row (int): current row.
+        col (int): current col.
+
+    Returns:
+        bool: If number is unique return True else False
+    '''
     # Check same column
     for x in range(M):
         if grid[x][col] == num:
@@ -38,8 +58,19 @@ def is_safe(grid: list[list[int]], num: int, row: int, col: int) -> bool:
     # Checked everything
     return True
 
-# Function to backtracking
 def solve_sudoku(grid: list[list[int]], row: int, col: int) -> bool:
+    '''
+    Backtracking function. Checks if reached max grid and
+    if there is an available number to put in grid.
+
+    Args:
+        grid (list[list[int]]): sudoku grid.
+        row (int): current row.
+        col (int): current col.
+
+    Returns:
+        bool: If this branch (or possibility) is viable or not
+    '''
     # Check if reached max grid
     if row == M - 1 and col == M:
         return True
@@ -68,10 +99,15 @@ def solve_sudoku(grid: list[list[int]], row: int, col: int) -> bool:
     # If number is not found
     return False
 
-# Main function that you call upon
-def sudoku(grid):
+def sudoku(grid: list[list[int]]):
+    '''
+    Function to call upon to solve sudoku.
+
+    Args:
+        grid (list[list[int]]): sudoku grid.
+    '''
     # Check if solvable
-    if (solve_sudoku(grid, 0, 0)):
+    if solve_sudoku(grid, 0, 0):
         # Print grid if found solution
         print_sudoku(grid)
     else:

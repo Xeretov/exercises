@@ -1,16 +1,35 @@
+'''
+    Module provides
+
+    Raises:
+        ValueError: _description_
+
+    Returns:
+        _type_: _description_
+'''
 # Gioele Amendola
 # 29/04/2024
 
-# Create a function that converts a given integer to its Roman numeral representation. 
-# Handle numbers from 1 to 3999. Use a combination of string manipulation and conditional statements to build the Roman numeral.
+# Create a function that converts a given integer to its Roman numeral representation.
+# Handle numbers from 1 to 3999.
+# Use a combination of string manipulation and conditional statements to build the Roman numeral.
 
+def roman_conversion(number: int) -> str:
+    '''
+    Convert a given number to its roman equivalent.
 
-def roman_conversion(number: int) -> str | None:
+    Args:
+        number (int): Given number
 
+    Raises:
+        ValueError: If number is not between 1 and 3999
+
+    Returns:
+        str: Roman number
+    '''
     # Checks if number given is between 1 and 3999
-    if number < 1 or number > 3999:
+    if not 1 <= number <= 3999:
         raise ValueError("number given is not between 1 and 3999.")
-    
     print("\nRoman numeral conversion:")
     print(f"{number}")
 
