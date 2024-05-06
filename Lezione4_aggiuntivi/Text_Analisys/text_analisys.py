@@ -49,23 +49,21 @@ def count_words(file_name: str):
         exclude: set = set(string.punctuation)
 
         # Iterate in opened file line by line
-        for text_line in text_file:
-            # The line is splitted (meaning that removes the whitespaces) and is iterated
-            for word in text_line.split():
-                # Check if word is in dictionary or not.
-                # If it is, adds 1 to occurance
-                # Otherwise adds the word to the dictionary
-                word = word.lower()
-                # Removes special characters from the string
-                if word[-1] in exclude:
-                    word = word[:-1]
-                if word.lower() in words_occurrance:
-                    words_occurrance[word.lower()] += 1
-                else:
-                    words_occurrance[word.lower()] = 1
+        for text_word in text_file.split():
+            # Check if word is in dictionary or not.
+            # If it is, adds 1 to occurance
+            # Otherwise adds the word to the dictionary
+            text_word = text_word.lower()
+            # Removes special characters from the string
+            if text_word[-1] in exclude:
+                text_word = text_word[:-1]
+            if text_word in words_occurrance:
+                words_occurrance[text_word] += 1
+            else:
+                    words_occurrance[text_word] = 1
 
         # Closing of file
-        text_file.close()
+        file.close()
 
         # Sort by alphabetical order
         words_occurrance = dict(sorted(words_occurrance.items()))
