@@ -7,7 +7,8 @@ and returns its starting and ending points.
 
 # Create a function that solves a word search puzzle.
 # Provide a 2D grid representing the puzzle and a list of words to find.
-# Implement a backtracking algorithm to search for the words in the grid, marking visited cells to avoid repetition.
+# Implement a backtracking algorithm to search for the words in the grid,
+# marking visited cells to avoid repetition.
 # Output the locations of the found words within the grid.
 
 # The grid is a list of lists filled with chars (every row is the same size)
