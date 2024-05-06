@@ -60,7 +60,7 @@ def count_words(file_name: str):
             if text_word in words_occurrance:
                 words_occurrance[text_word] += 1
             else:
-                    words_occurrance[text_word] = 1
+                words_occurrance[text_word] = 1
 
         # Closing of file
         file.close()
