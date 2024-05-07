@@ -14,7 +14,7 @@ from tkinter import *
 from tkinter.filedialog import *
 from pathlib import Path
 
-file_name = "Untitled"
+file_name: str = "Untitled"
 curr_path = Path(__file__).parent.resolve()
 
 def initialize_texteditor():
@@ -22,7 +22,7 @@ def initialize_texteditor():
     Initialization of gui window and its functions.
     '''
 
-    def new_file():
+    def new_file(*args):
         '''Creates new file for insertion of text.'''
         # If pressed yes
         def process_command():
@@ -33,7 +33,7 @@ def initialize_texteditor():
             ask_window.destroy()
         # Creation of another window for confirmation
         ask_window = Tk()
-        ask_window.title("Confirm")
+        ask_window.title("New File")
         ask_window.geometry("300x100")
         vertical_frame = Frame(ask_window)
         vertical_frame.pack()
@@ -43,7 +43,7 @@ def initialize_texteditor():
         Button(horizontal_frame, name="choose1", text="Yes!", command=process_command).pack(side=LEFT)
         Button(horizontal_frame, name="choose2", text="No", command=ask_window.destroy).pack(side=LEFT)
 
-    def open_file():
+    def open_file(*args):
         '''Open an existing file'''
         global file_name
         global curr_path
@@ -58,7 +58,7 @@ def initialize_texteditor():
                 textarea.insert(END, file_text)
                 window.title(f"{file_name} - Text Editor")
 
-    def save_file():
+    def save_file(*args):
         '''Save file with current name'''
         # If pressed yes
         def process_command():
@@ -73,7 +73,7 @@ def initialize_texteditor():
                        command=ask_window.destroy).pack()
         # Creation of another window for confirmation
         ask_window = Tk()
-        ask_window.title("Confirm")
+        ask_window.title("Save File")
         ask_window.geometry("500x100")
         vertical_frame = Frame(ask_window)
         vertical_frame.pack()
@@ -86,26 +86,47 @@ def initialize_texteditor():
         Button(horizontal_frame, name="choose2", text="No",
                command=ask_window.destroy).pack(side=LEFT)
 
-    def saveas_file():
+    def saveas_file(*args):
         '''Save file with another name'''
+        global file_name
+        global curr_path
+        file_path = asksaveasfilename(confirmoverwrite=TRUE,
+                                      defaultextension=".txt",
+                                      filetypes=[("Text files","*.txt"),("All files","*.*")])
+        if file_path:
+            curr_path = Path(file_path).parent.resolve()
+            file_name = Path(file_path).stem
+            with open(str(curr_path)+"/"+file_name+".txt", 'w', encoding="utf8") as file:
+                text_content = textarea.get("1.0", "end-1c")
+                file.write(text_content)
+                confirmation_window = Tk()
+                confirmation_window.title("Confirm")
+                confirmation_window.geometry("500x100")
+                Label(confirmation_window,text=f"File Saved Correctly!\n{str(curr_path)+'/'+file_name}.txt").pack()
+                Button(confirmation_window, text="Ok!",
+                       command=confirmation_window.destroy).pack()
+                window.title(f"{file_name} - Text Editor")
 
-    def undo():
+    def undo(*args):
         '''Undo command for text editing'''
+        try:
+            textarea.clipboard_clear()
+            textarea.edit_undo()
+        except (TypeError,TclError) as e:
+            print(str(e))
 
-    def redo():
+
+    def redo(*args):
         '''Redo command for text editing'''
+        try:
+            textarea.clipboard_clear()
+            textarea.edit_redo()
+        except (TypeError,TclError) as e:
+            print(str(e))
 
-    def select_all():
+    def select_all(*args):
         '''Select all command for text editing'''
-
-    def cut():
-        '''Cut command for text editing'''
-
-    def copy():
-        '''Copy command for text editing'''
-
-    def paste():
-        '''Paste command for text editing'''
+        textarea.tag_add(SEL,"0.0",END)
 
     def helpme():
         '''Shows every command in a new window'''
@@ -119,23 +140,23 @@ def initialize_texteditor():
     menubar = Menu(window)
     # Creation of file functions
     filemenu = Menu(menubar, tearoff=0)
-    filemenu.add_command(label="New", command=new_file)
+    filemenu.add_command(label="New", underline=0, accelerator="Ctrl+N", command=new_file)
     filemenu.add_separator()
-    filemenu.add_command(label="Open", command=open_file)
-    filemenu.add_command(label="Save", command=save_file)
+    filemenu.add_command(label="Open", underline=0, accelerator="Ctrl+O", command=open_file)
+    filemenu.add_command(label="Save", underline=0, accelerator="Ctrl+S", command=save_file)
     filemenu.add_command(label="Save As...", command=saveas_file)
     filemenu.add_separator()
     filemenu.add_command(label="Quit", command=window.quit)
     # Creation of edit functions
     editmenu = Menu(menubar, tearoff=0)
-    editmenu.add_command(label="Undo", command=undo)
-    editmenu.add_command(label="Redo", command=redo)
+    editmenu.add_command(label="Undo", accelerator="Ctrl+Z", command=undo)
+    editmenu.add_command(label="Redo", accelerator="Ctrl+Y", command=redo)
     editmenu.add_separator()
-    editmenu.add_command(label="Select All", command=select_all)
+    editmenu.add_command(label="Select All", underline=7, accelerator="Ctrl+Shift+A", command=select_all)
     editmenu.add_separator()
-    editmenu.add_command(label="Cut", command=cut)
-    editmenu.add_command(label="Copy", command=copy)
-    editmenu.add_command(label="Paste", command=paste)
+    editmenu.add_command(label="Cut", accelerator="Ctrl+X", command=lambda: Widget.event_generate("<<Cut>>"))
+    editmenu.add_command(label="Copy", underline=0, accelerator="Ctrl+C", command=lambda: Widget.event_generate("<<Copy>>"))
+    editmenu.add_command(label="Paste", accelerator="Ctrl+V", command=lambda: Widget.event_generate("<<Paste>>"))
     # Creation of help functions
     helpmenu = Menu(menubar, tearoff=0)
     helpmenu.add_command(label="Help Index", command=helpme)
@@ -146,9 +167,23 @@ def initialize_texteditor():
     menubar.add_cascade(label="Help", menu=helpmenu)
 
     # Creation of text space
-    textarea = Text(window, wrap='word')
+    textarea = Text(window, wrap='word', undo=TRUE)
     textarea.pack(expand=1, fill="both")
-
+    # Keyboard shortcuts (in case of CaseLock active)
+    textarea.bind("<Control-o>",open_file)
+    textarea.bind("<Control-O>",open_file)
+    textarea.bind("<Control-n>",new_file)
+    textarea.bind("<Control-N>",new_file)
+    textarea.bind("<Control-s>",save_file)
+    textarea.bind("<Control-S>",save_file)
+    textarea.bind("<Control-z>",undo)
+    textarea.bind("<Control-Z>",undo)
+    textarea.bind("<Control-y>",redo)
+    textarea.bind("<Control-Y>",redo)
+    textarea.bind("<Control-Shift-z>",redo)
+    textarea.bind("<Control-Shift-Z>",redo)
+    textarea.bind("<Control-Shift-a>",select_all)
+    textarea.bind("<Control-Shift-A>",select_all)
     # Open window
     window.config(menu=menubar)
     window.geometry("1000x800")
