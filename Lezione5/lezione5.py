@@ -1,3 +1,6 @@
+# Gioele Amendola
+# 07/05/2024
+
 # 1. Create a Playlist:
 # Write a function called create_playlist() that accepts a playlist name
 # and a variable number of song titles.
@@ -14,7 +17,16 @@
 # Example:
 # add_like(dictionary, “Road Trip”, liked=True)
 
-pass
+def create_playlist(p_name: str, *s_name: str) -> dict:
+    songs: set = set(s_name)
+    playlist: dict = {p_name:songs}
+    return playlist
+
+def add_like(playlist: dict, p_name: str, liked: bool) -> dict:
+    playlist = {p_name:(playlist[p_name],liked)}
+    return playlist
+
+print(add_like(create_playlist("White Album","Jurassic Park","Cure","Balboa"),"White Album",True))
 
 # 2. Book Collection:
 # Write a function called add_book() that accepts 
@@ -33,7 +45,19 @@ pass
 # Example:
 # delete_book(dictionary, “Mark Twain”)
 
-pass
+def add_book(author: str, *b_titles: str) -> dict:
+    titles = list(b_titles)
+    books: dict = {author: titles}
+    return books
+
+def delete_book(books: dict, author: str) -> dict:
+    del books[author]
+    return
+
+test: dict = add_book("Mark Twain","The Adventures of Tom Sawyer","Life on the Mississippi")
+print(test)
+delete_book(test,"Mark Twain")
+print(test,end="\n\n")
 
 # 3. Personal Info:
 # Write a build_profile() function that accepts the name,
@@ -45,7 +69,25 @@ pass
 # Example:
 # build_profile("John", "Doe", occupation="Developer", location="USA", age=30)
 
-pass
+def build_profile(first_name: str, last_name: str, occupation: str = None, location: str = None, age: int = None):
+    print(f"{first_name+' '+last_name}",end="")
+    if age:
+        print(f", {age}")
+    else:
+        print()
+    if location:
+        print(f"{location}",end=" - " if occupation else "\n")
+    if occupation:
+        print(f"{occupation}")
+    print()
+    return
+
+build_profile("John","Doe",occupation="Developer",location="USA",age=30)
+build_profile("Mia","Dawson",age=25)
+build_profile("Larry","Mark",occupation="Janitor")
+build_profile("Patrick","Fentanyl",location="Italy")
+build_profile("Giorgio","Carro",location="Peru",age=28,occupation="Policeman")
+
 
 # 4. Event Organizer:
 # Write a function called plan_event() that accepts an event name,
@@ -63,7 +105,18 @@ pass
 # Example:
 # modify_event(dictionary, "Code Workshop", ["Alice", "Bob", "Charlie"], ”4pm”)
 
-pass
+def plan_event(name: str, people: list, hour: str) -> dict:
+    event: dict = {name: people}
+    return event
+
+def modify_event(event: dict, name: str, people: list = None, hour: str = None) -> dict:
+    if people:
+        event = {name: people}
+    if hour:
+        event = {name: (event[name], hour)}
+    return event
+
+print(modify_event(plan_event("cooking",["Mary","Leonidas","Mark"],"4pm"),"cooking",["Perry","Marty","Leonidas"],"4pm"))
 
 # 5. Shopping List:
 # Write a function called create_shopping_list() that accepts
@@ -81,4 +134,17 @@ pass
 # Example:
 # print_shopping_list(dictionary, "Grocery Store")
 
-pass
+def create_shopping_list(store_name: str, *items) -> dict:
+    item_set: set = set(items)
+    stores: dict = {store_name: item_set}
+    return stores
+
+def print_shopping_list(stores: dict, store_name: str):
+    print(f"{store_name}:")
+    for x in stores[store_name]:
+        print(f"{x}")
+    return
+
+test = create_shopping_list("Grocery Store", "Milk", "Eggs", "Bread")
+print(test)
+print_shopping_list(test, "Grocery Store")
