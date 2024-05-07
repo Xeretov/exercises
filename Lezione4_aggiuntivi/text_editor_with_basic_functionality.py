@@ -10,9 +10,10 @@ Module that provides a function that opens a text editor.
 # Save the edited text to a file when the user chooses to save.
 
 # Import tk module for graphic user interface (gui)
-from tkinter import *
-from tkinter.filedialog import *
-from tkinter.ttk import *
+from tkinter import (END, Tk, TOP, LEFT, TRUE, TclError, SEL,
+                     INSERT, EW, CENTER, BOTTOM, Menu, Widget, Text)
+from tkinter.filedialog import (askopenfilename, asksaveasfilename)
+from tkinter.ttk import (Frame, Label, Button, Separator)
 from pathlib import Path
 
 file_name: str = "Untitled"
@@ -76,13 +77,11 @@ def initialize_texteditor():
         '''Save file with current name'''
         # If pressed yes
         def process_command():
-            global file_name
-            global curr_path
-            global file_extension
             with open(str(curr_path)+"/"+file_name+file_extension, 'w', encoding="utf8") as file:
                 text_content = textarea.get("1.0", "end-1c")
                 file.write(text_content)
-                lbl["text"] = f"File Saved Correctly!\n{str(curr_path)+'/'+file_name+file_extension}"
+                ask_window.title("File Saved Correctly!")
+                lbl["text"] = f"{str(curr_path)+'/'+file_name+file_extension}"
                 horizontal_frame.destroy()
                 Button(vertical_frame, text="Ok!",
                        command=ask_window.destroy).pack()
