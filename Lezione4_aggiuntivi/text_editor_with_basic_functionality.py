@@ -33,7 +33,7 @@ def initialize_texteditor():
             global file_extension
             global curr_path
             textarea.delete('1.0', END)
-            window.title(f"{file_name} - Text Editor")
+            window.title(f"{file_name}{file_extension} - Text Editor")
             file_name = "Untitled"
             file_extension = ".txt"
             curr_path = Path(__file__).parent.resolve()
@@ -71,7 +71,7 @@ def initialize_texteditor():
                 file_text = file.read()
                 textarea.delete('1.0', END)
                 textarea.insert(END, file_text)
-                window.title(f"{file_name} - Text Editor")
+                window.title(f"{file_name}{file_extension} - Text Editor")
 
     def save_file(*_):
         '''Save file with current name'''
@@ -81,7 +81,7 @@ def initialize_texteditor():
                 text_content = textarea.get("1.0", "end-1c")
                 file.write(text_content)
                 ask_window.title("File Saved Correctly!")
-                lbl["text"] = f"{str(curr_path)+'/'+file_name+file_extension}"
+                lbl["text"] = f"{file_name}{file_extension}"
                 horizontal_frame.destroy()
                 Button(vertical_frame, text="Ok!",
                        command=ask_window.destroy).pack()
@@ -117,14 +117,13 @@ def initialize_texteditor():
                 text_content = textarea.get("1.0", "end-1c")
                 file.write(text_content)
                 confirmation_window = Tk()
-                confirmation_window.title("Confirm")
+                confirmation_window.title("File Saved Correctly!")
                 confirmation_window.geometry("500x100")
                 Label(confirmation_window,
-                      text="File Saved Correctly!\n"+
-                      f"{str(curr_path)+'/'+file_name+file_extension}").pack()
+                      text=f"{file_name+file_extension}").pack()
                 Button(confirmation_window, text="Ok!",
                        command=confirmation_window.destroy).pack()
-                window.title(f"{file_name} - Text Editor")
+                window.title(f"{file_name}{file_extension} - Text Editor")
 
     def undo(*_):
         '''Undo command for text editing'''
@@ -271,7 +270,7 @@ def initialize_texteditor():
 
     # Creation of window
     window = Tk()
-    window.title(f"{file_name} - Text Editor")
+    window.title(f"{file_name}{file_extension} - Text Editor")
     # Creation of top menu bar
     menubar = Menu(window)
     # Creation of file functions
