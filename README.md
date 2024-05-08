@@ -5,13 +5,13 @@
 <details>
   <summary>Lezione 2</summary>
   
-> 2-3. Personal Message: Use a variable to represent a person’s name, and print a message to that person. Your message should be simple, such as, “Hello Eric, would you like to learn some Python today?”
+> 2-3. Personal Message: Use a variable to represent a person’s name, and print a message to that person. Your message should be simple, such as, "Hello Eric, would you like to learn some Python today?"
 >
 > --- 
 > 2-4. Name Cases: Use a variable to represent a person’s name, and then print that person’s name in lowercase, uppercase, and title case.
 > 
 > ---
-> 2-5. Famous Quote: Find a quote from a famous person you admire. Print the quote and the name of its author. Your output should look something like the following, including the quotation marks: Albert Einstein once said, “A person who never made a mistake never tried anything new.”
+> 2-5. Famous Quote: Find a quote from a famous person you admire. Print the quote and the name of its author. Your output should look something like the following, including the quotation marks: Albert Einstein once said, "A person who never made a mistake never tried anything new."
 >
 > ---
 > 2-6. Famous Quote 2: Repeat Exercise 2-5, but this time, represent the famous person’s name using a variable called famous_person. Then compose your message and represent it with a new variable called message. Print your message.
@@ -26,7 +26,7 @@
 > 3-2. Greetings: Start with the list you used in Exercise 3-1, but instead of just printing each person’s name, print a message to them. The text of each message should be the same, but each message should be personalized with the person’s name.
 >
 > ---
-> 3-3. Your Own List: Think of your favorite mode of transportation, such as a motorcycle or a car, and make a list that stores several examples. Use your list to print a series of statements about these items, such as “I would like to own a Honda motorcycle.”
+> 3-3. Your Own List: Think of your favorite mode of transportation, such as a motorcycle or a car, and make a list that stores several examples. Use your list to print a series of statements about these items, such as "I would like to own a Honda motorcycle."
 >
 > ---
 > 3-4. Guest List: If you could invite anyone, living or deceased, to dinner, who would you invite? Make a list that includes at least three people you’d like to invite to dinner. Then use your list to print a message to each person, inviting them to dinner.
@@ -472,7 +472,7 @@ describing each test and your prediction for the results of each test. Your code
 >
 > Example: 
 >```python
-> add_like(dictionary, “Road Trip”, liked=True)
+> add_like(dictionary, "Road Trip", liked=True)
 >```
 > ---
 > 2. Book Collection:
@@ -487,7 +487,7 @@ describing each test and your prediction for the results of each test. Your code
 >
 > Example: 
 >```python
-> delete_book(dictionary, “Mark Twain”)
+> delete_book(dictionary, "Mark Twain")
 >```
 > ---
 > 3. Personal Info:
@@ -505,13 +505,13 @@ describing each test and your prediction for the results of each test. Your code
 >
 > Example: 
 >```python
-> plan_event("Code Workshop", ["Alice", "Bob", "Charlie"],”4pm”)
+> plan_event("Code Workshop", ["Alice", "Bob", "Charlie"],"4pm")
 >```
 > Write a function called modify_event() that accepts a dictionary, an event name, and new details to modify an already planned event.
 >
 > Example: 
 >```python
-> modify_event(dictionary, "Code Workshop", ["Alice", "Bob", "Charlie"], ”4pm”)
+> modify_event(dictionary, "Code Workshop", ["Alice", "Bob", "Charlie"], "4pm")
 >```
 > ---
 > 5. Shopping List:
