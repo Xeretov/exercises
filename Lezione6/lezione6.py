@@ -1,5 +1,5 @@
 '''
-Module used for studying the classes in python
+Module used for studying the classes in python.
 
 Returns:
     Person: Class describing a person
@@ -21,7 +21,7 @@ from typing import Literal
 class Person:
     '''
     A class offering a general description of a person and
-    a method to generate theirs social security number
+    a method to generate theirs social security number.
     '''
 
     def __init__(self, first_name: str, last_name: str, **kwargs: str) -> None:
@@ -43,7 +43,7 @@ class Person:
 
     def get_first_name(self) -> str:
         '''
-        This function is used to get the variable first_name
+        This function is used to get the variable first_name.
 
         Returns:
             str: self.first_name
@@ -52,7 +52,7 @@ class Person:
 
     def get_last_name(self) -> str:
         '''
-        This function is used to get the variable last_name
+        This function is used to get the variable last_name.
 
         Returns:
             str: self.last_name
@@ -62,7 +62,7 @@ class Person:
     def get_birth_date(self) -> str:
         '''
         This function is used to get the variable birth_date.
-        If the variable is empty it returns None
+        If the variable is empty it returns None.
 
         Returns:
             str: self.birth_date
@@ -72,7 +72,7 @@ class Person:
     def get_birth_place(self) -> str:
         '''
         This function is used to get the variable birth_place.
-        If the variable is empty it returns None
+        If the variable is empty it returns None.
 
         Returns:
             str: self.birth_place
@@ -82,7 +82,7 @@ class Person:
     def get_gender(self) -> str:
         '''
         This function is used to get the variable gender.
-        If the variable is empty it returns None
+        If the variable is empty it returns None.
 
         Returns:
             str: self.gender
@@ -92,7 +92,7 @@ class Person:
     def get_ssn(self) -> str:
         '''
         This function is used to get the variable _ssn.
-        If the varial is empty it returns None
+        If the varial is empty it returns None.
 
         Returns:
             str: self._ssn
@@ -101,7 +101,7 @@ class Person:
 
     def set_first_name(self, first_name: str) -> None:
         '''
-        This function is used to change the variable first_name
+        This function is used to change the variable first_name.
 
         Args:
             first_name (str): will replace self.first_name
@@ -111,7 +111,7 @@ class Person:
 
     def set_last_name(self, last_name: str) -> None:
         '''
-        This function is used to change the variable last_name
+        This function is used to change the variable last_name.
 
         Args:
             last_name (str): will replace self.last_name
@@ -121,7 +121,7 @@ class Person:
 
     def set_birth_date(self, birth_date: str) -> None:
         '''
-        This function is used to change the variable birth_date
+        This function is used to change the variable birth_date.
 
         Args:
             birth_date (str): will replace self.birth_date
@@ -131,7 +131,7 @@ class Person:
 
     def set_birth_place(self, birth_place: str) -> None:
         '''
-        This function is used to change the variable birth_place
+        This function is used to change the variable birth_place.
 
         Args:
             birth_place (str): will replace self.birth_place
@@ -141,7 +141,7 @@ class Person:
 
     def set_gender(self, gender: str) -> None:
         '''
-        This function is used to change the variable gender
+        This function is used to change the variable gender.
 
         Args:
             gender (str): will replace self.gender
@@ -210,10 +210,10 @@ class Person:
 
     def __str__(self) -> str:
         '''
-        This function is used to return a full string with information about the object.
+        This function is used to return a full string with information about the Person.
 
         Returns:
-            str: Variable string with information stored in the object
+            str: Variable string with information stored in the Person.
         '''
         cmt: str = f"{self.first_name} {self.last_name}"
         if self.gender:
