@@ -12,14 +12,14 @@ Module providing a series of functions that work as a virtual shop.
 # print detailed information about each product and the total.
 
 
-def shopping_cart(products_dictionary: dict, taxes: int = None, discount: int = None):
+def shopping_cart(products_dictionary: dict, taxes: int = 0, discount: int = 0):
     '''
     Main function in which you have a menu to choose from that call other functions
 
     Args:
         products_dictionary (dict): products available in the virtual shop
-        taxes (int, optional): possible added taxes. Defaults to None.
-        discount (int, optional): possible added discount. Defaults to None.
+        taxes (int, optional): possible added taxes. Defaults to 0.
+        discount (int, optional): possible added discount. Defaults to 0.
     '''
 
     print("\nWelcome to the CYB3R.SH0P!\n")
@@ -70,7 +70,7 @@ def add_to_cart(products_dictionary: dict, cart_list: dict) -> dict:
         cart_list (dict): personal cart that store products and their amount.
 
     Returns:
-        dict: personal cart.
+        dict: updated cart_list and products_dictionary
     '''
     while True:
         print("***REMEMBER: Insert -1 to go back***")
@@ -121,7 +121,7 @@ def remove_from_cart(products_dictionary: dict, cart_list: dict) -> dict:
         cart_list (dict): personal cart with products and their amounts stored.
 
     Returns:
-        dict: personal cart.
+        dict: updated cart_list and products_dictionary
     '''
     while True:
         print("***REMEMBER: Insert -1 to go back***")
@@ -201,4 +201,4 @@ def check_out(products_dictionary: dict, cart_list: dict, tax: int = 0, discount
 # Example Test:
 products: dict[list[float]] = {"Pizza": [5.25, 10], "Pasta": [3.00, 25],
                                "Vegetable": [2.00, 7], "Sweet": [10.60, 3], "Wine": [25.99, 1]}
-shopping_cart(products, 10, 25)
+shopping_cart(products, 10)
