@@ -14,7 +14,7 @@ Returns:
 # birth_date, birth_place, gender
 
 # Define all getters and setters
-# Define a function that calculates ssn (and update for every possible change)
+# Define a method that calculates ssn (and update for every possible change)
 
 from typing import Literal
 
@@ -43,7 +43,7 @@ class Person:
 
     def get_first_name(self) -> str:
         '''
-        This function is used to get the variable first_name.
+        This method is used to get the variable first_name.
 
         Returns:
             str: self.first_name
@@ -52,7 +52,7 @@ class Person:
 
     def get_last_name(self) -> str:
         '''
-        This function is used to get the variable last_name.
+        This method is used to get the variable last_name.
 
         Returns:
             str: self.last_name
@@ -61,7 +61,7 @@ class Person:
 
     def get_birth_date(self) -> str:
         '''
-        This function is used to get the variable birth_date.
+        This method is used to get the variable birth_date.
         If the variable is empty it returns None.
 
         Returns:
@@ -71,7 +71,7 @@ class Person:
 
     def get_birth_place(self) -> str:
         '''
-        This function is used to get the variable birth_place.
+        This method is used to get the variable birth_place.
         If the variable is empty it returns None.
 
         Returns:
@@ -81,7 +81,7 @@ class Person:
 
     def get_gender(self) -> str:
         '''
-        This function is used to get the variable gender.
+        This method is used to get the variable gender.
         If the variable is empty it returns None.
 
         Returns:
@@ -91,7 +91,7 @@ class Person:
 
     def get_ssn(self) -> str:
         '''
-        This function is used to get the variable _ssn.
+        This method is used to get the variable _ssn.
         If the varial is empty it returns None.
 
         Returns:
@@ -101,7 +101,7 @@ class Person:
 
     def set_first_name(self, first_name: str) -> None:
         '''
-        This function is used to change the variable first_name.
+        This method is used to change the variable first_name.
 
         Args:
             first_name (str): will replace self.first_name
@@ -111,7 +111,7 @@ class Person:
 
     def set_last_name(self, last_name: str) -> None:
         '''
-        This function is used to change the variable last_name.
+        This method is used to change the variable last_name.
 
         Args:
             last_name (str): will replace self.last_name
@@ -121,7 +121,7 @@ class Person:
 
     def set_birth_date(self, birth_date: str) -> None:
         '''
-        This function is used to change the variable birth_date.
+        This method is used to change the variable birth_date.
 
         Args:
             birth_date (str): will replace self.birth_date
@@ -131,7 +131,7 @@ class Person:
 
     def set_birth_place(self, birth_place: str) -> None:
         '''
-        This function is used to change the variable birth_place.
+        This method is used to change the variable birth_place.
 
         Args:
             birth_place (str): will replace self.birth_place
@@ -141,7 +141,7 @@ class Person:
 
     def set_gender(self, gender: str) -> None:
         '''
-        This function is used to change the variable gender.
+        This method is used to change the variable gender.
 
         Args:
             gender (str): will replace self.gender
@@ -210,7 +210,7 @@ class Person:
 
     def __str__(self) -> str:
         '''
-        This function is used to return a full string with information about the Person.
+        This method is used to return a full string with information about the Person.
 
         Returns:
             str: Variable string with information stored in the Person.
