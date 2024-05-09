@@ -124,18 +124,7 @@ def word_search(grid: list[list[str]], words: list | set) -> dict:
             choose: str = input("Do you want to print the result? (Y/n) ")
             if choose in ['Y', 'n']:
                 if choose == 'Y':
-                    print("\n\\ y\nx",end=" ")
-                    for x in grid:
-                        print(*x,end="\n  ")
-                    keys: list = dictionary.keys()
-                    print(f"\n{'WORDS':^15}{'START':^10}{'END':^20}")
-                    for key in keys:
-                        j: int = 0
-                        for x in dictionary[key]['start']:
-                            for y in range(len(x)-1):
-                                print(f"{key:<15}{str(dictionary[key]['start'][j]):<10}",
-                                      f"{str(dictionary[key]['end'][j]):<20}")
-                                j += 1
+                    print_grid_result(grid, dictionary)
                 break
         except ValueError:
             continue
@@ -222,6 +211,26 @@ def check(grid: list[list[str]], words: dict, row: int, col: int) -> dict:
                     if not [x for x in (right, down, left, up) if x == '-inf']:
                         break
 
+def print_grid_result(grid: list[list[str]], dictionary: dict):
+    '''
+    This function prints the result of the word search
+
+    Args:
+        grid (list[list[str]]): characters grid
+        dictionary (dict): dictionary of words found in the grid and their coordinates
+    '''
+    print("\n\\ y\nx",end=" ")
+    for x in grid:
+        print(*x,end="\n  ")
+    keys: list = dictionary.keys()
+    print(f"\n{'WORDS':^15}{'START':^10}{'END':^20}")
+    for key in keys:
+        j: int = 0
+        for x in dictionary[key]['start']:
+            for y in range(len(x)-1):
+                print(f"{key:<15}{str(dictionary[key]['start'][j]):<10}",
+                        f"{str(dictionary[key]['end'][j]):<20}")
+                j += 1
 
 # Example test:
 word_grid: list = [
