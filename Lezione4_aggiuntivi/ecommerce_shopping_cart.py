@@ -184,7 +184,7 @@ def check_out(products_dictionary: dict, cart_list: dict, tax: int = 0, discount
     # Calculation of discount and taxes
     print(f"With {tax}% Taxes:\t\t {(product_sum+((product_sum*tax)/100)):.2f}€")
     print(f"With {discount}% Discount:\t",
-          f"{((product_sum+((product_sum*tax)/100))-((product_sum*discount)/100)):.2f}€",
+          f" {((product_sum+((product_sum*tax)/100))-((product_sum*discount)/100)):.2f}€",
           sep="")
 
     # Control for checkout
