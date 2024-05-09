@@ -16,6 +16,8 @@ Returns:
 # Define all getters and setters
 # Define a function that calculates ssn (and update for every possible change)
 
+from typing import Literal
+
 class Person:
     '''
     A class offering a general description of a person and
@@ -34,7 +36,7 @@ class Person:
             self.birth_place: str = kwargs["birth_place"]
         self.gender: str = ""
         if kwargs.get('gender'):
-            self.gender: str = kwargs["gender"]
+            self.gender: Literal["Maschio","Femmina","M","F"] = kwargs["gender"]
         self._ssn: str = ""
         if kwargs.get('birth_date') and kwargs.get('birth_place') and kwargs.get('gender'):
             self._ssn: str = self.update_ssn()
@@ -95,6 +97,7 @@ class Person:
         Returns:
             str: self._ssn
         '''
+        return self._ssn
 
     def set_first_name(self, first_name: str) -> None:
         '''
@@ -177,17 +180,17 @@ class Person:
             # Creation of list based on last_name with consonant first
             last_name: list = list(x.upper() for x in self.last_name)
             for x,_ in enumerate(last_name):
-                __ = last_name.append(last_name.pop(x)) if _ in ['A','E','I','O','U'] else None
+                last_name.append(last_name.pop(x)) if _ in ['A','E','I','O','U'] else None
             # Creation of list based on first_name with consonant first
             first_name: list = list(x.upper() for x in self.first_name)
             for x,_ in enumerate(first_name):
-                __ = first_name.append(first_name.pop(x)) if _ in ['A','E','I','O','U'] else None
+                first_name.append(first_name.pop(x)) if _ in ['A','E','I','O','U'] else None
             # Variables that have year, month and day of birth_date
             year: str = self.birth_date[-4:]
             month: int = int(self.birth_date[3:5])
             day: int = int(self.birth_date[:2])
             # If 'Femmina' add 40 to the day
-            if self.gender == "Femmina":
+            if self.gender[:1] == "F":
                 day += 40
             # Find cadastral code from birth_place
             place: str = self.birth_place
@@ -226,10 +229,13 @@ class Person:
 
 
 person1: Person = Person("Luca", "Committeri",
-                         birth_date= "21/04/2000", birth_place= "Roma", gender= "Maschio")
-print(str(person1))
+                         birth_date= "21/04/2000", birth_place= "Roma", gender= "M")
 person2: Person = Person("Marco", "Ciccia")
-print(str(person2))
 person3: Person = Person("Giacomo", "Palermitano",
-                         birth_place= "Venezia")
+                         birth_place= "Venezia") 
+person4: Person = Person("Maria","Granula",
+                         birth_date="09/07/1969", birth_place= "Palermo", gender= "F")
+print(str(person1))
+print(str(person2))
 print(str(person3))
+print(str(person4))
