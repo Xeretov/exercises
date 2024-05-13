@@ -98,7 +98,7 @@ def word_break(string: str):
     substrings: list = [words[word] for word in words if string.find(words[word]) != -1]
     print(substrings)
 
-# word_break("payroll") Expected Output ['pay','roll']
+# word_break("payroll") Expected Output: ['pay','roll']
 
 # 5. Longest Palindrome Subsequence:
 # A palindrome is a word, phrase, or sequence that reads
@@ -186,7 +186,7 @@ def second_largest(ele_list: list):
             second = count
     return ele_list[frequence.index(second)]
 
-# print(second_largest([2,2,2,2,2,2,23,3,3,3,1,51,5,1,51,51,5,1,5,3,3,3,3,3,3]))
+# print(second_largest([2,2,2,2,2,2,23,3,3,3,1,51,5,1,51,51,5,1,5,3,3,3,3,3,3])) Expected Output: 2
 
 # 10. Find the Intersection of Two Sorted Arrays:
 # Implement a function to find the elements that are present in both of the two sorted lists.
