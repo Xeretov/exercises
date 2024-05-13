@@ -1,6 +1,6 @@
 '''
 Module providing a backtracking function that can solve a sudoku grid
-'''
+
 # Gioele Amendola
 # 06/05/2024
 
@@ -9,7 +9,7 @@ Module providing a backtracking function that can solve a sudoku grid
 # Implement a backtracking algorithm to check for valid placements in empty cells,
 # ensuring no row, column, or 3x3 subgrid contains duplicates.
 # is_safe the puzzle by filling in the remaining empty cells with valid numbers.
-
+'''
 # Size of grid
 M: int = 9
 

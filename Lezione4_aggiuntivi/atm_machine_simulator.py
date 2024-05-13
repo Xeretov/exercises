@@ -1,7 +1,7 @@
 '''
 Module providing a series of functions used
 to emulate an atm machine
-'''
+
 # Gioele Amendola
 # 29/04/2024
 
@@ -10,7 +10,7 @@ to emulate an atm machine
 # Allow the user to perform transactions such as deposit, withdraw, and check balance.
 # Validate transactions against the account balance and available funds.
 # Provide appropriate feedback to the user for each transaction.
-
+'''
 # This is only for example purposes
 import random
 

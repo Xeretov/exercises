@@ -1,6 +1,6 @@
 '''
-    Module provides a function that generates a random password
-'''
+Module provides a function that generates a random password
+
 # Gioele Amendola
 # 29/04/2024
 
@@ -9,7 +9,7 @@
 # (lowercase letters, uppercase letters, numbers, symbols).
 # Allow the user to specify the password length and desired character types.
 # Generate and return a random password that meets the user's criteria.
-
+'''
 # Import of modules
 import random
 import string

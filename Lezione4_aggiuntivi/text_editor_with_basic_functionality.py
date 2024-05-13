@@ -1,6 +1,6 @@
 '''
 Module that provides a function that opens a text editor.
-'''
+
 # Gioele Amendola
 # 05/05/2024
 
@@ -8,7 +8,7 @@ Module that provides a function that opens a text editor.
 # Implement basic functionality such as inserting, deleting, and copying text.
 # Provide undo/redo functionality to allow users to reverse actions.
 # Save the edited text to a file when the user chooses to save.
-
+'''
 # Import tk module for graphic user interface (gui)
 from tkinter import (END, Tk, TOP, LEFT, TRUE, TclError, SEL,
                      INSERT, EW, CENTER, BOTTOM, Menu, Widget, Text)

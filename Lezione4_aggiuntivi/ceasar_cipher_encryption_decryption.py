@@ -1,7 +1,7 @@
 '''
 Module providing a function that encodes or decodes a
 message provided with the ceasar cipher method.
-'''
+
 # Gioele Amendola
 # 29/04/2024
 
@@ -9,7 +9,7 @@ message provided with the ceasar cipher method.
 # Allow the user to specify the shift value (number of positions to shift each letter).
 # Handle both encryption and decryption using the same function with appropriate adjustments.
 # Encrypt and decrypt the given message using the specified shift value.
-
+'''
 import string
 
 

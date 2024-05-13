@@ -1,7 +1,7 @@
 '''Module providing a function printing
 the occurances of every word given
 a text file.
-'''
+
 # Gioele Amendola
 # 27/04/2024
 
@@ -11,7 +11,7 @@ a text file.
 # You can use a for loop to iterate over the words in the text and
 # a dictionary to store the occurrences.
 # Implement error handling to handle missing files or other input issues.
-
+'''
 # Import string for exclude variable (special characters)
 import string
 # Import Path to open file in same directory

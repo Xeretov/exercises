@@ -2,7 +2,7 @@
 Module providing a function that calculates a list of
 prime numbers following the sieve of erastosthenes algorithm.
     
-'''
+
 # Gioele Amendola
 # 01/05/2024
 
@@ -13,7 +13,7 @@ prime numbers following the sieve of erastosthenes algorithm.
 # and mark every multiple of the current number as non-prime.
 # The remaining unmarked numbers are the prime numbers within the limit.
 # Return the list of prime numbers.
-
+'''
 def prime_list(limit: int = None) -> list:
     '''
     It calculates a list of prime numbers and returns it.

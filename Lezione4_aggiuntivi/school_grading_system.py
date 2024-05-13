@@ -1,8 +1,8 @@
 '''
-    Module provides a function that checks
-    if a given student and its votes has
-    an average of more than 60.
-'''
+Module provides a function that checks
+if a given student and its votes has
+an average of more than 60.
+
 # Gioele Amendola
 # 23/04/2024
 
@@ -12,7 +12,7 @@
 # passed the exam (average >= 60) or failed.
 # Create a for loop to iterate over a list of students and scores,
 # calling the function for each student.
-
+'''
 
 def average_score(scores: list) -> float:
     '''

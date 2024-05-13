@@ -3,7 +3,7 @@ Module provides a function that lets you play guess the random number
 
     Modifiable:
         max_attempts (int): for more or less attempts in the game
-'''
+
 # Gioele Amendola
 # 23/04/2024
 
@@ -13,7 +13,7 @@ Module provides a function that lets you play guess the random number
 # indicating whether their guess is too high, too low, or correct.
 # Terminate the loop when the user guesses the number correctly
 # or reaches the maximum number of attempts.
-
+'''
 # Import of random module
 import random
 

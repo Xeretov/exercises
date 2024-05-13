@@ -1,19 +1,20 @@
 '''
-    Module provides
+Module provides a function that converts
+an integer to its numeral counterpart
 
     Raises:
         ValueError: _description_
 
     Returns:
         _type_: _description_
-'''
+
 # Gioele Amendola
 # 29/04/2024
 
 # Create a function that converts a given integer to its Roman numeral representation.
 # Handle numbers from 1 to 3999.
 # Use a combination of string manipulation and conditional statements to build the Roman numeral.
-
+'''
 def roman_conversion(number: int) -> str:
     '''
     Convert a given number to its roman equivalent.

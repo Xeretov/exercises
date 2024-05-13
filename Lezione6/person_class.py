@@ -3,7 +3,7 @@ Module used for studying the classes in python.
 
 Returns:
     Person: Class describing a person
-'''
+
 # Gioele Amendola
 # 08/05/2024
 
@@ -15,7 +15,7 @@ Returns:
 
 # Define all getters and setters
 # Define a method that calculates ssn (and update for every possible change)
-
+'''
 from typing import Literal
 
 class Person:
@@ -63,7 +63,7 @@ class Person:
         '''
         This method is used to get the variable birth_date.
         If the variable is empty it returns None.
-
+google.com
         Returns:
             str: self.birth_date
         '''

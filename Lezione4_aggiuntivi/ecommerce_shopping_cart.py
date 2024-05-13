@@ -1,6 +1,6 @@
 '''
 Module providing a series of functions that work as a virtual shop.
-'''
+
 # Gioele Amendola
 # 23/04/2024
 
@@ -10,7 +10,7 @@ Module providing a series of functions that work as a virtual shop.
 # The function should calculate the cart total and apply any discounts or taxes.
 # Implement a for loop to iterate over the items in the cart and
 # print detailed information about each product and the total.
-
+'''
 
 def shopping_cart(products_dictionary: dict, taxes: int = 0, discount: int = 0):
     '''

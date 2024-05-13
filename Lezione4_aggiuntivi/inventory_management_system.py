@@ -1,7 +1,7 @@
 '''
 Module providing a series of functions that work
 as an inventory managment system
-'''
+
 # Gioele Amendola
 # 27/04/2024
 
@@ -9,7 +9,7 @@ as an inventory managment system
 # Create a database or dictionary to store the items in inventory.
 # Implement functions to add, remove, search, and update items in the inventory.
 # Use for loops and conditional statements to manage the various inventory operations.
-
+'''
 
 def inventory(inventory_database: dict = None):
     '''

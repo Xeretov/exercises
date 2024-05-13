@@ -2,7 +2,7 @@
 Module providing a function returning
 a boolean when the istances of two strings
 is the same
-'''
+
 # Gioele Amendola
 # 29/04/2024
 
@@ -10,7 +10,7 @@ is the same
 # Convert both strings to lowercase and remove any non-alphabetic characters.
 # Sort the characters of each string and compare the sorted strings for equality.
 # Indicate whether the strings are anagrams or not.
-
+'''
 
 def isanagram(string1: str, string2: str) -> bool:
     '''

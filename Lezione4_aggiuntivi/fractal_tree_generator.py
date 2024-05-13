@@ -1,7 +1,7 @@
 '''
 Module providing a recursive function that draws a 
 tree based on length of branch, its angle and the limit of the tree.
-'''
+
 # Gioele Amendola
 # 01/05/2024
 
@@ -10,7 +10,7 @@ tree based on length of branch, its angle and the limit of the tree.
 # Draw the trunk and then recursively call the function
 # to draw two branches at the specified angle, each with a shorter length.
 # Repeat the branching process until a desired level of detail is reached.
-
+'''
 # Import of turtle module. For graphic represantation
 try:
     import turtle

@@ -1,7 +1,7 @@
 '''
 Module provides a function that searches for words in a grid
 and returns its starting and ending points.
-'''
+
 # Gioele Amendola
 # 01/05/2024
 
@@ -20,7 +20,7 @@ and returns its starting and ending points.
 # example:  word_index['piccolo']['start'][0] is a tuple of the starting points
 #           word_index['piccolo']['end'][0] is a list of tuples of the ending points
 # The ending points will always be added in order (right,down,left,up)
-
+'''
 
 def word_search(grid: list[list[str]], words: list | set) -> dict:
     '''
