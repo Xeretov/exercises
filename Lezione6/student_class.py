@@ -2,7 +2,7 @@
 This module contains the student class
 
 Returns:
-    Snimal: Class describing a student
+    Student: Class describing a student
 
 # Gioele Amendola
 # 13/05/2024
