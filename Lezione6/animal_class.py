@@ -1,6 +1,9 @@
 '''
 This module contains the animal class
 
+Returns:
+    Animal: Class describing an animal
+
 # Gioele Amendola
 # 09/05/2024
 
