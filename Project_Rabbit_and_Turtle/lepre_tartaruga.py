@@ -47,16 +47,28 @@ def start_simulation() -> None:
     h_token: int = 0
     print("\nBANG !!!!! AND THEY'RE OFF !!!!!\n")
     while racing:
-        copy_route: list = route[:]
+        route[t_token] = "-"
+        route[h_token] = "-"
         t_token += turtle_walk_speed()
         h_token += hare_walk_speed()
         if t_token >= 70 and h_token >= 70:
+            route[69] = "X"
+            print("Last Lap:")
+            show_route(route)
             print("\nIT'S A TIE.")
             break
         elif t_token >= 70:
+            route[h_token] = "H"
+            route[69] = "T"
+            print("Last Lap:")
+            show_route(route)
             print("\nTORTOISE WINS! || VAY!!!")
             break
         elif h_token >= 70:
+            route[t_token] = "T"
+            route[69] = "H"
+            print("Last Lap:")
+            show_route(route)
             print("\nHARE WINS || YUCH!!!")
             break
         if t_token < 0:
@@ -64,12 +76,12 @@ def start_simulation() -> None:
         if h_token < 0:
             h_token = 0
         if t_token == h_token:
-            copy_route[t_token] = 'X'
+            route[t_token] = 'X'
         else:
-            copy_route[t_token] = 'T'
-            copy_route[h_token] = 'H'
+            route[t_token] = 'T'
+            route[h_token] = 'H'
         print(f"Round: {i}")
         i += 1
-        show_route(copy_route)
+        show_route(route)
 
 start_simulation()
