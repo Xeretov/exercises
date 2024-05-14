@@ -78,7 +78,7 @@ def start_simulation() -> None:
     This function starts the simulation
     '''
     route: list[str] = ["_"]*randint(25,100)
-    max_len: int = len(route)
+    max_len: int = len(route) -1
     i: int = 1
     weather: bool = False
     t_token: int = 0
