@@ -140,10 +140,9 @@ class ZooKeeper:
             fence(Fence): fence to clean.
         '''
         animals: list = fence.animals
-        occupied: int = sum(animal.width*animal.height for animal in animals)
-        available: int = round(fence.area - occupied)
-        print(available)
-        time: float = occupied if available == 0 else occupied/available
+        occupied: float = sum(animal.width*animal.height for animal in animals)
+        available: float = fence.area - occupied
+        time: float = occupied if available == 0 else available/occupied
         return time
 
 class Zoo:
@@ -171,16 +170,16 @@ class Zoo:
         print(end="\n\n")
 
 # Example Test:
-# animal1: Animal = Animal("Harambe", "Western Gorilla", 17, 210.64, 50.24, "Tropical")
-# animal2: Animal = Animal("Fiona", "Common Hippopotamus", 20, 160.25, 120.89, "Savannah")
-# animal3: Animal = Animal("Diego", "Aldabra giant tortoise", 90, 80.3, 128.22, "Tropical")
-# animal4: Animal = Animal("Winter", "Hourglass Dolphin", 28, 20, 190.2, "Antarctic")
-# animal5: Animal = Animal("Pingu", "Emperor penguin", 8, 50.24, 18.33, "Antarctic")
+# animal1: Animal = Animal("Harambe", "Western Gorilla", 17, 2.1, 0.5, "Tropical")
+# animal2: Animal = Animal("Fiona", "Common Hippopotamus", 20, 1.6, 1.2, "Savannah")
+# animal3: Animal = Animal("Diego", "Aldabra giant tortoise", 90, 0.8, 1.2, "Tropical")
+# animal4: Animal = Animal("Winter", "Hourglass Dolphin", 28, 0.2, 1.9, "Antarctic")
+# animal5: Animal = Animal("Pingu", "Emperor penguin", 8, 0.5, 0.18, "Antarctic")
 
 # animal_list = [animal1, animal2, animal3]
 
-# fence1: Fence = Fence(10000000, 24, "Tropical", animal_list)
-# fence2: Fence = Fence(50000000, -10, "Antarctic")
+# fence1: Fence = Fence(10000, 24, "Tropical", animal_list)
+# fence2: Fence = Fence(50000, -10, "Antarctic")
 
 # fence_list = [fence1,fence2]
 
