@@ -8,7 +8,8 @@ This module provides several functions to simulate a race between the turtle and
 from random import choices
 from random import randint
 
-def turtle_walk_speed(weather: bool = False) -> int:
+
+def turtle_walk_speed(t_token, t_energy, weather: bool = False) -> int:
     '''
     This function returns the walking speed of the turtle based on probability.
 
@@ -17,9 +18,23 @@ def turtle_walk_speed(weather: bool = False) -> int:
     '''
     walking_speed: list[int] = [3, 1, -6]
     weight: list[float] = [0.5, 0.3, 0.2]
-    return choices(walking_speed, weight)[0] - 1 if weather else choices(walking_speed, weight)[0] 
+    chosen: int = choices(walking_speed, weight)[0]
+    index: int = walking_speed.index(chosen)
 
-def hare_walk_speed(weather: bool = False) -> int:
+    if index == 0:
+        t_energy -= 5
+    elif index == 1:
+        t_energy -= 3
+    else:
+        t_energy -= 10
+    if t_energy < 0:
+        t_energy = 10
+    else:
+        t_token += chosen - 1 if weather else chosen
+
+    return t_token, t_energy
+
+def hare_walk_speed(h_token, h_energy, weather: bool = False) -> int:
     '''
     This function returns the walking speed of the hare based on probability
 
@@ -28,7 +43,27 @@ def hare_walk_speed(weather: bool = False) -> int:
     '''
     walking_speed: list[int] = [0, 9, -12, 1, -2]
     weight: float = [0.2, 0.2, 0.1, 0.3, 0.2]
-    return choices(walking_speed, weight)[0] -2 if weather else choices(walking_speed, weight)[0] 
+    chosen: int = choices(walking_speed, weight)[0]
+    index: int = walking_speed.index(chosen)
+
+    if index == 0:
+        h_energy += 10
+        if h_energy > 100:
+            h_energy = 100
+    elif index == 1:
+        h_energy -= 15
+    elif index == 2:
+        h_energy -= 20
+    elif index == 3:
+        h_energy -= 5
+    elif index == 4:
+        h_energy -=8
+    if h_energy >= 0:
+        h_token += chosen -2 if weather else chosen
+    else:
+        h_energy = 0
+
+    return h_token, h_energy
 
 def show_route(route: list[str]) -> None:
     '''
@@ -47,15 +82,17 @@ def start_simulation() -> None:
     i: int = 1
     weather: bool = False
     t_token: int = 0
+    t_energy: int = 100
     h_token: int = 0
+    h_energy: int = 100
     print("\nBANG !!!!! AND THEY'RE OFF !!!!!\n")
     while True:
         route[t_token], route[h_token] = "_", "_"
         if (i-1)% 10 == 0:
             weather = choices([True,False],[0.5,0.5])[0]
             print("It's raining ☂" if weather else "It's sunny ☀︎",end="\n\n")
-        t_token += turtle_walk_speed(weather)
-        h_token += hare_walk_speed(weather)
+        t_token, t_energy = turtle_walk_speed(t_token, t_energy, weather)
+        h_token, h_energy = hare_walk_speed(h_token, h_energy, weather)
         if t_token >= max_len and h_token >= max_len:
             route[-1] = "X"
             print("Last Lap:")
