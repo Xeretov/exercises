@@ -6,6 +6,7 @@ This module provides several functions to simulate a race between the turtle and
 # 14/05/2024
 
 from random import choices
+from random import randint
 
 def turtle_walk_speed(weather: bool = False) -> int:
     '''
@@ -34,44 +35,44 @@ def show_route(route: list[str]) -> None:
     This function shows the current progression of the turtle and the hare 
     '''
     for char in route:
-        print(f"{char:<1}",end="")
+        print(f"{char}",end="")
     print(end="\n\n")
 
 def start_simulation() -> None:
     '''
     This function starts the simulation
     '''
-    route: list[str] = ["-"]*70
+    route: list[str] = ["_"]*randint(25,100)
+    max_len: int = len(route)
     i: int = 1
-    weather: bool = choices([True,False],[0.5,0.5])[0]
+    weather: bool = False
     t_token: int = 0
     h_token: int = 0
-    print("\nIt's raining ☂" if weather else "\nIt's sunny ☀︎")
     print("\nBANG !!!!! AND THEY'RE OFF !!!!!\n")
     while True:
-        route[t_token] = "-"
-        route[h_token] = "-"
-        if i % 10 == 0:
+        route[t_token] = "_"
+        route[h_token] = "_"
+        if (i-1)% 10 == 0:
             weather = choices([True,False],[0.5,0.5])[0]
             print("It's raining ☂" if weather else "It's sunny ☀︎",end="\n\n")
         t_token += turtle_walk_speed(weather)
         h_token += hare_walk_speed(weather)
-        if t_token >= 70 and h_token >= 70:
-            route[69] = "X"
+        if t_token >= max_len and h_token >= max_len:
+            route[-1] = "X"
             print("Last Lap:")
             show_route(route)
             print("\nIT'S A TIE.")
             break
-        elif t_token >= 70:
-            route[h_token] = "H"
-            route[69] = "T"
+        elif t_token >= max_len:
+            route[h_token if h_token >= 0 else 0] = "H"
+            route[-1] = "T"
             print("Last Lap:")
             show_route(route)
             print("\nTORTOISE WINS! || VAY!!!")
             break
-        elif h_token >= 70:
-            route[t_token] = "T"
-            route[69] = "H"
+        elif h_token >= max_len:
+            route[t_token if t_token >= 0 else 0] = "T"
+            route[-1] = "H"
             print("Last Lap:")
             show_route(route)
             print("\nHARE WINS || YUCH!!!")
