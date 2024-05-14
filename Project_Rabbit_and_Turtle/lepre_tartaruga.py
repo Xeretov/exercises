@@ -50,8 +50,7 @@ def start_simulation() -> None:
     h_token: int = 0
     print("\nBANG !!!!! AND THEY'RE OFF !!!!!\n")
     while True:
-        route[t_token] = "_"
-        route[h_token] = "_"
+        route[t_token], route[h_token] = "_", "_"
         if (i-1)% 10 == 0:
             weather = choices([True,False],[0.5,0.5])[0]
             print("It's raining ☂" if weather else "It's sunny ☀︎",end="\n\n")
