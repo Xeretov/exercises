@@ -31,7 +31,7 @@ zookeeper1.add_animal(animal5, fence2)
 
 zoo1.describe_zoo()
 
-zookeeper2.feed(animal5, fence1)
+zookeeper2.feed(animal5)
 for _ in range(10):
     zookeeper2.feed(animal3)
 
