@@ -1,8 +1,8 @@
 '''
-This module provides some classes and functions that are needed to manage a virtual zoo
+This module provides some classes and functions that are needed to manage a virtual zoo.
 
 Classes:
-    Animal: represents an animal with a name, species, age, height, width, habitat and health
+    Animal: represents an animal with a name, species, age, height, width, habitat, health and the Fence they belong to.
     Fence: represents an enclosure with a list of Animal, area, temperature and habitat
     ZooKeeper: represents a zookeeper with a name, surname and an id
     Zoo: represents a zoo with a list of Fence and a list of ZooKeeper
@@ -82,7 +82,7 @@ class ZooKeeper:
             animal(Animal): the animal to add in the fence.
             fence(Fence): the fence that the animal needs to be added to.
         '''
-        if animal.name not in [animal.name for animal in fence.animals]:
+        if not animal.fence:
             if fence.habitat == animal.preferred_habitat:
                 if fence.is_available(animal):
                     fence.animals.append(animal)
@@ -92,7 +92,7 @@ class ZooKeeper:
             else:
                 raise Exception(f"The animal {animal.name}'s preferred habitat '{animal.preferred_habitat}' is not the same as the fence's '{fence.habitat}'.")
         else:
-            raise Exception(f"The animal {animal.name} is already inside the fence.")
+            raise Exception(f"The animal {animal.name} is already inside the fence {animal.fence.habitat}.")
 
     def remove_animal(self, remove_animal: Animal, fence: Fence) -> None:
         '''
