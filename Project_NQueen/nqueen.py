@@ -28,11 +28,12 @@ def print_nqueen(grid: list) -> None:
     Args:
         grids(list): a list containing all the possible solutions
     '''
+    print()
     for x in range(N):
         for y in range(N):
             print(f"{'#' if grid[x][y] == 0 else 'Q'}", end= " ")
         print()
-    print(end="\n\n")
+    print()
 
 def solve_nqueen(grid: list[list[int]], col: int) -> bool:
     '''
@@ -78,4 +79,4 @@ def is_safe(grid: list[list[int]], row: int, col: int) -> bool:
         return False
     return True
 
-nqueen()
+nqueen(4)
