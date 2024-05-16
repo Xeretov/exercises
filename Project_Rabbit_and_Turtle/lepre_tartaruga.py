@@ -45,23 +45,22 @@ def hare_walk_speed(h_token, h_energy, weather: bool = False) -> int:
     weight: float = [0.2, 0.2, 0.1, 0.3, 0.2]
     chosen: int = choices(walking_speed, weight)[0]
     index: int = walking_speed.index(chosen)
-
+    temp: int = h_energy
     if index == 0:
         h_energy += 10
         if h_energy > 100:
             h_energy = 100
     elif index == 1:
-        h_energy -= 15
+        temp -= 15
     elif index == 2:
-        h_energy -= 20
+        temp -= 20
     elif index == 3:
-        h_energy -= 5
+        temp -= 5
     elif index == 4:
-        h_energy -=8
-    if h_energy >= 0:
-        h_token += chosen -2 if weather else chosen
-    else:
-        h_energy = 0
+        temp -=8
+    if temp >= 0:
+        h_token += chosen -2 if weather and chosen != 0 else chosen
+        h_energy = temp
 
     return h_token, h_energy
 
@@ -85,31 +84,34 @@ def start_simulation() -> None:
     t_energy: int = 100
     h_token: int = 0
     h_energy: int = 100
+    prev_t: int = 0
+    prev_h: int = 0
     print("\nBANG !!!!! AND THEY'RE OFF !!!!!\n")
     while True:
         route[t_token], route[h_token] = "_", "_"
         if (i-1)% 10 == 0:
             weather = choices([True,False],[0.5,0.5])[0]
-            print("It's raining ☂" if weather else "It's sunny ☀︎",end="\n\n")
+        prev_t, prev_h = t_token, h_token
         t_token, t_energy = turtle_walk_speed(t_token, t_energy, weather)
         h_token, h_energy = hare_walk_speed(h_token, h_energy, weather)
         if t_token >= max_len and h_token >= max_len:
             route[-1] = "X"
-            print("Last Lap:")
+            print(f"Last Round: {i}")
+            print("It's raining ☂" if weather else "It's sunny ☀︎")
             show_route(route)
             print("\nIT'S A TIE.")
             break
         elif t_token >= max_len:
             route[h_token if h_token >= 0 else 0] = "H"
             route[-1] = "T"
-            print("Last Lap:")
+            print(f"Last Round: {i}")
             show_route(route)
             print("\nTORTOISE WINS! || VAY!!!")
             break
         elif h_token >= max_len:
             route[t_token if t_token >= 0 else 0] = "T"
             route[-1] = "H"
-            print("Last Lap:")
+            print(f"Last Round: {i}")
             show_route(route)
             print("\nHARE WINS || YUCH!!!")
             break
@@ -122,8 +124,15 @@ def start_simulation() -> None:
         else:
             route[t_token] = 'T'
             route[h_token] = 'H'
-        print(f"Round: {i}")
+        print(f"Round: {i}",end=" ")
+        if i%3 == 0:
+            print("- It's raining ☂" if weather else "- It's sunny ☀︎")
+        else:
+            print()
         i += 1
         show_route(route)
+        print(f"Tortoise moved: {t_token-prev_t}, Tortoise position: {t_token}, Tortoise energy: {t_energy}")
+        print(f"Hare moved: {h_token-prev_h}, Hare position: {h_token}, Hare energy: {h_energy}")
+        print("\n")
 
 start_simulation()
