@@ -11,29 +11,32 @@ def nqueen(queens: int = 4) -> None:
     Args:
         queens(int)(optional): queens needed to find. Defaults to 4.
     '''
-    global N
+    global N, START_ROW
     N = queens
-    grid: list[list[int]] = [[0]*N]
-    for _ in range(N-1):
-        grid.append([0]*N)
-    if solve_nqueen(grid, 0):
-        print_nqueen(grid)
-    else:
-        print("Solution not found")
+    START_ROW = 0
+    solutions: list = []
+    while START_ROW < N:
+        grid: list[list[int]] = [[0]*N]
+        for _ in range(N-1):
+            grid.append([0]*N)
+        if solve_nqueen(grid, 0):
+            solutions.append(grid)
+    print_nqueen(solutions)
     
-def print_nqueen(grid: list) -> None:
+def print_nqueen(solutions: list) -> None:
     '''
     This function prints the solutions found for the nqueen problem
 
     Args:
-        grids(list): a list containing all the possible solutions
+        solutions(list): a list containing all the possible solutions
     '''
     print()
-    for x in range(N):
-        for y in range(N):
-            print(f"{'#' if grid[x][y] == 0 else 'Q'}", end= " ")
+    for grid in solutions:
+        for x in range(N):
+            for y in range(N):
+                print(f"{'#' if grid[x][y] == 0 else 'Q'}", end= " ")
+            print()
         print()
-    print()
 
 def solve_nqueen(grid: list[list[int]], col: int) -> bool:
     '''
@@ -43,19 +46,33 @@ def solve_nqueen(grid: list[list[int]], col: int) -> bool:
         grid(list[list[int]]): the grid.
         col(int): the current column.
     '''
+    global START_ROW, N
     # Check if all queens are placed
     if col >= N:
         return True
-    # Place a Queen on every column
-    # Checks every row(i)
-    for i in range(N):
-        # Check if queen is safe to place
-        if is_safe(grid, i, col):
-            grid[i][col] = 1
-            # Goes to the next cell
-            if solve_nqueen(grid, col + 1):
-                return True
-            grid[i][col] = 0
+    # Check if first column
+    if col == 0:
+        for i in range(START_ROW, N):
+            if is_safe(grid, i, col):
+                grid[i][col] = 1
+                START_ROW = i+1
+                if solve_nqueen(grid, col + 1):
+                    return True
+                grid[i][col] = 0
+                START_ROW = 0
+    else:
+        # Place a Queen on every column
+        # Checks every row(i)
+        for i in range(N):
+             # Starts from the next possible solution
+            # Check if queen is safe to place
+            if is_safe(grid, i, col):
+                grid[i][col] = 1
+                # Goes to the next cell
+                if solve_nqueen(grid, col +1):
+                    return True
+                grid[i][col] = 0
+
     # Doesn't find a solution
     return False
     
@@ -79,4 +96,4 @@ def is_safe(grid: list[list[int]], row: int, col: int) -> bool:
         return False
     return True
 
-nqueen(4)
+nqueen(10)
