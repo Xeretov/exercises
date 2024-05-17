@@ -1,10 +1,12 @@
-# Esercizi
----
-###### 15/04/2024
-
+# Python Exercise
 <details>
-  <summary>Lezione 2</summary>
-  
+  <summary>exercises</summary>
+
+>###### 15/04/2024
+>
+><details>
+>  <summary>Lezione 2</summary>
+>  
 > 2-3. Personal Message: Use a variable to represent a person’s name, and print a message to that person. Your message should be simple, such as, "Hello Eric, would you like to learn some Python today?"
 >
 > --- 
@@ -125,13 +127,12 @@
 > 6-12. Extensions: We’re now working with examples that are complex enough that they can be extended in any number of ways. Use one of the example programs from this chapter, and extend it by adding new keys and values, changing the context of the program, or improving the formatting of the output.
 >
 > ---
-</details>
-
-###### 19/04/2024
-
-<details>
-  <summary>Lezione 3</summary>
-
+---
+>###### 19/04/2024
+>
+><details>
+>  <summary>Lezione 3</summary>
+>
 > 4-1. Pizzas: Think of at least three kinds of your favorite pizza. Store these pizza names in a list, and then use a for loop to print the name of each pizza.
 > 
 > • Modify your for loop to print a sentence using the name of the pizza, instead of printing just the name of the pizza. For each pizza, you should have one line of output containing a simple statement like I like pepperoni pizza.
@@ -306,13 +307,12 @@ describing each test and your prediction for the results of each test. Your code
 > • Use an if-elif-else chain inside the loop to print the proper ordinal ending for each number. Your output should read "1st 2nd 3rd 4th 5th 6th 7th 8th 9th", and each result should be on a separate line.
 >
 > ---
-</details>
-
-###### 22/04/2024
-
-<details>
-  <summary>Lezione 4</summary>
-
+---
+>###### 22/04/2024
+>
+><details>
+>  <summary>Lezione 4</summary>
+>
 > 8-1. Message: Write a function called display_message() that prints one sentence telling everyone what you are learning about in this chapter. Call the function, and make sure the message displays correctly.
 >
 > ---
@@ -371,13 +371,12 @@ describing each test and your prediction for the results of each test. Your code
 > 8-17. Styling Functions: Choose any three programs you wrote for this chapter, and make sure they follow the styling guidelines described in this section.
 >
 > ---
-</details>
-
-###### 23/04/2024
-
-<details>
-  <summary>Lezione 4 - aggiuntivi</summary>
-
+---
+>###### 23/04/2024
+>
+><details>
+>  <summary>Lezione 4 - aggiuntivi</summary>
+>
 > 1. School Grading System:
 >
 > Create a function that takes a student's name and their scores in different subjects as input. The function calculates the average score and prints the student's name, average, and a message indicating whether the student passed the exam (average >= 60) or failed.Create a for loop to iterate over a list of students and scores, calling the function for each student.
@@ -453,13 +452,12 @@ describing each test and your prediction for the results of each test. Your code
 > Create a simple text editor that allows the user to open, edit, and save text files. Implement basic functionality such as inserting, deleting, and copying text. Provide undo/redo functionality to allow users to reverse actions. Save the edited text to a file when the user chooses to save.
 >
 > ---
-</details>
-
-###### 07/05/2024
-
-<details>
-  <summary>Lezione 5</summary>
-
+---
+>###### 07/05/2024
+>
+><details>
+>  <summary>Lezione 5</summary>
+>
 > 1. Create a Playlist:
 >
 > Write a function called create_playlist() that accepts a playlist name and a variable number of song titles. The function should return a dictionary with the playlist name and a set of songs. Call the function with different numbers of songs to demonstrate flexibility.
@@ -529,13 +527,12 @@ describing each test and your prediction for the results of each test. Your code
 > print_shopping_list(dictionary, "Grocery Store")
 >```
 > ---
-</details>
-
-###### 07/05/2024
-
-<details>
-  <summary>Lezione 5 - aggiuntivi</summary>
-
+---
+>###### 07/05/2024
+>
+><details>
+>  <summary>Lezione 5 - aggiuntivi</summary>
+>
 > 1. Two Sum
 >
 > Given a list of integers and a target sum, find all unique pairs of integers within the list that sum up to the target.
@@ -586,4 +583,131 @@ describing each test and your prediction for the results of each test. Your code
 > Implement a function to find the elements that are present in both of the two sorted lists.
 >
 > ---
+---
+>###### 08/05/2024
+>
+><details>
+>  <summary>Lezione 6</summary>
+>
+> 1. Create student class
+> - Attributes: <br>
+>   name, study_program, age, gender
+> 
+> - Methods: <br>
+>   print_info that prints the attributes
+>
+> ---
+> 2. Create person class
+> - Attributes: <br>
+>   first_name, last_name, ssn,
+>   birth_date, birth_place, gender
+>
+> - Methods: <br>
+>   all getters and setters <br>
+>   calculate_ssn (and update for every possible change)
+>
+> ---
+> 3. Create animal class
+> - Attributes: <br>
+>   name, legs
+>
+> - Methods: <br>
+>   setLegs and getLegs. <br>
+>   print_info that prints all attributes of Animal
+>
+> ---
+> 4. Create food and menu classes
+> - Attributes: <br>
+>   food: name, price, description <br>
+>   menu: menu
+>
+> - Methods: <br>
+>   add_food and remove_food <br>
+>   print_prices and get_average_price
+>
+> ---
+---
+>###### 16/05/2024
+>
+><details>
+>  <summary>Lezione 7</summary>
+>
+>
+> 1. Write a function to find all numbers divisible by 7, not a multiple of 5, between 2000 and 3200 (both included). The numbers should be stored in a list and returned as output.
+>
+> ---
+> 2. Write a function to calculate the factorial of a number given as input. The number should be returned as output. <br>For example:
+> ```python
+> Input: 8
+> Output: 40320
+> ```
+> ---
+> 3. Use the function implemented in Exercise 2 to compute all factorial numbers of a list of numbers. The list is given as input to the function. All factorials should be returned as output. <br>For example:
+> ```python
+> Input: [2, 5, 8, 10]
+> Output: [2, 120, 40320, 3628800]
+> ```
+> ---
+> 4. Given an integer n as input, write a function to generate a dictionary that contains (i, i*i) as (key, value) pairs such that i is an integer between 1 and n (both included). The function should return the dictionary as output. <br>For example:
+>```python
+> Input: 8
+> Output: {1:1, 2:4, 3:9, 4:16, 5:25, 6:36, 7:49, 8:64}
+>```
+> ---
+> 5. Write a function that accepts a string with a comma-separated sequence of words as input and prints the words as a comma-separated sequence after sorting them alphabetically. <br>For example:
+>```python
+> Input: "without,hello,bag,world"
+> Output: "bag,hello,without,world"
+>```
+> ---
+> 6. Write a function that accepts a list of sentences (string) as input and returns each line as output after capitalising all sentence characters. <br>For example:
+>```python
+> Input: ["Practice", "makes", "perfect"]
+> Output: ["PRACTICE", "MAKES", "PERFECT"]
+>```
+> ---
+> 7. Write a function accepting an input string defined with whitespace-separated words and returning it after removing all duplicates and sorting each word alphanumerically. For example:
+>```python
+> Input: "hello world and practice makes perfect and hello world again"
+>
+> Output: "again and hello makes perfect practice world"
+>```
+> ---
+> 8. Write a function to check whether a string is a pangram or not. Pangrams are words or sentences containing every letter of the alphabet at least once.
+>```python
+> Input: "The quick brown fox jumps over the lazy dog"
+> Output: True
+>```
+> ---
+> 9. Write a function to check whether a number is "Perfect" or not. In number theory, a perfect number is a positive integer that is equal to the sum of its proper positive divisors, that is, the sum of its positive divisors excluding the number itself (also known as its aliquot sum). Equivalently, a perfect number is a number that is half the sum of all of its positive divisors (including itself). <br>For example:
+>```python
+> Input: 6
+> Output: True
+>```
+> ---
+> 10. Using the code implemented in Exercise 8, write a function that, given a number n as input, computes all "Perfect" numbers between 1 and n. <br>For example:
+>```python
+> Input: 500
+> Output: [6, 28, 496]
+>```
+> ---
+> 11. Write a function to sort the (name, age, height) input list of tuples by ascending order where name is string, age and height are numbers. The function should return a list of tuples of strings. The priority is that name > age > score. Namely, the sort criteria are: <br>
+>        Sort based on name;<br>
+>        Then, sort based on age;<br>
+>        Then, sort by score.
+>```python
+> Input: [('Tom',19,80), ('John',20,90), ('Jony',17,91), ('Jony',17,93), ('Json',21,85)]
+>
+> Output:  [('John', '20', '90'), ('Jony', '17', '91'), ('Jony', '17', '93'), ('Json', '21', '85'), ('Tom', '19', '80')]
+>```
+> ---     
 </details>
+
+<details>
+  <summary>projects</summary>
+
+> ###### 13/05/2024
+> <details>
+>   <summary>project zoo</summary>
+>
+>
