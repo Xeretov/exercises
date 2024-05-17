@@ -152,6 +152,6 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-# Personal directories
+# Personal directories and files
 todo/
 .vscode/
