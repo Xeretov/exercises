@@ -1,4 +1,4 @@
-from gestione_dello_zoo_park import *
+from zoo import *
 # Example Test:
 animal1: Animal = Animal("Harambe", "Western Gorilla", 17, 2.1, 0.5, "Tropical")
 animal2: Animal = Animal("Fiona", "Common Hippopotamus", 20, 1.6, 1.2, "Savannah")
