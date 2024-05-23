@@ -51,8 +51,12 @@ def prime_list(limit: int = None) -> list:
     # Find prime numbers with Eratosthenes algorithm
     for number in range(2,limit+1):
         if check_prime[number] is True and number != limit-1:
-            for index in range(number+1,limit+1):
-                check_prime[index] = not (index%number == 0 or check_prime[index] is False)
+            i: int = 2
+            while number*i <= limit:
+                check_prime[number*i] = False
+                i += 1
+        if not True in list(check_prime.values())[number:]:
+            break
 
     # Creation of a list with all the prime numbers found with the algorithm
     primes: list = [number for number in range(1,limit+1) if check_prime[number] is True]
