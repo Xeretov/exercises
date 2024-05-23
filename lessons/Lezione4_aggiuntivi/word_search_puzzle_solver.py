@@ -21,7 +21,7 @@ and returns its starting and ending points.
 #           word_index['piccolo']['end'][0] is a list of tuples of the ending points
 # The ending points will always be added in order (right,down,left,up)
 '''
-
+# NEEDS REDO
 def word_search(grid: list[list[str]], words: list | set) -> dict:
     '''
     Main function to call. It will iter inside the grid to find every possible
