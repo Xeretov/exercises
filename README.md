@@ -1,11 +1,12 @@
 # Python Exercise
+<br>
 <details>
   <summary>exercises</summary>
 
->###### 15/04/2024
+>###### 15/04/2024 - Tipi di dato, Operatori e Collection
 >
 ><details>
->  <summary>Lezione 2</summary>
+>  <summary>Lezione 2</summary><br>
 >  
 > 2-3. Personal Message: Use a variable to represent a person’s name, and print a message to that person. Your message should be simple, such as, "Hello Eric, would you like to learn some Python today?"
 >
@@ -128,10 +129,10 @@
 >
 > ---
 ---
->###### 19/04/2024
+>###### 19/04/2024 - Cicli e Condizionali
 >
 ><details>
->  <summary>Lezione 3</summary>
+>  <summary>Lezione 3</summary><br>
 >
 > 4-1. Pizzas: Think of at least three kinds of your favorite pizza. Store these pizza names in a list, and then use a for loop to print the name of each pizza.
 > 
@@ -308,10 +309,10 @@ describing each test and your prediction for the results of each test. Your code
 >
 > ---
 ---
->###### 22/04/2024
+>###### 22/04/2024 - Problem solving, Errori e Funzioni
 >
 ><details>
->  <summary>Lezione 4</summary>
+>  <summary>Lezione 4</summary><br>
 >
 > 8-1. Message: Write a function called display_message() that prints one sentence telling everyone what you are learning about in this chapter. Call the function, and make sure the message displays correctly.
 >
@@ -372,10 +373,10 @@ describing each test and your prediction for the results of each test. Your code
 >
 > ---
 ---
->###### 23/04/2024
+>###### 23/04/2024 - Problem solving, Errori e Funzioni
 >
 ><details>
->  <summary>Lezione 4 - aggiuntivi</summary>
+>  <summary>Lezione 4 - aggiuntivi</summary><br>
 >
 > 1. School Grading System:
 >
@@ -453,10 +454,10 @@ describing each test and your prediction for the results of each test. Your code
 >
 > ---
 ---
->###### 07/05/2024
+>###### 07/05/2024 - Ripasso Generale
 >
 ><details>
->  <summary>Lezione 5</summary>
+>  <summary>Lezione 5</summary><br>
 >
 > 1. Create a Playlist:
 >
@@ -528,10 +529,10 @@ describing each test and your prediction for the results of each test. Your code
 >```
 > ---
 ---
->###### 07/05/2024
+>###### 07/05/2024 - Ripasso Generale
 >
 ><details>
->  <summary>Lezione 5 - aggiuntivi</summary>
+>  <summary>Lezione 5 - aggiuntivi</summary><br>
 >
 > 1. Two Sum
 >
@@ -584,10 +585,10 @@ describing each test and your prediction for the results of each test. Your code
 >
 > ---
 ---
->###### 08/05/2024
+>###### 08/05/2024 - Classi
 >
 ><details>
->  <summary>Lezione 6</summary>
+>  <summary>Lezione 6</summary><br>
 >
 > 1. Create student class
 > - Attributes: <br>
@@ -627,10 +628,10 @@ describing each test and your prediction for the results of each test. Your code
 >
 > ---
 ---
->###### 16/05/2024
+>###### 16/05/2024 - Ripasso funzioni
 >
 ><details>
->  <summary>Lezione 7</summary>
+>  <summary>Lezione 7</summary><br>
 >
 >
 > 1. Write a function to find all numbers divisible by 7, not a multiple of 5, between 2000 and 3200 (both included). The numbers should be stored in a list and returned as output.
@@ -702,12 +703,136 @@ describing each test and your prediction for the results of each test. Your code
 >```
 > ---     
 </details>
-
+<br>
 <details>
   <summary>projects</summary>
 
-> ###### 13/05/2024
+> ###### 13/05/2024 - progetto zoo
 > <details>
->   <summary>project zoo</summary>
+>   <summary>project zoo</summary><br>
 >
+> Sistema di gestione dello zoo virtuale
 >
+> Classi:
+>
+> 1. Zoo: questa classe rappresenta uno zoo. Lo zoo ha dei recinti fences e dei guardiani dello zoo, zoo_keepers.
+>
+> 2. Animal: questa classe rappresenta un animale nello zoo. Ogni animale ha questi attributi: name, species, age, height, width, preferred_habitat, health che è uguale a round(100 * (1 / age), 3).
+>
+> 3. Fence: questa classe rappresenta un recinto dello zoo in cui sono tenuti gli animali. I recinti possono contenere uno o più animali. I recinti possono hanno gli attributi area, temperature e habitat.
+>
+> 4. ZooKeeper: questa classe rappresenta un guardiano dello zoo responsabile della gestione dello zoo. I guardiani dello zoo hanno un name, un surname, e un id. Essi possono nutrire gli animali, pulire i recinti e svolgere altri compiti nel nostro zoo virtuale.
+>
+> Funzionalità:
+>
+> 1. add_animal(animal: Animal, fence: Fence) (Aggiungi nuovo animale): consente al guardiano dello zoo di aggiungere un nuovo animale allo zoo. L'animale deve essere collocato in un recinto adeguato in base alle esigenze del suo habitat e se c'è ancora spazio nel recinto, ovvero se l'area del recinto è ancora sufficiente per ospitare questo animale.
+>
+> 2. remove_animal(animal: Animal, fence: Fence) (Rimuovi animale): consente al guardiano dello zoo di rimuovere un animale dallo zoo. L'animale deve essere allontanato dal suo recinto. Nota bene: L'area del recinto deve essere ripristinata dello spazio che l'animale rimosso occupava.
+>
+> 3. feed(animal: Animal) (Dai da mangiare agli animali): implementa un metodo che consenta al guardiano dello zoo di nutrire tutti gli animali dello zoo. Ogni volta che un animale viene nutrito, la sua salute incrementa di 1% rispetto alla sua salute corrente, ma le dimensioni dell'animale (height e width) vengono incrementate del 2%. Perciò, l'animale si può nutrire soltanto se il recinto ha ancora spazio a sufficienza per ospitare l'animale ingrandito dal cibo.
+>
+> 4. clean(fence: Fence) (Pulizia dei recinti): implementare un metodo che consenta al guardiano dello zoo di pulire tutti i recinti dello zoo. Questo metodo restituisce un valore di tipo float che indica il tempo che il guardiano impiega per pulire il recinto. Il tempo di pulizia è il rapporto dell'area occupata dagli animali diviso l'area residua del recinto. Se l'area residua è pari a 0, restituire l'area occupata.
+>
+> 5. describe_zoo() (Visualizza informazioni sullo zoo): visualizza informazioni su tutti i guardani dello zoo, sui recinti dello zoo che contengono animali. 
+>
+> E.s.: Se abbiamo un guardiano chiamato Lorenzo Maggi con matricola 1234, e un recinto Fence(area=100, temperature=25, habitat=Continentale) con due animali Animal(name=Scoiattolo, species=Blabla, age=25, ...), Animal(name=Lupo, species=Lupus, age=14,...) ci si aspetta di avere una rappresentazione testuale dello zoo come segue:
+>```
+> Guardians:
+>
+> ZooKeeper(name=Lorenzo, surname=Maggi, id=1234)
+>
+> Fences:
+>
+> Fence(area=100, temperature=25, habitat=Continent)
+>
+> with animals:
+>
+> Animal(name=Scoiattolo, species=Blabla, age=25)
+>
+> Animal(name=Lupo, species=Lupus, age=14)
+> #########################
+>```
+> Fra un recinto e l'altro mettete 30 volte il carattere #.
+> </details>
+---
+> ###### 14/05/2024 - progetto lepre e tartaruga
+> <details>
+>   <summary>project hare and turtle</summary><br>
+> In questo problema ricreerete la classica gara tra la tartaruga e la lepre. Userete la generazione di numeri casuali per sviluppare una simulazione di questo memorabile evento. I contendenti iniziano la gara dal quadrato \#1 di un percorso composto da 70 quadrati. Ogni quadrato rappresenta una posizione lungo il percorso della corsa. Il traguardo è al quadrato 70 e il contendente che raggiunge per primo o supera questa posizione vince la gara. Durante la corsa, i contendenti possono occasionalmente perdere terreno. C'è un orologio che conta i secondi. Ad ogni tick dell'orologio, il vostro programma deve aggiornare la posizione degli animali secondo le seguenti regole:
+>
+> - Tartaruga:
+>     - Passo veloce (50% di probabilità): avanza di 3 quadrati.
+>     - Scivolata (20% di probabilità): arretra di 6 quadrati. Non può andare sotto il quadrato 1.
+>     - Passo lento (30% di probabilità): avanza di 1 quadrato.
+>
+> - Lepre:
+>     - Riposo (20% di probabilità): non si muove.
+>     - Grande balzo (20% di probabilità): avanza di 9 quadrati.
+>     - Grande scivolata (10% di probabilità): arretra di 12 quadrati. Non può andare sotto il quadrato 1.
+>     -  Piccolo balzo (30% di probabilità): avanza di 1 quadrato.
+>     - Piccola scivolata (20% di probabilità): arretra di 2 quadrati. Non può andare sotto il quadrato 1.
+>
+> Il percorso è rappresentato attraverso l'uso di una lista. Usate delle variabili per tenere traccia delle posizioni degli animali (i numeri delle posizioni sono da 1 a 70). Fate partire ogni animale dalla posizione 1 (cioè ai "cancelli di partenza"). Se un animale scivola a sinistra prima del quadrato 1, riportatelo al quadrato 1.
+>
+> Realizzate le percentuali delle mosse nell'elenco precedente generando un intero a caso, i, nell'intervallo 1 ≤ i ≤ 10. Per la tartaruga eseguite un "passo veloce" quando 1 ≤ i ≤ 5, una "scivolata" quando 6 ≤ i ≤ 7, o un "passo lento" quando 8 ≤ i ≤ 10. Usate una tecnica simile per muovere la lepre seguendo le sue regole.
+>
+> Iniziate la gara stampando:
+> ```python
+> "BANG !!!!! AND THEY'RE OFF !!!!!"
+> ```
+> Quindi, per ogni tick dell'orologio (ossia per ogni iterazione di un ciclo), stampate una lista di 70 posizioni che mostra la lettera 'T' nella posizione della tartaruga, la lettera 'H' nella posizione della lepre, il carattere '_' nelle posizioni libere. Occasionalmente, i contendenti si troveranno sullo stesso quadrato. In questo caso la tartaruga morde la lepre e il vostro programma deve stampare 'OUCH!!!' iniziando da quella posizione. Tutte le posizioni di stampa diverse dalla 'T', dalla 'H' o dal 'OUCH!!!' (in caso della stessa posizione) devono essere il carattere '_'.
+>
+> Dopo la stampa di ogni tick, verificate se gli animali hanno raggiunto o superato il quadrato 70. Se è così, stampate il nome del vincitore e terminate la simulazione. Se vince la tartaruga, stampate "TORTOISE WINS! || VAY!!!". Se vince la lepre, stampate "HARE WINS || YUCH!!!". Se allo stesso tick dell'orologio vincono tutti e due gli animali, potreste voler favorire la tartaruga (la "sfavorita"), oppure stampare "IT'S A TIE.". Se non vince nessun animale, eseguite una nuova iterazione per simulare il successivo tick dell'orologio.
+>
+> Requisiti del Codice:
+> - Utilizzare il modulo random per la generazione dei numeri casuali.
+> - Definire e utilizzare:
+>     - una funzione per visualizzare le posizioni sulla corsia di gara,
+>     - una funzione per calcolare la mossa della tartaruga,
+>     - una funzione per calcolare la mossa della lepre.
+> - Implementare un loop per simulare i tick dell'orologio. Ad ogni tick, calcolare le mosse, mostrare la posizione sulla corsia di gara, e determinare l'eventuale fine della gara.
+> 
+> <b>SFIDE AGGIUNTIVE:</b>
+> 1. Variabilità Ambientale:
+> Introdurre fattori ambientali che possono influenzare la corsa, come il meteo.
+> Ad esempio, la pioggia può ridurre la velocità di avanzamento o aumentare la probabilità di scivolate per entrambi i concorrenti. Implementare un sistema dove le condizioni 'soleggiato' e 'pioggia' cambiano dinamicamente ogni 10 tick dell'orologio.
+>
+> Modificatori mossa:
+> - La Tartaruga in caso di pioggia subisce penalità -1 su ogni mossa. In caso di sole non subisce variazioni.
+> - La Lepre in caso di pioggia subisca una penalità -2 su ogni mossa. In caso di sole non subisce variazioni.
+> 
+> 2. Energia o Stamina:
+> Aggiungere una metrica di "energia" o "stamina" che diminuisce con ogni movimento e si ricarica in specifiche condizioni. Fare in modo che le mosse che consumano più energia non possano essere eseguite se l'animale non ha abbastanza energia. L'energia inziale per entrambi gli animali è 100.
+>
+> <b>Nuove regole di movimento:</b>
+> - Tartaruga:
+>     - Per la tartaruga, ogni volta che il numero generato indica una mossa ma non è possibile eseguirla per mancanza di energia, essa guadagna 10 di energia. Non può superare l'energia iniziale.
+>     - Passo veloce (50% di probabilità): avanza di 3 quadrati e richiede 5 di energia.
+>     - Scivolata (20% di probabilità): arretra di 6 quadrati e richiede 10 di energia. Non può andare sotto il quadrato 1.
+>     - Passo lento (30% di probabilità): avanza di 1 quadrato e richiede 3 di energia.
+>
+> - Lepre:
+>     - Riposo (20% di probabilità): non si muove e recupera 10 di energia. Non può superare l'energia iniziale.
+>     - Grande balzo (20% di probabilità): avanza di 9 quadrati  e richiede 15 di energia.
+>     - Grande scivolata (10% di probabilità): arretra di 12 quadrati e richiede 20 di energia. Non può andare sotto il quadrato 1.
+>     - Piccolo balzo (30% di probabilità): avanza di 1 quadrato e richiede 5 di energia.
+>     - Piccola scivolata (20% di probabilità): arretra di 2 quadrati e richiede 8 di energia. Non può andare sotto il quadrato 1.
+> 
+> 3. Ostacoli e Bonus
+> Sulla pista di gara sono presenti alcuni ostacoli e bonus a posizioni fisse, che influenzano direttamente il movimento degli animali quando vengono calpestati. Gli ostacoli causano uno slittamento all'indietro, mentre i bonus offrono un avanzamento extra.
+>
+> <b>Dettagli Implementativi:</b>
+> - Ostacoli:
+> Posizionati a intervalli regolari sulla pista (es. ai quadrati 15, 30, 45), gli ostacoli riducono la posizione dell'animale di un numero specificato di quadrati (es: -3, -5, -7). Gli ostacoli sono rappresentati da un dizionario che mappa le posizioni degli ostacoli sul percorso (chiave) ed i relaviti effetti (valore). Assicurarsi che nessun animale retroceda al di sotto del primo quadrato a seguito di un ostacolo.
+>
+> - Bonus:
+> Dislocati strategicamente lungo la corsa (es. ai quadrati 10, 25, 50), i bonus aumentano la posizione dell'animale di un numero determinato di quadrati (es: 5, 3, 10). I bonus sono rappresentati da un dizionario che mappa le posizioni dei bonus sul percorso (chiave) ed i relaviti effetti (valore). Consentire agli animali di beneficiare pienamente dei bonus, ma non oltrepassare il traguardo.
+>
+> </details>
+---
+> ###### 15/05/2024 - progetto N*Queen
+> <details>
+>   <summary>project NQueen</summary><br>
+>
+> Create a backtracking function that can solve the NQueen problem
+> </details>
