@@ -89,27 +89,32 @@ def bonuses_obstacles(token: int, t_name: str, obstacles: dict, bonuses: dict) -
         int: token new position
     '''
     checking: list = []
+    values: list = []
     checking_len: int = 0
+    start_token: int = token
     while True:
         if token in checking:
             print(f"The {t_name} got out of the loop")
             break
         if token in obstacles.keys():
-            print(
-                f"The {t_name} hit an obstacle of {obstacles[token]} on position {token}")
+            print(f"The {t_name} hit an obstacle of {obstacles[token]} on position {token}")
             checking.append(token)
+            values.append(obstacles[token])
             token += obstacles[token]
         if token in checking:
             print(f"The {t_name} got out of the loop")
             break
         if token in bonuses.keys():
-            print(
-                f"The {t_name} got a bonus {bonuses[token]} on position {token}")
+            print(f"The {t_name} got a bonus {bonuses[token]} on position {token}")
             checking.append(token)
+            values.append(bonuses[token])
             token += bonuses[token]
         if checking_len == len(checking):
             break
         checking_len = len(checking)
+    if len(checking) > 1:
+        print(f"\nThe total amount of movement was {sum(values)} for the {t_name}:",
+              f"started from {start_token} ended to {token}",sep="\n")
     print()
     return token
 
