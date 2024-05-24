@@ -586,6 +586,7 @@ describing each test and your prediction for the results of each test. Your code
 > ---
 ---
 >###### 08/05/2024 - Classi
+>###### 25/05/2024 - Esercitazioni sulle classi
 >
 ><details>
 >  <summary>Lezione 6</summary><br>
@@ -626,6 +627,34 @@ describing each test and your prediction for the results of each test. Your code
 >   add_food and remove_food <br>
 >   print_prices and get_average_price
 >
+> ---
+> <b>Sistema di Prenotazione Cinema</b><br>
+Sviluppa un sistema in Python che gestisca le prenotazioni per un cinema. Il cinema ha diverse sale, ognuna con un diverso film in programmazione. Gli utenti possono vedere quali film sono disponibili e prenotare posti per un determinato spettacolo.<br>
+> Classi:
+> - Film: Rappresenta un film con titolo e durata.
+> - Sala: Rappresenta una sala con numero identificativo, film attualmente in programmazione, posti totali, posti prenotati.
+>    - prenota_posti(num_posti): Prenota un certo numero di posti nella sala, se disponibili. Restituisce un messaggio di conferma o di errore.
+>    - posti_disponibili(): Restituisce il numero di posti ancora disponibili nella sala.
+> - Cinema: Gestisce le operazioni legate alla gestione delle sale.
+>    - aggiungi_sala(sala): Aggiunge una nuova sala al cinema.
+>    - prenota_film(titolo_film, num_posti): Trova il film desiderato e tenta di prenotare posti. Restituisce un messaggio di stato.
+>
+> Test case:
+> - Un gestore del cinema configura le sale aggiungendo i film e i dettagli dei posti.
+> - Un cliente sceglie un film e prenota un certo numero di posti.
+> - Il sistema verifica la disponibilità e conferma o rifiuta la prenotazione.
+> ---
+> <b>Gestione di un magazzino</b><br>
+> Scrivi un programma in Python che gestisca un magazzino. Il programma deve permettere di aggiungere prodotti al magazzino, cercare prodotti per nome e verificare la disponibilità di un prodotto.
+>
+> Definisci una classe Prodotto con i seguenti attributi:
+> - nome (stringa)
+> - quantità (intero)
+> 
+> Definisci una classe Magazzino con i seguenti metodi:
+> - aggiungi_prodotto(prodotto: Prodotto): aggiunge un prodotto al magazzino.
+> - cerca_prodotto(nome: str) -> Prodotto: cerca un prodotto per nome e lo ritorna se esiste.
+> - verifica_disponibilità(nome: str) -> str: verifica se un prodotto è disponibile in magazzino.
 > ---
 ---
 >###### 16/05/2024 - Ripasso funzioni
