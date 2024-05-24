@@ -254,9 +254,23 @@ print(end="\n\n")
 # Randomly select 4 numbers or letters from the list and
 # print a message saying that any ticket matching these 4 numbers or letters wins a prize.
 
-possible_winning: list = [10,4,6,28,49,14,66,48,2,81,'f','h','l','p','s']
-winning_numbers: list = [possible_winning[randint(0,len(possible_winning)-1)] for _ in range(4)]
-print(f"Winning numbers:\n",*winning_numbers)
+class Lottery:
+
+    possible_winning: list = [10,4,6,28,49,14,66,48,2,81,'f','h','l','p','s']
+
+    def get_winning_numbers() -> list:
+        winning_numbers: list = [Lottery.possible_winning[randint(0,len(Lottery.possible_winning)-1)] for _ in range(4)]
+        return winning_numbers
+    
+    def get_my_ticket() -> list:
+        my_ticket: list = [Lottery.possible_winning[randint(0,len(Lottery.possible_winning)-1)] for _ in range(4)]
+        return my_ticket
+    
+    def check_winning(win_ticket: list, ticket_check: list) -> bool:
+        return set(ticket_check).issubset(set(win_ticket))
+
+winning: list = Lottery.get_winning_numbers()
+print(f"Winning numbers:\n",*winning)
 
 # 9-15. Lottery Analysis:
 # You can use a loop to see how hard it might be to win the kind of lottery you just modeled.
@@ -264,9 +278,9 @@ print(f"Winning numbers:\n",*winning_numbers)
 # Write a loop that keeps pulling numbers until your ticket wins.
 # Print a message reporting how many times the loop had to run to give you a winning ticket.
 
-my_ticket: set = set("-inf")
-i: int = 0
-while not my_ticket.issubset(set(winning_numbers)):
-    my_ticket = set([possible_winning[randint(0,len(possible_winning)-1)] for _ in range(4)])
+my_ticket: list = Lottery.get_my_ticket()
+i: int = 1
+while not Lottery.check_winning(winning, my_ticket):
+    my_ticket = Lottery.get_my_ticket()
     i += 1
 print(f"\nnumber of tries: {i}",end="\n\n")
