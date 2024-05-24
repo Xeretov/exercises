@@ -61,7 +61,7 @@ class Fence:
         '''
         available = self.area - sum(animal.width*animal.height for animal in self.animals if self.animals)
         if feed:
-            return available-(add_animal.width*add_animal.height + (add_animal.width*2/100)*(add_animal.height*2/100)) > 0
+            return available-(add_animal.width*2/100)*(add_animal.height*2/100) > 0
         return available-add_animal.width*add_animal.height > 0
 
 class ZooKeeper:
@@ -141,7 +141,7 @@ class ZooKeeper:
         animals: list = fence.animals
         occupied: float = sum(animal.width*animal.height for animal in animals)
         available: float = fence.area - occupied
-        time: float = occupied if available == 0 else available/occupied
+        time: float = occupied if available == 0 else occupied/available
         return time
 
 class Zoo:
