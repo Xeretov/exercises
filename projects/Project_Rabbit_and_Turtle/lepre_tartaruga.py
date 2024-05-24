@@ -112,9 +112,10 @@ def bonuses_obstacles(token: int, t_name: str, obstacles: dict, bonuses: dict) -
         if checking_len == len(checking):
             break
         checking_len = len(checking)
-    if len(checking) > 1:
-        print(f"\nThe total amount of movement was {sum(values)} for the {t_name}:",
-              f"started from {start_token} ended to {token}",sep="\n")
+    if checking:
+        if len(checking) > 1:
+            print(f"\nThe total amount of movement was {sum(values)} for the {t_name}:")
+        print(f"started from {start_token} ended to {token}")
     print()
     return token
 
