@@ -237,13 +237,13 @@ dice1: Die = Die()
 dice2: Die = Die(10)
 dice3: Die = Die(20)
 
-print("6 sided die:")
+print("d6:\t", end=" ")
 for _ in range(10):
     dice1.roll_die()
-print("\n10 sided die:")
+print("\nd10:\t", end=" ")
 for _ in range(10):
     dice2.roll_die()
-print("\n20 sided die:")
+print("\nd20:\t", end=" ")
 for _ in range(10):
     dice3.roll_die()
 print(end="\n\n")
