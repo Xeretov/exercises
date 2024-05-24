@@ -16,9 +16,13 @@ def turtle_walk_speed(t_token, t_energy, weather: bool = False) -> int:
     Returns:
         int: [3, 1, -6]
     '''
+    # values of walking speed
     walking_speed: list[int] = [3, 1, -6]
+    # weight for picking a certain walking speed
     weight: list[float] = [0.5, 0.3, 0.2]
+    # chosen speed
     chosen: int = choices(walking_speed, weight)[0]
+    # found index of chosen speed
     index: int = walking_speed.index(chosen)
 
     if index == 0:
@@ -48,8 +52,7 @@ def hare_walk_speed(h_token, h_energy, weather: bool = False) -> int:
     temp: int = h_energy
     if index == 0:
         h_energy += 10
-        if h_energy > 100:
-            h_energy = 100
+        h_energy = min(h_energy,100)
     elif index == 1:
         temp -= 15
     elif index == 2:
@@ -63,6 +66,42 @@ def hare_walk_speed(h_token, h_energy, weather: bool = False) -> int:
         h_energy = temp
 
     return h_token, h_energy
+
+def bonuses_obstacles(token: int, t_name: str, obstacles: dict, bonuses: dict) -> int:
+    '''
+    This function checks for bonuses and obstacles
+
+    Args:
+        token (int): position of token
+        t_name (str): name of token's possesor
+        obstacles (dict): dictionary of obstacles
+        bonuses (dict): dictionary of bonuses
+
+    Returns:
+        int: token new position
+    '''
+    check: list = []
+    check_len: int = 0
+    while True:
+        if token in check:
+            print(f"The {t_name} got out of the loop")
+            break
+        if token in obstacles.keys():
+            print(f"The {t_name} hit an obstacle of {obstacles[token]} on position {token}")
+            check.append(token)
+            token += obstacles[token]
+        if token in check:
+            print(f"The {t_name} got out of the loop")
+            break
+        if token in bonuses.keys():
+            print(f"The {t_name} got a bonus {bonuses[token]} on position {token}")
+            check.append(token)
+            token += bonuses[token]
+        if check_len == len(check):
+            break
+        check_len = len(check)
+    print()
+    return token
 
 def show_route(route: list[str]) -> None:
     '''
@@ -78,9 +117,22 @@ def start_simulation() -> None:
     '''
     route: list[str] = ["_"]*randint(25,100)
     max_len: int = len(route) -1
+    # interval for obstacles (fixed to 10% of route length)
     interval: int = round(max_len * 0.1)
-    obstacles: dict = {k:-v for k,v in zip(range(1,max_len+1), [randint(1,max_len//10) for _ in range(1,max_len+1)]) if k%interval == 0}
-    bonuses: dict = {k:v for k,v in zip([randint(1,max_len) for _ in range(1,max_len+1)], [randint(1,max_len//10) for _ in range(1,max_len+1)]) if k not in list(obstacles.keys())}
+    # obstacles:
+    # keys = range(1, route length) when on interval
+    # value = -(randint(1, route length//10))
+    obstacles: dict = {k:-v for k,v in zip(
+                        range(1,max_len+1),
+                        [randint(1,max_len//10) for _ in range(1,max_len+1)])
+                       if k%interval == 0}
+    # bonuses:
+    # keys = randint(1, route length-2) if not already an obstacle
+    # values = randint(1, route length//10)+3
+    bonuses: dict = {k:v for k,v in zip(
+                    [randint(1,max_len-1) for _ in range(len(obstacles.values()))],
+                    [randint(1,max_len//10)+3 for _ in range(1,max_len+1)])
+                     if k not in list(obstacles.keys())}
     i: int = 1
     weather: bool = False
     t_token: int = 0
@@ -97,48 +149,9 @@ def start_simulation() -> None:
         prev_t, prev_h = t_token, h_token
         t_token, t_energy = turtle_walk_speed(t_token, t_energy, weather)
         h_token, h_energy = hare_walk_speed(h_token, h_energy, weather)
-        check: list = []
-        check_len: int = 0
-        while True:
-            if t_token in check:
-                print(f"The turtle got out of the loop")
-                break
-            if t_token in obstacles.keys():
-                print(f"The turtle hit an obstacle of {obstacles[t_token]} on position {t_token}")
-                check.append(t_token)
-                t_token += obstacles[t_token]
-            if t_token in check:
-                print(f"The turtle got out of the loop")
-                break
-            if t_token in bonuses.keys():
-                print(f"The turtle got a bonus {bonuses[t_token]} on position {t_token}")
-                check.append(t_token)
-                t_token += bonuses[t_token]
-            if check_len == len(check):
-                break
-            check_len = len(check)
         print()
-        check = []
-        check_len = 0
-        while True:
-            if h_token in check:
-                print(f"The hare got out of the loop")
-                break
-            if h_token in obstacles.keys():
-                print(f"The hare hit an obstacle of {obstacles[h_token]} on position {h_token}")
-                check.append(h_token)
-                h_token += obstacles[h_token]
-            if h_token in check:
-                print(f"The hare got out of the loop")
-                break
-            if h_token in bonuses.keys():
-                print(f"The hare got a bonus of {bonuses[h_token]} on position {h_token}")
-                check.append(h_token)
-                h_token += bonuses[h_token]
-            if check_len == len(check):
-                break
-            check_len = len(check)
-        print()
+        t_token = bonuses_obstacles(t_token, "turtle", obstacles, bonuses)
+        h_token = bonuses_obstacles(h_token, "hare", obstacles, bonuses)
         if t_token >= max_len and h_token >= max_len:
             route[-1] = "X"
             print(f"Last Round: {i}")
@@ -147,15 +160,15 @@ def start_simulation() -> None:
             print("\nIT'S A TIE.")
             print(f"\nroute length: {max_len}")
             break
-        elif t_token >= max_len:
+        if t_token >= max_len:
             route[h_token if h_token >= 0 else 0] = "H"
             route[-1] = "T"
             print(f"Last Round: {i}")
             show_route(route)
-            print("\nTORTOISE WINS! || VAY!!!")
+            print("\nTURTLE WINS! || VAY!!!")
             print(f"\nroute length: {max_len}")
             break
-        elif h_token >= max_len:
+        if h_token >= max_len:
             route[t_token if t_token >= 0 else 0] = "T"
             route[-1] = "H"
             print(f"Last Round: {i}")
@@ -163,24 +176,26 @@ def start_simulation() -> None:
             print("\nHARE WINS || YUCH!!!")
             print(f"\nroute length: {max_len}")
             break
-        if t_token < 0:
-            t_token = 0
-        if h_token < 0:
-            h_token = 0
+        t_token = max(t_token,0)
+        h_token = max(h_token,0)
         if t_token == h_token:
             route[t_token] = 'X'
         else:
             route[t_token] = 'T'
             route[h_token] = 'H'
         print(f"Round: {i}",end=" ")
-        if i%3 == 0:
+        if i%3 == 0 or i == 1:
             print("- It's raining ☂" if weather else "- It's sunny ☀︎")
         else:
             print()
         i += 1
         show_route(route)
-        print(f"Tortoise moved: {t_token-prev_t}, Tortoise position: {t_token}, Tortoise energy: {t_energy}")
+        print(f"Turtle moved: {t_token-prev_t}, Turtle position: {t_token}, Turtle energy: {t_energy}")
         print(f"Hare moved: {h_token-prev_h}, Hare position: {h_token}, Hare energy: {h_energy}")
         print("\n")
+        if i > 5000:
+            print("The race was too long. Neither won and everyone left.\n")
+            break
 
-start_simulation()
+if __name__ == "__main__":
+    start_simulation()
