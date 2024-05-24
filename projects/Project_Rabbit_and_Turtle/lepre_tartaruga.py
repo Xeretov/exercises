@@ -75,7 +75,7 @@ def hare_walk_speed(h_token, h_energy, weather: bool = False) -> int:
     return h_token, h_energy
 
 
-def bonuses_obstacles(token: int, t_name: str, obstacles: dict, bonuses: dict) -> int:
+def bonuses_obstacles(token: int, t_name: str, obstacles: dict, bonuses: dict, max_len: int) -> int:
     '''
     This function checks for bonuses and obstacles
 
@@ -84,6 +84,7 @@ def bonuses_obstacles(token: int, t_name: str, obstacles: dict, bonuses: dict) -
         t_name (str): name of token's possesor
         obstacles (dict): dictionary of obstacles
         bonuses (dict): dictionary of bonuses
+        max_len (int): length of route
 
     Returns:
         int: token new position
@@ -115,8 +116,7 @@ def bonuses_obstacles(token: int, t_name: str, obstacles: dict, bonuses: dict) -
     if checking:
         if len(checking) > 1:
             print(f"\nThe total amount of movement was {sum(values)} for the {t_name}:")
-        print(f"started from {start_token} ended to {token}")
-    print()
+        print(f"started from {start_token} ended to {min(token,max_len) if token > max_len else max(token,0)}\n")
     return token
 
 
@@ -218,8 +218,8 @@ def start_simulation() -> None:
         t_token, t_energy = turtle_walk_speed(t_token, t_energy, weather)
         h_token, h_energy = hare_walk_speed(h_token, h_energy, weather)
         # check where landed
-        t_token = bonuses_obstacles(t_token, "turtle", obstacles, bonuses)
-        h_token = bonuses_obstacles(h_token, "hare", obstacles, bonuses)
+        t_token = bonuses_obstacles(t_token, "turtle", obstacles, bonuses, max_len)
+        h_token = bonuses_obstacles(h_token, "hare", obstacles, bonuses, max_len)
         # check if finished
         if check(t_token, h_token, max_len, route=route, weather=weather, i=i):
             break
