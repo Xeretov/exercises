@@ -3,7 +3,7 @@ This module provides several functions to simulate a race between the turtle and
 '''
 
 # Gioele Amendola
-# 14/05/2024
+# 14/05/2024 - 24/05/2024
 
 from random import choices
 from random import randint
