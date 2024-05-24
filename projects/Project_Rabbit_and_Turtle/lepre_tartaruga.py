@@ -20,9 +20,9 @@ def turtle_walk_speed(t_token, t_energy, weather: bool = False) -> int:
     walking_speed: list[int] = [3, 1, -6]
     # weight for picking a certain walking speed
     weight: list[float] = [0.5, 0.3, 0.2]
-    # chosen speed
+    # chosen value
     chosen: int = choices(walking_speed, weight)[0]
-    # found index of chosen speed
+    # index of chosen value
     index: int = walking_speed.index(chosen)
 
     if index == 0:
@@ -46,10 +46,16 @@ def hare_walk_speed(h_token, h_energy, weather: bool = False) -> int:
     Returns:
         int: [0, 9, -12, 1, -2]
     '''
+    # values of walking speed
     walking_speed: list[int] = [0, 9, -12, 1, -2]
+    # weight for picking a certain speed
     weight: float = [0.2, 0.2, 0.1, 0.3, 0.2]
+    # chosen value
     chosen: int = choices(walking_speed, weight)[0]
+    # index of chosen value
     index: int = walking_speed.index(chosen)
+    # temporary variable to check if hare can do a movement
+    # if not returns current token and energy
     temp: int = h_energy
     if index == 0:
         h_energy += 10
