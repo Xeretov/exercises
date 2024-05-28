@@ -7,7 +7,7 @@ This module provides several functions to simulate a race between the turtle and
 
 from random import choices
 from random import randint
-
+from random import choice
 
 def turtle_walk_speed(t_token, t_energy, weather: bool = False) -> int:
     '''
@@ -211,7 +211,7 @@ def start_simulation() -> None:
         route[t_token], route[h_token] = "_", "_"
         # weather change
         if (i-1) % 10 == 0:
-            weather = choices([True, False], [0.5, 0.5])[0]
+            weather = choice([True, False])
         # to check later for movement
         prev_t, prev_h = t_token, h_token
         # move token based
