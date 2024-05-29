@@ -154,7 +154,7 @@ def check(t: int, h: int, length: int, **kwargs) -> bool:
         print(f"Last Round: {color.b}{i}{color.c}",end=" - ")
         print(f"{color.bblue}It's raining ''☂''" if weather else f"{color.byellow} It's sunny ☀︎"+color.c)
         show_route(track)
-        print("\nIT'S A TIE.")
+        print(f"\n{color.b}IT'S A TIE.{color.c}")
         print(f"\nroute length: {color.b}{length}{color.c}\n")
         return True
     if t >= length:
@@ -163,7 +163,7 @@ def check(t: int, h: int, length: int, **kwargs) -> bool:
         print(f"Last Round: {color.b}{i}{color.c}",end=" - ")
         print((f"{color.bblue}It's raining ''☂''" if weather else f"{color.byellow} It's sunny ☀︎")+color.c)
         show_route(track)
-        print("\nTURTLE WINS! || VAY!!!")
+        print(f"\n{color.b}TURTLE WINS! || VAY!!!{color.c}")
         print(f"\nroute length: {color.b}{length}{color.c}\n")
         return True
     if h >= length:
@@ -172,7 +172,7 @@ def check(t: int, h: int, length: int, **kwargs) -> bool:
         print(f"Last Round: {color.b}{i}{color.c}",end=" - ")
         print((f"{color.bblue}It's raining ''☂''" if weather else f"{color.byellow} It's sunny ☀︎")+color.c)
         show_route(track)
-        print("\nHARE WINS || YUCH!!!")
+        print(f"\n{color.b}HARE WINS || YUCH!!!{color.c}")
         print(f"\nroute length: {color.b}{length}{color.c}\n")
         return True
     return False
