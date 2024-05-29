@@ -198,7 +198,7 @@ def start_simulation() -> None:
     interval: int = round(max_len * 0.1)
     # Obstacles:
     # keys = range(1, track length) every interval
-    # value = -(randint(1, track length//10))
+    # values = -(randint(1, track length//10))
     obstacles: dict = {k: -v for k, v in zip(
         range(1, max_len+1),
         [randint(1, max_len//10) for _ in range(1, max_len+1)])
