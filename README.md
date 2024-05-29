@@ -865,3 +865,19 @@ Sviluppa un sistema in Python che gestisca le prenotazioni per un cinema. Il cin
 >
 > Create a backtracking function that can solve the NQueen problem
 > </details>
+</details>
+<br>
+
+> [!WARNING]
+>
+> Imported modules may not work, add parent directory "exercises" to sys.path
+>```python
+> import sys
+> sys.path.append("parent_directory")
+>```
+> or add to:
+> home\user\\.bashrc
+> this line:
+>```bash
+> export PYTHONPATH="${PYTHONPATH}:/home/user/parent_directory"
+>```
