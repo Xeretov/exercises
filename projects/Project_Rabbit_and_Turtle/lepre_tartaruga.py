@@ -151,32 +151,42 @@ def check(t: int, h: int, length: int, **kwargs) -> bool:
 
     if t >= length and h >= length:
         track[-1] = "X"
-        print(f"Last Round: {color.b}{i}{color.c}",end=" - ")
-        print(f"{color.bblue}It's raining ''☂''" if weather else f"{color.byellow} It's sunny ☀︎"+color.c)
         show_route(track)
+        debug(t, h, prev_t=kwargs["prev_t"], prev_h=kwargs["prev_h"], t_energy=kwargs["t_energy"], h_energy=kwargs["h_energy"])
         print(f"\n{color.b}IT'S A TIE.{color.c}")
         print(f"\nroute length: {color.b}{length}{color.c}\n")
         return True
     if t >= length:
         track[h if h >= 0 else 0] = "H"
         track[-1] = "T"
-        print(f"Last Round: {color.b}{i}{color.c}",end=" - ")
-        print((f"{color.bblue}It's raining ''☂''" if weather else f"{color.byellow} It's sunny ☀︎")+color.c)
         show_route(track)
+        debug(t, h, prev_t=kwargs["prev_t"], prev_h=kwargs["prev_h"], t_energy=kwargs["t_energy"], h_energy=kwargs["h_energy"])
         print(f"\n{color.b}TURTLE WINS! || VAY!!!{color.c}")
         print(f"\nroute length: {color.b}{length}{color.c}\n")
         return True
     if h >= length:
         track[t if t >= 0 else 0] = "T"
         track[-1] = "H"
-        print(f"Last Round: {color.b}{i}{color.c}",end=" - ")
-        print((f"{color.bblue}It's raining ''☂''" if weather else f"{color.byellow} It's sunny ☀︎")+color.c)
         show_route(track)
+        debug(t, h, prev_t=kwargs["prev_t"], prev_h=kwargs["prev_h"], t_energy=kwargs["t_energy"], h_energy=kwargs["h_energy"])
         print(f"\n{color.b}HARE WINS || YUCH!!!{color.c}")
         print(f"\nroute length: {color.b}{length}{color.c}\n")
         return True
     return False
 
+def debug(t: int, h: int, **kwargs):
+    prev_t = kwargs["prev_t"]
+    prev_h = kwargs["prev_h"]
+    t_energy = kwargs["t_energy"]
+    h_energy = kwargs["h_energy"]
+    print(f"{color.bgrey}Turtle moved: {color.cbgreen if t-prev_t>0 else color.cbred if t-prev_t<0 else color.cb}{t-prev_t}{color.bgrey},",
+            f" Turtle position: {color.cb}{t}{color.grey},",
+            f" Turtle energy: {color.clight_cyan if t_energy!=0 else color.cred}{t_energy}{color.bgrey}")
+
+    print(f"Hare moved: {color.cbgreen if h-prev_h>0 else color.cbred if h-prev_h<0 else color.cb}{h-prev_h}{color.bgrey},",
+            f" Hare position: {color.cb}{h}{color.grey},",
+            f" Hare energy: {color.clight_cyan if h_energy!=0 else color.cred}{h_energy}{color.c}")
+    print("\n")
 
 def show_route(track: list[str]) -> None:
     '''
@@ -236,11 +246,16 @@ def start_simulation() -> None:
         # Move token based on turtle or hare movement
         t_token, t_energy = turtle_movement(t_token, t_energy, weather)
         h_token, h_energy = hare_movement(h_token, h_energy, weather)
+        # Shows round
+        print(f"Round: {color.b}{i}{color.c}", end=" ")
+        if i % 3 == 0 or i == 1:
+            print("- "+(f"{color.bblue}It's raining ''☂''" if weather else f"{color.byellow} It's sunny ☀︎")+color.c)
+        print("\n")
         # Check if token has hit a special position
         t_token = bonuses_obstacles(t_token, "turtle", obstacles, bonuses, max_len)
         h_token = bonuses_obstacles(h_token, "hare", obstacles, bonuses, max_len)
         # Check if race has finished
-        if check(t_token, h_token, max_len, track=track, weather=weather, i=i):
+        if check(t_token, h_token, max_len, track=track, weather=weather, i=i, prev_t=prev_t, prev_h=prev_h, t_energy=t_energy, h_energy=h_energy):
             break
         # Takes max from t_token (it can go less than 0) and 0
         t_token = max(t_token, 0)
@@ -251,26 +266,13 @@ def start_simulation() -> None:
         else:
             track[t_token] = 'T'
             track[h_token] = 'H'
-        # Shows changes and round for debug
-        print(f"Round: {color.b}{i}{color.c}", end=" ")
-        if i % 3 == 0 or i == 1:
-            print("- "+(f"{color.bblue}It's raining ''☂''" if weather else f"{color.byellow} It's sunny ☀︎")+color.c)
-        else:
-            print()
+        # Shows changes for debug
         # Next tick/round
         i += 1
         # Prints track
         show_route(track)
         # Debug
-        print(f"{color.bgrey}Turtle moved: {color.cbgreen if t_token-prev_t>0 else color.cbred if t_token-prev_t<0 else color.cb}{t_token-prev_t}{color.bgrey},",
-              f" Turtle position: {color.cb}{t_token}{color.grey},",
-              f" Turtle energy: {color.clight_cyan if t_energy!=0 else color.cred}{t_energy}{color.bgrey}")
-
-        print(f"Hare moved: {color.cbgreen if h_token-prev_h>0 else color.cbred if h_token-prev_h<0 else color.cb}{h_token-prev_h}{color.bgrey},",
-              f" Hare position: {color.cb}{h_token}{color.grey},",
-              f" Hare energy: {color.clight_cyan if h_energy!=0 else color.cred}{h_energy}{color.c}")
-
-        print("\n")
+        debug(t_token, h_token, prev_t=prev_t, prev_h=prev_h, t_energy=t_energy, h_energy=h_energy)
         # if reached 5000th round exit program
         if i > 5000:
             print("The race was too long. Neither won and everyone left.\n")
