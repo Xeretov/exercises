@@ -39,7 +39,6 @@ def turtle_movement(t_token, t_energy, weather: bool = False) -> int:
     # Return new position and energy
     return t_token, t_energy
 
-
 def hare_movement(h_token, h_energy, weather: bool = False) -> int:
     '''
     This function returns the walking speed of the hare based on probability
@@ -74,7 +73,6 @@ def hare_movement(h_token, h_energy, weather: bool = False) -> int:
         h_energy = energy
 
     return h_token, h_energy
-
 
 def bonuses_obstacles(token: int, t_name: str, obstacles: dict, bonuses: dict, max_len: int) -> int:
     '''
@@ -130,7 +128,6 @@ def bonuses_obstacles(token: int, t_name: str, obstacles: dict, bonuses: dict, m
     print(color.c)
     # Return new token position
     return token
-
 
 def check(t: int, h: int, length: int, **kwargs) -> bool:
     '''
@@ -195,7 +192,6 @@ def show_route(track: list[str]) -> None:
     for char in track:
         print(f"{char}", end="")
     print(end="\n\n")
-
 
 def start_simulation() -> None:
     '''
