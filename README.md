@@ -871,13 +871,13 @@ Sviluppa un sistema in Python che gestisca le prenotazioni per un cinema. Il cin
 > [!WARNING]
 >
 > Imported modules may not work, add parent directory "exercises" to sys.path
->```python
+> ```python
 > import sys
 > sys.path.append("parent_directory")
->```
-> or add to:
+> ```
+> or add to
 > home\user\\.bashrc
 > this line:
->```bash
+> ```bash
 > export PYTHONPATH="${PYTHONPATH}:/home/user/parent_directory"
->```
+> ```
