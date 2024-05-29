@@ -8,7 +8,7 @@ This module provides several functions to simulate a race between the turtle and
 from random import choices
 from random import randint
 from random import choice
-from modules import color_terminal as color
+from modules import terminal_codes as tc
 
 def turtle_movement(t_token, t_energy, weather: bool = False) -> int:
     '''
@@ -93,29 +93,29 @@ def bonuses_obstacles(token: int, t_name: str, obstacles: dict, bonuses: dict, m
     values: list = []
     checking_len: int = 0
     start_token: int = token
-    print(color.grey,end="")
+    print(tc.grey,end="")
     while True:
         # Checks if token has already been to same position before
         if token in checking:
             if dev:
-                print(f"The {color.c}{t_name}{color.grey} got out of the loop")
+                print(f"The {tc.c}{t_name}{tc.grey} got out of the loop")
             break
         # Checks if token is in the same position as an obstacle
         if token in obstacles:
             if dev:
-                print(f"The {color.c}{t_name}{color.grey} hit an obstacle of {color.bred}{obstacles[token]}{color.cgrey} on position {color.cb}{token}{color.cgrey}")
+                print(f"The {tc.c}{t_name}{tc.grey} hit an obstacle of {tc.bred}{obstacles[token]}{tc.cgrey} on position {tc.cb}{token}{tc.cgrey}")
             checking.append(token)
             values.append(obstacles[token])
             token += obstacles[token]
         # Checks if token has already been to same position before
         if token in checking:
             if dev:
-                print(f"The {color.c}{t_name}{color.grey} got out of the loop")
+                print(f"The {tc.c}{t_name}{tc.grey} got out of the loop")
             break
         # Checks if token is in the same position as a bonus
         if token in bonuses:
             if dev:
-                print(f"The {color.c}{t_name}{color.grey} got a bonus of {color.bgreen}{bonuses[token]}{color.cgrey} on position {color.cb}{token}{color.cgrey}")
+                print(f"The {tc.c}{t_name}{tc.grey} got a bonus of {tc.bgreen}{bonuses[token]}{tc.cgrey} on position {tc.cb}{token}{tc.cgrey}")
             checking.append(token)
             values.append(bonuses[token])
             token += bonuses[token]
@@ -127,9 +127,9 @@ def bonuses_obstacles(token: int, t_name: str, obstacles: dict, bonuses: dict, m
     if checking and dev:
         # Debug print to see the total movement if more than one obstacle or bonus position has been hit
         if len(checking) > 1:
-            print("\nThe total amount of movement was "+(color.red if sum(values)<0 else color.green)+f"{sum(values)}{color.cgrey} for the {color.c}{t_name}{color.grey}:")
-        print(f"started from {color.cb}{start_token}{color.cgrey} ended to {color.cb}{min(token,max_len) if token > max_len else max(token,0)}")
-    print(color.c)
+            print("\nThe total amount of movement was "+(tc.red if sum(values)<0 else tc.green)+f"{sum(values)}{tc.cgrey} for the {tc.c}{t_name}{tc.grey}:")
+        print(f"started from {tc.cb}{start_token}{tc.cgrey} ended to {tc.cb}{min(token,max_len) if token > max_len else max(token,0)}")
+    print(tc.c)
     # Return new token position
     return token
 
@@ -156,9 +156,9 @@ def check(t: int, h: int, length: int, **kwargs) -> bool:
         show_route(track)
         if dev:
             debug(t, h, prev_t=kwargs["prev_t"], prev_h=kwargs["prev_h"], t_energy=kwargs["t_energy"], h_energy=kwargs["h_energy"])
-        print(f"\n{color.b}IT'S A TIE.{color.c}")
+        print(f"\n{tc.b}IT'S A TIE.{tc.c}")
         if dev:
-            print(f"\nroute length: {color.b}{length}{color.c}")
+            print(f"\nroute length: {tc.b}{length}{tc.c}")
         print("\n")
         return True
     if t >= length:
@@ -167,9 +167,9 @@ def check(t: int, h: int, length: int, **kwargs) -> bool:
         show_route(track)
         if dev:
             debug(t, h, prev_t=kwargs["prev_t"], prev_h=kwargs["prev_h"], t_energy=kwargs["t_energy"], h_energy=kwargs["h_energy"])
-        print(f"\n{color.b}TURTLE WINS! || VAY!!!{color.c}")
+        print(f"\n{tc.b}TURTLE WINS! || VAY!!!{tc.c}")
         if dev:
-            print(f"\nroute length: {color.b}{length}{color.c}")
+            print(f"\nroute length: {tc.b}{length}{tc.c}")
         print("\n")
         return True
     if h >= length:
@@ -178,9 +178,9 @@ def check(t: int, h: int, length: int, **kwargs) -> bool:
         show_route(track)
         if dev:
             debug(t, h, prev_t=kwargs["prev_t"], prev_h=kwargs["prev_h"], t_energy=kwargs["t_energy"], h_energy=kwargs["h_energy"])
-        print(f"\n{color.b}HARE WINS || YUCH!!!{color.c}")
+        print(f"\n{tc.b}HARE WINS || YUCH!!!{tc.c}")
         if dev:
-            print(f"\nroute length: {color.b}{length}{color.c}")
+            print(f"\nroute length: {tc.b}{length}{tc.c}")
         print("\n")
         return True
     return False
@@ -190,13 +190,13 @@ def debug(t: int, h: int, **kwargs):
     prev_h = kwargs["prev_h"]
     t_energy = kwargs["t_energy"]
     h_energy = kwargs["h_energy"]
-    print(f"{color.bgrey}Turtle moved: {color.cbgreen if t-prev_t>0 else color.cbred if t-prev_t<0 else color.cb}{t-prev_t}{color.bgrey},",
-            f" Turtle position: {color.cb}{t}{color.grey},",
-            f" Turtle energy: {color.clight_cyan if t_energy!=0 else color.cred}{t_energy}{color.bgrey}")
+    print(f"{tc.bgrey}Turtle moved: {tc.cbgreen if t-prev_t>0 else tc.cbred if t-prev_t<0 else tc.cb}{t-prev_t}{tc.bgrey},",
+            f" Turtle position: {tc.cb}{t}{tc.grey},",
+            f" Turtle energy: {tc.clight_cyan if t_energy!=0 else tc.cred}{t_energy}{tc.bgrey}")
 
-    print(f"Hare moved: {color.cbgreen if h-prev_h>0 else color.cbred if h-prev_h<0 else color.cb}{h-prev_h}{color.bgrey},",
-            f" Hare position: {color.cb}{h}{color.grey},",
-            f" Hare energy: {color.clight_cyan if h_energy!=0 else color.cred}{h_energy}{color.c}")
+    print(f"Hare moved: {tc.cbgreen if h-prev_h>0 else tc.cbred if h-prev_h<0 else tc.cb}{h-prev_h}{tc.bgrey},",
+            f" Hare position: {tc.cb}{h}{tc.grey},",
+            f" Hare energy: {tc.clight_cyan if h_energy!=0 else tc.cred}{h_energy}{tc.c}")
     print("\n")
 
 def show_route(track: list[str]) -> None:
@@ -256,9 +256,9 @@ def start_simulation(dev: bool = False) -> None:
         t_token, t_energy = turtle_movement(t_token, t_energy, weather)
         h_token, h_energy = hare_movement(h_token, h_energy, weather)
         # Shows round
-        print(f"Round: {color.b}{i}{color.c}", end=" ")
+        print(f"Round: {tc.b}{i}{tc.c}", end=" ")
         if i % 3 == 0 or i == 1:
-            print("- "+(f"{color.bblue}It's raining ''☂''" if weather else f"{color.byellow} It's sunny ☀︎")+color.c)
+            print("- "+(f"{tc.bblue}It's raining ''☂''" if weather else f"{tc.byellow} It's sunny ☀︎")+tc.c)
         print("\n")
         # Check if token has hit a special position
         t_token = bonuses_obstacles(t_token, "turtle", obstacles, bonuses, max_len, dev)
@@ -293,4 +293,18 @@ def start_simulation(dev: bool = False) -> None:
 
 
 if __name__ == "__main__":
-    start_simulation(dev=True)
+    flag: bool = True
+    x: str = ""
+    while flag:
+        while True:
+            x = input("Dev Mode? (Y/n) >")
+            tc.delete_lines()
+            if x in ["Y","n"]:
+                break
+        start_simulation(dev=True if x=="Y" else False)
+        while True:
+            x: str = input("Another run? (Y/n) >")
+            tc.delete_lines()
+            if x in ["Y","n"]:
+                flag = True if x=="Y" else False
+                break
