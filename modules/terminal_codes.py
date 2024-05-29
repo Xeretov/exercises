@@ -1,6 +1,7 @@
 '''
-This module provides variables with the color code for the terminal    
+This module provides codes for terminal usage    
 '''
+# Colors
 clear: str = "\x1b[0m"
 c: str = "\x1b[0m"
 bold: str = "\x1b[1m"
@@ -66,3 +67,18 @@ light_cyan: str = "\x1b[96m"
 clight_cyan: str = "\x1b[0m\x1b[96m"
 blight_cyan: str = "\x1b[1m\x1b[96m"
 cblight_cyan: str = "\x1b[0m\x1b[1m\x1b[96m"
+
+# Terminal manipulation
+delete: str = "\x1b[1A\x1b[2K"
+d: str = "\x1b[1A\x1b[2K"
+
+def delete_lines(num: int = 1) -> None:
+    '''
+    Delete lines printed on a terminal
+
+    Args:
+        num (int, optional): How many lines to delete. Defaults to 1.
+    '''
+    while num > 0:
+        print(delete, end="")
+        num -= 1
