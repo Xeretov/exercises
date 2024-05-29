@@ -8,7 +8,7 @@ This module provides several functions to simulate a race between the turtle and
 from random import choices
 from random import randint
 from random import choice
-import color_terminal as color
+from modules import color_terminal as color
 
 def turtle_movement(t_token, t_energy, weather: bool = False) -> int:
     '''
