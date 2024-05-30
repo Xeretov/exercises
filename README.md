@@ -585,7 +585,6 @@ describing each test and your prediction for the results of each test. Your code
 >
 > ---
 ---
->###### 08/05/2024 - Classi
 >###### 25/05/2024 - Esercitazioni sulle classi
 >
 ><details>
@@ -730,7 +729,100 @@ Sviluppa un sistema in Python che gestisca le prenotazioni per un cinema. Il cin
 >
 > Output:  [('John', '20', '90'), ('Jony', '17', '91'), ('Jony', '17', '93'), ('Json', '21', '85'), ('Tom', '19', '80')]
 >```
-> ---     
+> ---
+---
+>###### 24/05/2024 - Esercitazione sulle Classi
+>
+><details>
+>  <summary>Lezione 11</summary><br>
+> 1. <b>Sistema di Prenotazione Cinema</b><br>
+> Sviluppa un sistema in Python che gestisca le prenotazioni per un cinema. Il cinema ha diverse sale, ognuna con un diverso film in programmazione. Gli utenti possono vedere quali film sono disponibili e prenotare posti per un determinato spettacolo.
+> 
+> <br><b>Classi</b>:<br>
+> - Film: Rappresenta un film con titolo e durata.
+> 
+> - Sala: Rappresenta una sala con numero identificativo, film attualmente in programmazione, posti totali, posti prenotati.
+>
+>   - prenota_posti(num_posti): Prenota un certo numero di posti nella sala, se disponibili. Restituisce un messaggio di conferma o di errore.
+>   - posti_disponibili(): Restituisce il numero di posti ancora disponibili nella sala.
+> 
+>- Cinema: Gestisce le operazioni legate alla gestione delle sale.
+>
+>    - aggiungi_sala(sala): Aggiunge una nuova sala al cinema.
+>    - prenota_film(titolo_film, num_posti): Trova il film desiderato e tenta di prenotare posti. Restituisce un messaggio di stato.
+>
+> <br><b>Test case</b>:<br>
+> - Un gestore del cinema configura le sale aggiungendo i film e i dettagli dei posti.
+> - Un cliente sceglie un film e prenota un certo numero di posti.
+> - Il sistema verifica la disponibilità e conferma o rifiuta la prenotazione. 
+>
+> ---
+> <br>
+> 2. <b>Gestione di un magazzino</b><br>
+> Scrivi un programma in Python che gestisca un magazzino. Il programma deve permettere di aggiungere prodotti al magazzino, cercare prodotti per nome e verificare la disponibilità di un prodotto.
+>
+> <b>Classi</b>:<br>
+> - Prodotto:
+>   - nome (stringa)
+>   - quantità (intero)
+>
+> - Magazzino:
+>   - aggiungi_prodotto(prodotto: Prodotto): aggiunge un prodotto al magazzino.
+>   - cerca_prodotto(nome: str) -> Prodotto: cerca un prodotto per nome e lo ritorna se esiste.
+>   - verifica_disponibilità(nome: str) -> str: verifica se un prodotto è disponibile in magazzino.
+>
+> <br><b>Test case</b>:<br>
+> - Un gestore del magazzino crea un magazzino e diversi prodotti in diverse quantità. Successivamente, aggiunge i prodotti al magazzino.
+> - Il sistema cerca un prodotto per verificare se esiste nell'inventario.
+> - Il sistema verifica la disponibilità dei prodotti in inventario.<br>
+>
+> ---
+---
+>###### 29/05/2024 - Esercitazione sulle Classi
+>
+><details>
+>  <summary>Lezione 12</summary><br>
+> <br>
+> 1. <b>Sistema di Gestione Biblioteca</b><br>
+> Si desidera sviluppare un sistema per la gestione di una biblioteca in Python. Il sistema deve permettere di gestire un inventario di libri e le operazioni di prestito e restituzione degli stessi. Gli utenti del sistema devono essere in grado di aggiungere libri al catalogo, prestarli, restituirli e visualizzare quali libri sono disponibili in un dato momento.
+> 
+><br><b>Classi</b>:<br>
+> - Libro: Rappresenta un libro con titolo, autore, stato del prestito. Il libro deve essere inizialmente disponibile (non prestato).
+>
+> - Biblioteca: Gestice tutte le operazioni legate alla gestione di una biblioteca.
+>    - aggiungi_libro(libro): Aggiunge un nuovo libro al catalogo della biblioteca. Restituisce un messaggio di conferma.
+>
+>    - presta_libro(titolo): Cerca un libro per titolo e, se disponibile e non già prestato, lo segna come disponibile. Restituisce un messaggio di stato.
+>
+>    - restituisci_libro(titolo): Cerca un libro per titolo e, se trovato e prestato, lo segna come disponibile. Restituisce un messaggio di stato.
+>
+>    - mostra_libri_disponibili(): Restituisce una lista dei titoli dei libri attualmente disponibili. Se non ci sono libri disponibili, restituisce un messaggio di errore.
+>
+> <br><b>Test Cases</b>:<br>
+> - Un amministratore della biblioteca aggiunge alcuni libri all'inventario.
+> - Un utente prende in prestito un libro, che viene quindi marcato come non disponibile.
+> - L'utente restituisce il libro, che viene marcato di nuovo come disponibile.
+> - In qualsiasi momento, un utente può visualizzare quali libri sono disponibili per il prestito.
+>
+> <br>
+> 2. <b>Catalogo Film</b><br> 
+>Sviluppa un sistema in Python per la gestione di un catalogo film che permetta di aggiungere, rimuovere e cercare film di un particolare regista. Il sistema dovrebbe consentire anche di visualizzare tutti i registi e i loro film.
+>
+><br><b>Classe</b>:<br>
+> - MovieCatalog: Gestisce tutte le operazioni legate al catalogo dei film.
+>
+>   - add_movie(director_name, movies): Aggiunge uno o più film a un regista specifico nel catalogo. Se il regista non esiste, viene creato un nuovo record. Se il regista esiste, la sua lista di film viene aggiornata.
+>
+>   - remove_movie(director_name, movie_name): Rimuove un film specifico dall'elenco dei film di un regista. Se tutti i film sono rimossi, il regista può essere opzionalmente rimosso dal catalogo.
+>
+>   - list_directors(): Elenca tutti i registi presenti nel catalogo.
+>
+>   - get_movies_by_director(director_name): Restituisce tutti i film di un regista specifico.
+>
+>   - search_movies_by_title(title): Trova tutti i film che contengono una certa parola nel titolo. Restituisce un elenco dei registi e dei rispettivi film che contengono la parola cercata o un messaggio di errore se nessun film contiene la parola cercata nel titolo.
+>
+> ---
+---
 </details>
 <br>
 <details>
