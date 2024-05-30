@@ -55,9 +55,6 @@ class MovieCatalog:
         return f"No movie title with {title} in it was found"
                     
         
-
-#     - search_movies_by_title(title): Trova tutti i film che contengono una certa parola nel titolo. Restituisce un elenco dei registi e dei rispettivi film che contengono la parola cercata o un messaggio di errore se nessun film contiene la parola cercata nel titolo.
-
 if __name__ == "__main__":
     catalog: MovieCatalog = MovieCatalog()
     catalog.add_movie("Quentin Tarantino","Pulp Fiction")
