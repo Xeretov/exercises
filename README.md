@@ -1,4 +1,4 @@
-# Python Exercise
+# Python Exercises
 <br>
 <details>
   <summary>exercises</summary>
