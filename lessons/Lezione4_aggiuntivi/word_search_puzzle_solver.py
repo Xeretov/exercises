@@ -117,6 +117,31 @@ def word_search(grid: list[list[str]], words: list | set) -> dict:
                                    for i in range(len(word_index[word]))]
     dictionary = dict(sorted(dictionary.items()))
 
+    # Check if word is palindrome (duplicated coordinates)
+    to_delete: list = []
+    for word in dictionary:
+        if word == word[::-1]:
+            start_list: list = dictionary[word]['start']
+            end_list: list = dictionary[word]['end']
+            print(start_list,end_list)
+            for start_coordinates in start_list:
+                for i,end_coordinates_list in enumerate(end_list):
+                    for end_coordinates in end_coordinates_list:
+                        if start_coordinates == end_coordinates:
+                            print(i,start_list[i],end_coordinates)
+                            if [end_coordinates,start_list[i]] not in to_delete:
+                                to_delete.append([start_list[i],end_coordinates])
+    # Delete found coordinates
+    for word in dictionary:
+        for tuples in to_delete:
+            if tuples[0] in dictionary[word]['start']:
+                for _ in range(len(dictionary[word]['end'])):
+                    for i in range(len(dictionary[word]['end'][_])):
+                        if tuples[1] == dictionary[word]['end'][_][i]:
+                            del dictionary[word]['end'][_][i]
+                        if not dictionary[word]['end'][_]:
+                            del dictionary[word]['start'][_]
+        
     # Ask for printing result
     # Shows the 2D grid and the words that have a starting and ending point
     while True:
@@ -238,7 +263,9 @@ word_grid: list = [
     ['l', 'i', 'l', 'u', 'r', 'p', 'i'],
     ['p', 'e', 'z', 'o', 'a', 'f', 'l'],
     ['f', 'a', 'e', 'n', 'p', 'a', 'l'],
-    ['g', 'e', 'e', 'o', 'r', 't', 'o']]
+    ['g', 'e', 'e', 'o', 'r', 't', 'o'],
+    ['o', 'r', 'o', 'r', 't', 'o', 'n']]
 
 word_search(word_grid, ['alitosi', 'ululato', 'illuminato',
-            'zebra', 'il', 'TUOno', 'orto', 'ora', 'apnea'])
+            'zebra', 'il', 'TUOno', 'orto', 'ora', 'apnea',
+            'oro'])
