@@ -1,73 +1,84 @@
 # Gioele Amendola
-# 29/05/2025
+# 28/05/2024
 
-# Catalogo Film 
-# Sviluppa un sistema in Python per la gestione di un catalogo film che permetta di aggiungere,
-# rimuovere e cercare film di un particolare regista.
-# Il sistema dovrebbe consentire anche di visualizzare tutti i registi e i loro film.
+class Movie:
 
-class MovieCatalog:
+    def __init__(self, title: str, duration: int) -> None:
+        self.title: str = title
+        self.duration: int = duration
 
-    def __init__(self) -> None:
-        self.catalog: dict[str:list] = {}
+class Room:
+
+    def __init__(self, id: str, movies: list[Movie], total_seats: int, taken_seats: int = 0) -> None:
+        self.id: str = id
+        self.movies: dict[Movie:list] = {movie: [movie.title, taken_seats] for movie in movies}
+        self.total_seats: int = total_seats
     
-    def add_movie(self, director_name: str, movies: list[str]|str) -> None:
-        director_name = director_name.lower()
-        if isinstance(movies, str):
-            movies = [movies.lower()]
-        if director_name in self.catalog:
-            self.catalog[director_name] += [movie.lower() for movie in movies]
+    def book_seats(self, seats: int, name: Movie = None) -> None:
+        if not name:
+            name = list(self.movies.keys())[0]
+        if self.total_seats - self.movies[name][1] - seats >= 0:
+            self.movies[name][1] += seats
+            print(f"{seats} seats booked for {self.movies[name][0]}.")
         else:
-            self.catalog[director_name] = [movie.lower() for movie in movies]
+            print(f"There aren't enough seats available for {self.movies[name][0]} to book {seats} seats. Remaining: {self.total_seats-self.movies[name][1]}")
     
-    def remove_movie(self, director_name: str, movie_name: str) -> None:
-        director_name = director_name.lower()
-        movie_name = movie_name.lower()
-        if director_name in self.catalog:
-            if movie_name in self.catalog[director_name]:
-                self.catalog[director_name].remove(movie_name)
-        if not self.catalog[director_name]:
-            del self.catalog[director_name]
+    def available_seats(self, name: Movie = None) -> int:
+        if not name:
+            name = list(self.movies.keys())[0]
+        return self.total_seats - self.movies[name][1]
+    
+    def __str__(self) -> str:
+        string: str = f"\nRoom number: {self.id}\nMovies:\n"
+        for movie in self.movies:
+            string += f"\nName: {movie.title}\nAvailable seats: {self.total_seats-self.movies[movie][1]}\n"
+            string += f"Duration: {movie.duration} minutes\n{'-'*22}"
+        return string
 
-    def list_directors(self) -> None:
-        print()
-        for director in self.catalog:
-            print("director: "+director)
-        print()
+
+class Cinema:
+
+    def __init__(self, rooms: list[Room] = []) -> None:
+        self.rooms: list[Room] = rooms
     
-    def get_movies_by_director(self, director_name: str) -> list[str]:
-        director_name = director_name.lower()
-        if director_name in self.catalog:
-            return self.catalog[director_name]
+    def add_room(self, room: Room) -> None:
+        self.rooms.append(room)
     
-    def search_movies_by_title(self, title: str) -> list[str]:
-        result: list = []
-        title = title.lower()
-        for director in self.catalog:
-            movies: list[str] = self.catalog[director]
+    def book_movie(self, movie_name: str, seats: int) -> None:
+        # creates list of movies
+        movies_list: list[Movie] = [room.movies for room in self.rooms]
+        # creates a dictionary with key being the str(list of movies) and value being the room
+        movies_room: dict = {str(room.movies): room  for room in self.rooms}
+        # takes list of movies from room
+        for movies in movies_list:
+            # takes movie from the list
             for movie in movies:
-                if title in movie:
-                    if director not in result:
-                        result.append(director)
-                    result.append(movie)
-        if result:
-            return result
-        return f"No movie title with {title} in it was found"
-                    
-        
+                # check movie title with the one given
+                if movie.title == movie_name:
+                    # if found get value from the dictionary
+                    movies_room[str(movies)].book_seats(seats, movie)
+                    return
+        # not found movie with that name
+        print(f"There is no movie called {movie_name} in this cinema")
+
 if __name__ == "__main__":
-    catalog: MovieCatalog = MovieCatalog()
-    catalog.add_movie("Quentin Tarantino","Pulp Fiction")
-    catalog.add_movie("Quentin Tarantino",["Inglorious Bastards","Kill Bill Vol.1"])
-    catalog.add_movie("Quentin Tarantino",["Django Unchained","The Hateful Eight"])
-    catalog.add_movie("Quentin Tarantino","Kill Bill Vol.2")
-    catalog.add_movie("Quentin Tarantino","Kill Bill Vol.3")
-    catalog.add_movie("Steven Spielberg",["Schindler's List","Lincoln","Save Private Ryan","West Side Story","The terminal"])
-    catalog.add_movie("Christopher Nolan",["Inception","Oppenheimer"])
-    catalog.list_directors()
-    print(catalog.get_movies_by_director("Christopher Nolan"))
-    catalog.remove_movie("Christopher Nolan","Inception")
-    catalog.remove_movie("Christopher Nolan","Oppenheimer")
-    catalog.list_directors()
-    print(catalog.get_movies_by_director("Quentin Tarantino"))
-    print(catalog.search_movies_by_title("The"))
+    # Creation of theater
+    theater: Cinema = Cinema()
+    # No movie with that name
+    theater.book_movie("alimo",13)
+    # Add room with movies "alimo" and "priscilla" with 10 seats available
+    theater.add_room(Room("37",[Movie("alimo",90),Movie("Priscilla",45),Movie("I am legend",60),Movie("KungFu Panda 4",120)],10))
+    # Cannot book (10 available)
+    theater.book_movie("alimo",13)
+    # Book successful
+    theater.book_movie("Priscilla",5)
+    theater.book_movie("alimo",7)
+    theater.book_movie("I am legend",10)
+    theater.book_movie("KungFu Panda 4",3)
+    # available seats
+    print(theater.rooms[-1].movies[list(theater.rooms[-1].movies.keys())[0]][0],end=": ")
+    print(theater.rooms[-1].available_seats())
+    print(theater.rooms[-1].movies[list(theater.rooms[-1].movies.keys())[1]][0],end=": ")
+    print(theater.rooms[-1].available_seats(list(theater.rooms[-1].movies.keys())[1]))
+    for room in theater.rooms:
+        print(str(room))

@@ -1,5 +1,5 @@
 # Gioele Amendola
-# 24/05/2024
+# 28/05/2024
 
 # Scrivi un programma in Python che gestisca un magazzino. 
 # Il programma deve permettere di aggiungere prodotti al magazzino, cercare prodotti per nome e verificare la disponibilità
