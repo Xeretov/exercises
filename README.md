@@ -703,6 +703,132 @@ describing each test and your prediction for the results of each test. Your code
 >```
 > ---
 ---
+>###### 30/05/2024 - Esercizi su classi astratte, class methods e static methods
+>
+><details>
+> <summary>Lezione 8</summary><br>
+><b>Exercise 1: Creating an Abstract Class with Abstract Methods</b><br>
+> Create an abstract class Shape with an abstract method area and another abstract method perimeter. Then, create two subclasses Circle and Rectangle that implement the area and perimeter methods.
+>
+> ---
+> <b>Exercise 2: Implementing Static Methods</b><br>
+> Create a class MathOperations with a static method add that takes two numbers and returns their sum, and another static method multiply that takes two numbers and returns their product.
+>
+> ---
+> <b>Exercise 3: Library Management System</b><br> 
+>Create a <b>Book</b> class containing the following attributes:<br>
+> - title, author, isbn
+>
+>The <b>book</b> class must contains the following methods:<br>
+> - __str__ method to return a string representation of the book.
+> - @classmethod from_string(cls, book_str) to create a Book instance from a string in the format "title, author, isbn".<br> It means that you must use the class reference cls to create a new object of the Book class using a string.
+>
+>   - Example:<br>
+> ```python
+> book = “La Divina Commedia, D. Alighieri, 999000666”
+> divina_commedia: Book = Book.from_string(book)
+> 
+> # Here divina_commedia must contain an instance of the class Book with 
+>
+> title = La Divina Commedia, author = D. Alighieri, isbn = 999000666
+>```
+>Create a <b>Member</b> class with the following attributes: <br>
+> - name, member_id, borrowed_books<br>
+>
+> The <b>member</b> class must contain the following methods:
+> - borrow_book(book) to add a book to the borrowed_books list.
+> - return_book(book) to remove a book from the borrowed_books list.
+> - __str__ method to return a string representation of the member.
+> - @classmethod from_string(cls, member_str) to create a Member instance from a string in the format "name, member_id".
+>
+> Create a <b>Library</b> class with the following attributes:<br> 
+> - books, members, total_books<br> (class attribute to keep track of the total number of books)<br>
+>
+> The <b>library</b> class must contain the following methods:
+> - add_book(book) to add a book to the library and increment total_books.
+> - remove_book(book) to remove a book from the library and decrement total_books.
+> - register_member(member) to add a member to the library.
+> - lend_book(book, member) to lend a book to a member. It should check if the book is available and if the member is registered.
+> - __str__ method to return a string representation of the library with the list of books and members.
+> - @classmethod library_statistics(cls) to print the total number of books.
+>
+> Create a script and play a bit with the classes:<br>
+> Create instances of books and members using class methods. Register members and add books to the library. Lend books to members and display the state of the library before and after lending.
+> 
+> ---
+> <b>Exercise 4: University Management System</b>
+>
+> Create a system to manage a university with departments, courses, professors, and students. <br>
+> Create an abstract class <b>Person</b>:<br>
+> Attributes:
+> - name (str)
+> - age (int)
+> 
+> Methods:
+>
+> - __init__ method to initialize the attributes.<br>
+> - Abstract method get_role to be implemented by subclasses.<br>
+> __str__ method to return a string representation of the person.<br>
+>
+> Create subclasses Student and Professor that inherit from Person and implement the abstract methods:<br>
+>
+> - Student:<br>
+> Additional attributes: 
+>   - student_id (string), 
+>   - courses (list of Course instances)
+>   - Method enroll(course) to enroll the student in a course.
+>
+> - Professor:<br>
+> Additional attributes: 
+>   - professor_id (string), 
+>   - department (string), courses (list of Course instances)
+>   - Method assign_to_course(course) to assign the professor to a course.
+>
+> Create a class Course:
+><br>Attributes:
+>
+> - course_name (string)
+> - course_code (string)
+> - students (list of Student instances)
+> - professor (Professor instance)
+>
+> <br>Methods:
+> - __init__ method to initialize the attributes.
+> - add_student(student) to add a student to the course.
+> - set_professor(professor) to set the professor for the course.
+> - __str__ method to return a string representation of the course.<br>
+>
+> Create a class Department:<br>
+> Attributes:
+> - department_name (string)
+> - courses (list of Course instances)
+> - professors (list of Professor instances)<br>
+>
+> Methods:
+> 
+> - __init__ method to initialize the attributes.
+> - add_course(course) to add a course to the department.
+> - add_professor(professor) to add a professor to the department.
+> - __str__ method to return a string representation of the department.<br>
+>
+> Create a class University:
+> <br>Attributes:
+>
+> - name (string)
+> - departments (list of Department instances)
+> - students (list of Student instances)<br>
+>
+> Methods:
+> - __init__ method to initialize the attributes.
+> - add_department(department) to add a department to the university.
+> - add_student(student) to add a student to the university.
+> - __str__ method to return a string representation of the university.
+>
+> Create a script:<br>
+> Create instances of departments, courses, professors, and students. Add them to the university. Enroll students in courses and assign professors to courses. Display the state of the university.
+>
+>---
+---
 >###### 25/05/2024 - Esercitazione sulle Classi
 >
 ><details>
