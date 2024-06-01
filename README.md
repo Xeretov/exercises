@@ -1063,11 +1063,11 @@ describing each test and your prediction for the results of each test. Your code
 > Imported modules may not work, add parent directory "exercises" to sys.path
 > ```python
 > import sys
-> sys.path.append("parent_directory")
+> sys.path.append("repo_directory")
 > ```
 > or add to
 > home\user\\.bashrc
 > this line:
 > ```bash
-> export PYTHONPATH="${PYTHONPATH}:/home/user/parent_directory"
+> export PYTHONPATH="${PYTHONPATH}:/home/user/repo_directory"
 > ```
