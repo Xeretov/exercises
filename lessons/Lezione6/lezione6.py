@@ -186,7 +186,7 @@ class Privileges:
     def show_privileges(self) -> None:
         print(*self.privileges,sep=" | ", end="\n\n")
 
-administrator: Admin = Admin("Angelo","Carini",Privileges(["can ban user","can delete post"]))
+administrator: Admin = Admin("Angelo","Locarini",Privileges(["can ban user","can delete post"]))
 administrator.privileges.show_privileges()
 
 # 9-9. Battery Upgrade:

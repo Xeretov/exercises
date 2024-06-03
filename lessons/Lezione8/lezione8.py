@@ -161,7 +161,7 @@ communist_manifesto: Book = Book.from_string(book)
 book = "The Iliad and The Odyssey, Homer, 713713713"
 iliad_and_the_odyssey: Book = Book.from_string(book)
 
-member: str = "Angelo Carini, 666"
+member: str = "Angelo Locarini, 666"
 angelo: Member = Member.from_string(member)
 member = "Francesco Totti, 10"
 totti: Member = Member.from_string(member)
