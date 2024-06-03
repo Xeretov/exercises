@@ -28,7 +28,7 @@ def block_queries(queries: list[list[int]]) -> list[bool]:
             if query[1] < query[2]:
                 result.append(False)
                 continue
-            check: list = [x for x in blocks if x <= query[1]]
+            check: list = [x for x in blocks if x < query[1]]
             check.append(query[1])
             max_size = max(x - check[i] for i, x in enumerate(check[1:]))
             if max_size >= query[2]:
