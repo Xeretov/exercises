@@ -1,8 +1,9 @@
 import unittest
-from person import Person
-from doctor import Doctor
-from patient import Patient
-from invoice import Invoice
+from hospital.person import Person
+from hospital.doctor import Doctor
+from hospital.invoice import Invoice
+from hospital.patient import Patient
+
 
 class TestPerson(unittest.TestCase):
 
