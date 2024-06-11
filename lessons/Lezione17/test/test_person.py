@@ -87,4 +87,9 @@ class TestInvoice(unittest.TestCase):
         self.assertEqual(self.invoice1.getInvoice(), 1)
 
 if __name__ == "__main__":
-    pass
+    loader = unittest.TestLoader()
+    start_dir = 'lessons/Lezione17/test'
+    suite = loader.discover(start_dir)
+
+    runner = unittest.TextTestRunner()
+    runner.run(suite)
