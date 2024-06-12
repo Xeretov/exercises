@@ -12,11 +12,6 @@ class Payment:
     def paymentDetail(self) -> None:
         print(f"The payment amount: {self.getAmount():.2f}€")
 
-# Successivamente, si definisca una classe PagamentoContanti che sia derivata da Pagamento e definisca l'importo.
-#  Questa classe dovrebbe ridefinire il metodo dettagliPagamento() per indicare che il pagamento è in contanti.
-#  Si definisca inoltre il metodo inPezziDa() che stampa a schermo quante banconote da 
-# 500 euro, 200 euro, 100 euro, 50 euro, 20 euro, 10 euro, 5 euro e/o in quante monete
-#  da 2 euro, 1 euro, 0,50 euro, 0,20 euro, 0,10 euro, 0,05 euro, 0,01 euro sono necessarie per pagare l'importo in contanti.
 class CashPayment(Payment):
 
     def __init__(self, amount: float) -> None:
