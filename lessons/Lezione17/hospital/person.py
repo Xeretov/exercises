@@ -52,6 +52,4 @@ class Person:
         return self.__age
     
     def greet(self) -> str:
-        message: str
-        message += f"Hello, I'm {self.getName()} {self.getLastName()}! I'm {self.getAge()}!"
-        return message
+        return f"Hello, I'm {self.getName()} {self.getLastName()}! I'm {self.getAge()}!"

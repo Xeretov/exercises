@@ -13,7 +13,4 @@ class Patient(Person):
         return self.__idCode
 
     def patientInfo(self) -> str:
-        message: str
-        message += f"Patient: {self.getName()} {self.getLastName()}\n"
-        message += f"ID: {self.getIdCode()}"
-        return message
+        return f"Patient: {self.getName()} {self.getLastName()}\nID: {self.getIdCode()}"

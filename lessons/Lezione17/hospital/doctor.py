@@ -43,7 +43,7 @@ class Doctor(Person):
         return self.__parcel
 
     def isAValidDoctor(self) -> bool:
-        if self.__age >= 30:
+        if self.getAge() >= 30:
             print(f"Doctor {self.getName()} {self.getLastName()} is valid!")
             return True
         else:
@@ -51,7 +51,4 @@ class Doctor(Person):
             return False
     
     def doctorGreet(self) -> str:
-        message: str
-        message += super().greet()
-        message += print(f" I'm a doctor specialized in {self.getSpecialization()}!")
-        return message
+        return super().greet() + f" I'm a doctor specialized in {self.getSpecialization()}!"

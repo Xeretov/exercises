@@ -1,9 +1,8 @@
 import unittest
-from hospital.person import Person
-from hospital.doctor import Doctor
-from hospital.invoice import Invoice
-from hospital.patient import Patient
-
+from person import Person
+from doctor import Doctor
+from patient import Patient
+from invoice import Invoice
 
 class TestPerson(unittest.TestCase):
 
@@ -81,16 +80,11 @@ class TestInvoice(unittest.TestCase):
         self.assertEqual(self.invoice1.getSalary(), 300)
     
     def test_setters(self) -> None:
-        self.invoice1.addPatient(self.patient3)
+        self.assertEqual(self.invoice1.addPatient(self.patient3), "To the list of patients assinged to Doctor D'Emilio has been added Push01")
         self.assertEqual(self.invoice1.getInvoice(), 3)
         self.invoice1.removePatient("STW01")
         self.invoice1.removePatient("CdL01")
         self.assertEqual(self.invoice1.getInvoice(), 1)
 
 if __name__ == "__main__":
-    loader = unittest.TestLoader()
-    start_dir = 'lessons/Lezione17/test'
-    suite = loader.discover(start_dir)
-
-    runner = unittest.TextTestRunner()
-    runner.run(suite)
+    unittest.main()
