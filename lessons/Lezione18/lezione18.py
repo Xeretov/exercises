@@ -92,12 +92,16 @@ class DataBase:
             print("There is no date that corresponds")
     
     def query_date(self, day: int = None, month: int = None, year: int = None) -> list['Date']:
+        if not self.date_list:
+            raise ValueError("There is nothing stored in this database")
         if all(v is None for v in [day, month, year]):
-            raise ValueError("At least one paramter must be specified") 
-        if 1>month>12:
-            raise ValueError("Month not valid")
-        if 1>day>31 or (day>28 and month == 2) or (day>29 and month == 2 and year%4 == 0) or (day>30 and month in [4, 6, 9, 11]):
-            raise ValueError("Day not valid")
+            raise ValueError("At least one paramter must be specified")
+        if month:
+            if 1>month>12:
+                raise ValueError("Month not valid")
+        if day:
+            if 1>day>31 or (day>28 and month == 2) or (day>29 and month == 2 and year%4 == 0) or (day>30 and month in [4, 6, 9, 11]):
+                raise ValueError("Day not valid")
         result: list[Date] = []
         for date in self.date_list:
             add: bool = True
