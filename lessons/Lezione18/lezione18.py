@@ -47,6 +47,10 @@ class Date:
     
     @classmethod
     def from_int(cls, day: int, month: int, year: int) -> 'Date':
+        if 1>month>12:
+            raise ValueError("Month not valid")
+        if 1>day>31 or (day>28 and month == 2) or (day>29 and month == 2 and year%4 == 0) or (day>30 and month in [4, 6, 9, 11]):
+            raise ValueError("Day not valid")
         date: Date = Date(str(day), str(month), str(year))
         return date
     
