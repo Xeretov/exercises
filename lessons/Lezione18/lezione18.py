@@ -41,9 +41,9 @@ except IOError:
 class Date:
     
     def __init__(self, day: str, month: str, year: str) -> None:
-        self.day = None
-        self.month = None
-        self.year = None
+        self.day: str = day
+        self.month: str = month
+        self.year: str = year
     
     @classmethod
     def from_int(cls, day: int, month: int, year: int) -> 'Date':
@@ -55,14 +55,20 @@ class Date:
         '''
         string format must be "gg.mm.yyyy"
         '''
-        day: str; month: str; year: str
-        day, moth, year = map(str, string.split('.'))
-        date: Date = Date(day, month, year)
+        day: int; month: int; year: int
+        day, moth, year = map(int, string.split('.'))
+        if 1>month>12:
+            raise ValueError("Month not valid")
+        if 1>day>31 or (day>28 and month == 2) or (day>29 and month == 2 and year%4 == 0) or (day>30 and month in [4, 6, 9, 11]):
+            raise ValueError("Day not valid")
+        date: Date = Date(str(day), str(month), str(year))
         return date
     
     def __eq__(self, otherDate: 'Date') -> bool:
         return self.day == otherDate.day and self.month == otherDate.month and self.year == otherDate.year:
-    
+
+    def __str__(self) -> str:
+        return f"{self.day}.{self.month}.{self.year}"
 
 class DataBase:
     
@@ -81,15 +87,21 @@ class DataBase:
         else:
             print("There is no date that corresponds")
     
-    def query_date(self, day: str = None, month: str = None, year: str) -> list['Date']:
+    def query_date(self, day: int = None, month: int = None, year: int = None) -> list['Date']:
+        if all(v is None for v in [day, month, year]):
+            raise ValueError("At least one paramter must be specified") 
+        if 1>month>12:
+            raise ValueError("Month not valid")
+        if 1>day>31 or (day>28 and month == 2) or (day>29 and month == 2 and year%4 == 0) or (day>30 and month in [4, 6, 9, 11]):
+            raise ValueError("Day not valid")
         result: list[Date] = []
         for date in self.date_list:
             add: bool = True
-            if date.year != year:
+            if date.year != str(year) and year:
                 add = False
-            if date.month != month and month:
+            if date.month != str(month) and month:
                 add = False
-            if date.day != day and day:
+            if date.day != str(day) and day:
                 add = False
             if add:
                 result.append(date)
