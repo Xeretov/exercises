@@ -1,5 +1,6 @@
 import math
 import string
+from modules import terminal_codes as tc
 
 def safe_sqrt(number: float) -> float:
     try:
@@ -116,21 +117,202 @@ class DataBase:
         return result
 
 
+class FormulaError(Expection):
+    pass
+
+def calculator():
+    while True:
+        string: str = input("Insert Formula (or 'exit' to exit) > ")
+        tc.delete_lines()
+        if string == 'exit':
+            return
+        num1, op, num2 = string.split()
+        try:
+            num1, num2 = float(num1), float(num2)
+        except:
+            raise FormulaError("Inserted input not Valid")
+        if op not in ['+','-','/',':','*','x','%','**','^','root']:
+            raise FormulaError("Inserted input not Valid")
+        result: float
+        if op in ['*','x']:
+            result = num1*num2
+        elif op == '+':
+            result = num1+num2
+        elif op == '-':
+            result = num1-num2
+        elif op == ['/',':']:
+            if num2 == 0:
+                raise ZeroDivisionError
+            result = num1/num2
+        elif op == '%':
+            if num2 == 0:
+                raise ZeroDivisionError
+            result = num1%num2
+        elif op in ['^','**']:
+            result = num1**num2
+        elif op == 'root':
+            if num2 < 0:
+                raise FormulaError("No negative number for x")
+            if num1 == 0:
+                raise FormulaError("No zero for nth root")
+            result = num2**(1/num1)
+        print(f"{num1} {op} {num2} = {result}")
         
+
+class fractions:
+
+    class denominatorError(Exception):
+        pass
+        
+    class fractionStructureError(Exception):
+        pass
+        
+    @staticmethod
+    def simplify(num: int, den: int) -> int:
+        '''
+        simplify numerator and denominator of a fraction
+        '''
+        if any(x < 2 for x in [num,den]):
+            return num, dem
+        minim: int = min(num, den)
+        for i in range(minim, 1, -1):
+            if num % i == 0 and den % i == 0:
+                num //= i
+                den //= i
+        return num, dem
+
+    @staticmethod
+    def find_nums(string: str) -> int:
+        try:
+            num, den = map(int, string.split('/'))
+        except:
+            raise fractionStructureError(f"String inserted '{string}' isn't a fraction")
+        return num, den
+        
+    @staticmethod
+    def greatest_common_fact(a: int, b: int) -> int:
+        if a == 0:
+            return b
+        return fractions.greatest_common_fact(b % a, b)
+        
+    @staticmethod
+    def least_common_den(a: int, b: int) -> int
+        return (a * b) / fractions.greatest_common_fact(a, b)
+    
+    @staticmethod
+    def add(string1: str, string2: str, formula: bool = False) -> str:
+        '''
+        Addition between fractions (example: add('3/4', '6/3'))
+
+        formula (optional): if True gives back entire operation instead of the result
+        '''
+        num1, den1 = fractions.find_nums(string1)
+        num2, den2 = fractions.find_nums(string2)
+        if den1 == 0 or den2 == 0:
+            raise denominatorError("denominator is 0")
+        num1, den2 = fractions.simplify(num1, den2)
+        num2, den1 = fractions.simplify(num2, den1)
+        num1, den1 = fractions.simplify(num1, den1)
+        num2, den2 = fractions.simplify(num2, den2)
+        den: int = fractions.least_common_den(den1, den2)
+        op1: int = (den//den1) * num1
+        op2: int = (den//den2) * num2
+        if formula:
+            return f"{string1} + {string2} = {op1+op2}/{den}"
+        return f"{op1+op2}/{den}"
+
+    @staticmethod
+    def sub(string1: str, string2: str, formula: bool = False) -> str:
+        '''
+        Subtraction between fractions (example: sub('3/4', '6/3'))
+
+        formula (optional): if True gives back entire operation instead of the result
+        '''
+        num1, den1 = fractions.find_nums(string1)
+        num2, den2 = fractions.find_nums(string2)
+        if den1 == 0 or den2 == 0:
+            raise denominatorError("denominator is 0")
+        num1, den2 = fractions.simplify(num1, den2)
+        num2, den1 = fractions.simplify(num2, den1)
+        num1, den1 = fractions.simplify(num1, den1)
+        num2, den2 = fractions.simplify(num2, den2)
+        den: int = fractions.least_common_den(den1, den2)
+        op1: int = (den//den1) * num1
+        op2: int = (den//den2) * num2
+        if formula:
+            return f"{string1} - {string2} = {op1-op2}/{den}"
+        return f"{op1-op2}/{den}"
+
+    @staticmethod
+    def mul(string1: str, string2: str, formula: bool = False) -> str:
+        '''
+        Multiplication between fractions (example: mul('3/4', '6/3'))
+        
+        formula (optional): if True gives back entire operation instead of the result
+        '''
+        num1, den1 = fractions.find_nums(string1)
+        num2, den2 = fractions.find_nums(string2)
+        if den1 == 0 or den2 == 0:
+            raise denominatorError("denominator is 0")
+        num1, den2 = fractions.simplify(num1, den2)
+        num2, den1 = fractions.simplify(num2, den1)
+        num1, den1 = fractions.simplify(num1, den1)
+        num2, den2 = fractions.simplify(num2, den2)
+        num = num1 * num2
+        den = den1 * den2
+        num, den = fractions.simplify(num, den)
+        if formula:
+            return f"{string1} * {string2} = {num}/{den}"
+        return f"{num}/{den}"
+
+    @staticmethod
+    def div(string1: str, string2: str, formula: bool = False) -> str:
+        '''
+        Division between fractions (example: div('3/4', '6/3'))
+        
+        formula (optional): if True gives back entire operation instead of the result
+        '''
+        num1, den1 = fractions.find_nums(string1)
+        num2, den2 = fractions.find_nums(string2)
+        if num2 == 0:
+            if formula:
+                return f"{string1} / {string2} = 1"
+            return "1"
+        if den1 == 0 or den2 == 0:
+            raise denominatorError("denominator is 0")
+        num2, den2 = den2, num2
+        num1, den2 = fractions.simplify(num1, den2)
+        num2, den1 = fractions.simplify(num2, den1)
+        num1, den1 = fractions.simplify(num1, den1)
+        num2, den2 = fractions.simplify(num2, den2)
+        num = num1 * num2
+        den = den1 * den2
+        num, den = Fractions.simplify(num, den)
+        if formula:
+            return f"{string1} / {string2} = {num}/{den}"
+        return f"{num}/{den}"
+        
+    @staticmethod
+    def eq(string1: str, string2: str) -> bool:
+        '''
+        Check if two fractions are equal to eachother
+        '''
+        num1, den1 = fractions.find_nums(string1)
+        num2, den2 = fractions.find_nums(string2)
+        num1, den1 = fractions.simplify(num1, den1)
+        num2, den2 = fractions.simplify(num2, den2)
+
+        if num1 == num2 and den1 == den2:
+            return True
+        return False
+
+class DataStructureIntegrityError(Exception):
+    pass
+
+
 '''
-An interactive calculator: It is required to develop an interactive calculator with at least 10 test cases using UnitTest trying to (possibly) cover all execution paths! User input is assumed to be a formula that consists of a number, an operator (at least + and -), and another number, separated by white space (e.g. 1 + 1). Split user input using str.split(), and check whether the resulting list is valid:
- If the input does not consist of 3 elements, raise a FormulaError, which is a custom Exception.
-Try to convert the first and third inputs to a float (like so: float_value = float(str_value)). Catch any ValueError that occurs, and instead raise a FormulaError.
-If the second input is not '+' or '-', again raise a FormulaError.
-If the input is valid, perform the calculation and print out the result. The user is then prompted to provide new input, and so on, until the user enters quit.
-
-Personalized math library: Create a Python library that provides functions for handling fractions, with built-in error handling. The library must include functions for the following operations:
-Create a fraction from the numerator and denominator.
-Collect the numerator and denominator of a fraction.
-Simplify a fraction.
-Add, subtract, multiply and divide fractions.
-Check whether one fraction is equivalent to another. 
-All library functions must use the try-except block to handle potential errors, such as null denominators, unsupported operations, or division by zero. The library must raise custom exceptions to indicate specific errors to the user.
-
- Custom Exception for Data Structure Integrity: Define a custom exception class DataStructureIntegrityError.  Define the custom data structure linked list use classes with methods to append, remove and access a given element, and write functions that operate on that (i.e., print the list,  reverse the list, and check whether the list is ordered). Raise this exception if the data structure's integrity is compromised (e.g., empty list access, index error).
+ Custom Exception for Data Structure Integrity: Define a custom exception class DataStructureIntegrityError.
+ Define the custom data structure linked list use classes with methods to append, remove and access a given element, and write functions that operate on that
+ (i.e., print the list,  reverse the list, and check whether the list is ordered).
+ Raise this exception if the data structure's integrity is compromised (e.g., empty list access, index error).
  '''
