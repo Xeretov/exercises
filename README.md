@@ -921,6 +921,185 @@ describing each test and your prediction for the results of each test. Your code
 >
 > ---
 ---
+>######  26/06/2024 - Esercizio Classi, Ereditarietà, UnitTest
+>
+><details>
+> <summary>lezione 17</summary>
+>
+>> <details>
+>>   <summary>Hospital System</summary>
+>>
+>>   ### CLASSE: Persona
+>> Creare un file chiamato "persona.py". In tale file, definire una classe chiamata Persona. Tale classe deve avere due attributi privati di tipo String, uno per il nome ed uno per il cognome, ed un attributo privato di tipo int per l'età.
+>>
+>> <b>La classe Persona deve avere i seguenti metodi:</b>
+>> - init(first_name, last_name). Tale metodo, deve verificare che first_name, last_name siano stringhe; in caso negativo, impostare a None l'attributo che non risulta essere una stringa, stampando un messaggio di errore, ad esempio, "Il nome inserito non è una stringa!". Se first_name e last_name sono due stringhe, assegnare 0 all'attributo relativo all'età di una persona; se first_name e last_name non sono due stringhe, allora assegnare None all'età.
+>> - setName(first_name): consente di impostare il nome di una persona, modificando il valore del relativo attributo. Il valore viene modificato se e solo se viene passata al metodo una stringa. In caso contrario, stampare un messaggio di errore, ad esempio "Il nome inserito non è una stringa!".
+>> - setLastName(last_name): consente di impostare il cognome di una persona, modificando il valore del relativo attributo. Il valore viene modificato se e solo se viene passata al metodo una stringa. In caso contrario, stampare un messaggio di errore, ad esempio "Il cognome inserito non è una stringa!".
+>> - setAge(age): consente di impostare l'età di una persona, modificando il valore del relativo attributo. Il valore viene modificato se e solo se viene passato al metodo un numero intero. In caso contrario, stampare un messaggio di errore, ad esempio "L'età deve essere un numero intero!".
+>> - getName(): consente di ritornare il nome di una persona.
+>> - getLastname(): consente di ritornare il cognome di una persona.
+>> - getAge(): consente di ritornare l'età di una persona.
+>> - greet(): stampa il seguente saluto "Ciao, sono nome cognome! Ho età anni!"
+>>
+>>  ### CLASSE: Dottore
+>> Creare un file chiamato "dottore.py".
+>> In tale file, definire una classe chiamata Dottore. Si derivi Dottore dalla classe Persona.
+>>
+>> Un dottore ha un nome, un cognome, un età, definiti dalla classe Persona, una specializzazione descritta tramite una stringa (ad esempio, Pediatra, Ostetrico, Medico Generale), ed una parcella per le visite in studio (si usi il tipo float). Gli attributi della classe dottore devono essere anch'essi privati.
+>>
+>> <b>Definire i seguenti metodi:</b>
+>> - costruttore della classe Dottore, il quale richiede in input la specializzazione (specialization) di un dottore e la sua parcella (parcel). Tale metodo deve controllare che specialization sia una stringa e che parcel sia un float, altrimenti assegna None all'attributo che non verifica la condizione richiesta, mostrando un messaggio di errore, ad esempio, "La parcella inserita non è un float!".
+>> - setSpecialization(specialization): consente di impostare la specializzazione di un dottore, modificando il valore del relativo attributo. Il valore viene modificato se e solo se viene passata al metodo una stringa. In caso contrario, stamapre un messaggio di errore, ad esempio "La specializzazione inserita non è una stringa!".
+>> - setParcel(parcel): consente di impostare la parcella di un dottore, modificando il valore del relativo attributo. Il valore viene modificato se e solo se viene passato al metodo un float. In caso contrario, stamapre un messaggio di errore, ad esempio "La parcella inserita non è un float!".
+>> - getSpecialization(): consente di ritornare la specializzazione del dottore.
+>> - getParcel(): consente di ritornare la parcella del dottore.
+>> - isAValidDoctor(): stabilisce se un dottore è un dottore valido; un dottore è valido se e solo se ha più di 30 anni, in quanto ha avuto il tempo necessario di compiere i suoi studi in medicina. Stampare "Doctor nome e cognome is valid!", se il dottore risulta valido. In caso contrario, stampare "Doctor nome e cognome is not valid!".
+>> - doctorGreet():tale metodo richiama la funzione greet() della classe Persona. Poi, stampa il seguente saluto "Sono un medico {specializzazione}"
+>>
+>> ### CLASSE: Paziente
+>> Creare un file chiamato "paziente.py".
+>> In tale file, creare una classe chiamata Paziente. Si derivi Paziente dalla classe Persona.
+>> 
+>> Un paziente ha un nome, un cognome, un età, definiti dalla classe Persona ed un codice identificativo (si usi il tipo String).<br>
+>> <b> Definire i seguenti metodi:</b>
+>> - costruttore della classe paziente, il quale richiede in input il codice identificativo, il quale deve essere un attributo privato.
+>> - setIdCode(idCode): consente di impostare il codice identificativo del paziente.
+>> - getidCode(): consente di ritornare il codice identificativo del paziente.
+>> - patientInfo(): stampa in output le informazioni del paziente in questo modo: 
+>> ```python
+>>        f"Paziente: {nome} {cognome}
+>>         ID: {codice identificativo}"
+>> ```
+>> 
+>>### CLASSE: Fattura
+>> Creare un file chiamato "fatture.py".
+>> In tale file, creare una classe chiamata Fattura.
+>>
+>> <b> Definire i seguenti metodi:</b>
+>> - init(patient,doctor): deve avere come input una lista di pazienti ed un dottore. Tale metodo deve verificare se il dottore può esercitare la professione, richiamando la funzione isAValidDoctor(). In caso affermativo assegnare all'attributo fatture (di tipo intero) il numero di pazienti che ha il dottore, mentre assegnare 0 all'attributo salary (di tipo int).  In caso contrario, assegnare il valore None a tutti i 4 gli attributi della classe e stampare un messaggio di errore, come, ad esempio: "Non è possibile creare la classe fattura poichè il dottore non è valido!".
+>> - getSalary(): deve ritornare il salario guadagnato dal dottore. Il salario gudaganto viene calcolato moltiplicando la parcella del dottore per il numero di pazienti.
+>> - getFatture(): deve assegnare all'attributo fatture il numero di pazienti (in modo che sia sempre aggiornato) che ha il dottore e ritornare il suo valore.
+>> - addPatient(newPatient): consente di aggiungere un paziente alla lista di pazienti di un dottore, aggiornando poi il numero di fatture ed il salario, richiamando il metodo getFatture() e getSalary().  Stampare "Alla lista del Dottor cognome è stato aggiunto il paziente {codice_identificativo}"
+>> - removePatient(idCode): consente di rimuovere un paziente alla lista di pazienti di un dottore ricevendo in input il codice identificativo del paziente da rimuovere, aggiornando poi il numero di fatture e il salario, richiamando il metodo get Fatture() e getSalary(). Stampare "Alla lista del Dottor cognome è stato rimosso il paziente {codice_identificativo}".
+>>
+>> ### Creazione di Test Case con UnitTest
+>> Creare una suite di test utilizzando il modulo unittest di Python per verificare il corretto funzionamento delle classi Persona, Dottore, Paziente e Fattura fornite nel codice. I test devono coprire l'inizializzazione degli oggetti, i metodi di accesso e modifica degli attributi, e i comportamenti specifici delle classi.
+>>
+>> <b>Istruzioni</b><br>
+>> Creare un nuovo file Python denominato "test_persona.py".
+>> Importare il modulo unittest e tutte le classi definite.
+>>
+>><b>Test della Classe Persona</b>
+>>- Creare una classe di test chiamata TestPersona che eredita da unittest.TestCase.
+>>- Implementare il metodo setUp per inizializzare un oggetto Persona con nome e cognome.
+>>- Scrivere test per verificare:
+>>    - L'inizializzazione corretta degli attributi first_name, last_name e age.
+>>    - Il funzionamento dei metodi setName, setLastName e setAge.
+>>
+>><b>Test della Classe Dottore</b>
+>>- Creare una classe di test chiamata TestDottore che eredita da unittest.TestCase.
+>>- Implementare il metodo setUp per inizializzare un oggetto Dottore con nome, cognome, specializzazione e parcella.
+>>- Scrivere test per verificare:
+>>    - L'inizializzazione corretta degli attributi specifici di Dottore.
+>>    - Il funzionamento del metodo isValidDoctor con diverse età.
+>>
+>><b>Test della Classe Paziente</b>
+>>- Creare una classe di test chiamata TestPaziente che eredita da unittest.TestCase.
+>>- Implementare il metodo setUp per inizializzare un oggetto Paziente con nome, cognome e ID.
+>>- Scrivere test per verificare:
+>>    - L'inizializzazione corretta degli attributi specifici di Paziente.
+>>
+>><b>Test della Classe Fattura</b>
+>>- Creare una classe di test chiamata TestFattura che eredita da unittest.TestCase.
+>>- Implementare il metodo setUp per inizializzare un oggetto Fattura con una lista di pazienti e un dottore valido.
+>>- Scrivere test per verificare:
+>>    - L'inizializzazione corretta della classe Fattura.
+>>    - Il calcolo corretto del salario e del numero di fatture.
+>>    - L'aggiunta e la rimozione di pazienti dalla lista.
+>>
+> ---
+>> <details>
+>>   <summary>Blockbuster System</summary>
+>>
+>> ### CLASSE: Film
+>> In un file chiamato "film.py", si definisca la classe Film che rappresenta un film preso a nolleggio. In tale classe, definire un codice identificativo (int) ed un titolo (string). Entrambi gli attributi sono da considerarsi privati.
+>> 
+>> <b> Definire i seguenti metodi:</b>
+>> - init(id, title): metodo costruttore.
+>> - setID(id): che consente di impostare il codice identificativo del film, modificando il valore del relativo attributo.
+>> - setTitle(title): che consente di impostare il codice identificativo del film, modificando il valore del relativo attributo.
+>> - getID(): che consente di ritornare il valore del codice identificativo di un film.
+>> - getTitle(): che consente di ritornare il valore del titolo di un film.
+>> - isEqual(otherFilm): che ritorna true se il codice identificativo di due film è uguale.  
+>> 
+>>### CLASSI GENERE
+>>Si creino tre classi chiamate Azione, Commedia e Drama, tutte derivanti dalla classe Film. Ognuna di queste classi ha un attributo privato di tipo string chiamato genere, che equivale al genere di film (genere="Azione", nella classe Azione) ed un attributo privato di tipo float chiamato penale. I film di azione hanno una penalità di 3 euro al giorno, le commedie hanno una penale di 2.50 euro al giorno, i film drammatici hanno una penale di 2 euro al giorno.
+>>
+>> <b> Per ognuna di queste classi si implementi un metodo chiamato:</b>
+>> - getGenere(), che ritorna il genere di film
+>> - getPenale(), che ritorna il valore della penale
+calcolaPenaleRitardo(), che prende in ingresso il numero dei giorni di ritardo per un film e restituisce la penale da pagare per quel film.
+>>
+>>Le tre classi Azione, Commedia e Drama devono essere contenute nel file "movie_genre.py".
+>> 
+>>### CLASSE: Noleggio
+>>In un file "noleggio.py", creare una classe Noleggio.
+>>Questa classe deve avere come attributi una lista di film contenuti in negozio (film_list), un dizionario (rented_film) che ha come chiave un numero intero rappresentante l'id del cliente che ha affittato il film e per valore una lista contenente i film affittati dal cliente.
+>> 
+>><b> Definire i seguenti metodi:</b>
+>> - init(film_list): tale metodo, inoltre,  deve creare un dizionario vuoto chiamato rented_film.
+>> - isAvaible(film): tale metodo deve ritornare True se il film passato come argomento è presente nell'inventario del negozio, false in caso contrario. Se il film è disponibile in negozio stampare: "Il film scelto è disponibile: {titolo_film}!". Se il film non è disponibile in negozio stamapre: "Il film scelto è disponibile: {titolo_film}!".
+>> - rentAMovie(film, clientID): tale metodo deve gestire il noleggio di un film ed ha come argomenti il film da noleggiare ed il codice id del cliente che lo noleggia. Affinché sia possibile noleggiare un film, un film deve essere disponibile in negozio. Pertanto, il metodo deve verificare la disponibilità. Nel caso in cui il film richiesto sia disponibile, rimuoverlo dalla lista dei film disponibili in negozio, poi riempire il dizionario rented_film in questo modo:<br>
+>>    - la chiave sarà l'id del cliente che noleggia (id_client)<br>
+>> il corrispondente valore sarà una lista contenente i film noleggiati da quel cliente.<br>
+>> Pertanto, il film noleggiato, una volta rimosso dalla lista dei film disponibili in negozio deve essere aggiunto alla lista dei film noleggiati dal cliente dato.  Se il cliente ha potuto noleggiare il film richiesto, stampare: "Il cliente {clientId} ha noleggiato {titolo_film}!". Se, invece, il film richiesto non è disponibile pe il noleggio, stampare: Non è possibile nolegiare il film {titolo_film}!".<br>
+>> - giveBack(film, clientID, days): questo metodo consente di restituire un film noleggiato in negozio, ed ha come argomenti il film da restituire, il codice ID del client che restituisce il film, il numero dei giorni in cui il cliente ha tenuto il film per se.  Il film da restituire deve essere rimosso dalla lista dei film noleggiati dal cliente con id clientID, e tale film, deve essere riaggiunto alla lista dei film disponibili in negozio (film_list). Successivamente, il metodo deve calcolare la penale che il cliente deve pagare utilizzando l'opposito metodo. Stampare la penale che il cliente deve pagare: "Cliente: {clientID}! La penale da pagare per il film {titolo_film} e' di {tot} euro!".
+>> - printMovies(): stampa la lista di tutti i film disponibili in negozio. Ogni film deve essere stampato in questo modo: "{titolo_film} - {genere_film} -"
+>> - printRentMovies(clientID): questo metodo deve stampare la lista dei film noleggiati dal cliente di cui viene specificato l'id.
+>> ### Creazione di Test Case con UnitTest
+>>Creare una suite di test utilizzando il modulo unittest di Python per verificare il corretto funzionamento delle classi Film, Azione, Commedia, Dramma, e Noleggio. 
+>>
+>><b>Istruzioni</b><br>
+>>Creare un nuovo file Python denominato "test_blockbuster.py".
+>>Importare il modulo unittest e tutte le classi definite.
+Creare una sola classe di test chiamata TestFilm che eredita da unittest.TestCase.
+>> 
+>><b>Configurazione Iniziale:</b><br>
+>>  Utilizzare il metodo setUp per creare l'ambiente di test:
+>>   - In setUp, istanziare 10 film (5 di azione, 4 commedie e 1 drammatico) e aggiungerli a una lista di film.
+>>   - Creare un oggetto Noleggio utilizzando la lista di film creata.
+>>
+>>Testare la Disponibilità di un Film (isAvaible):
+>>- Scrivere un test per verificare che un film disponibile ritorni True.
+>>- Scrivere un test per verificare che un film non disponibile ritorni False.
+>>
+>>Testare il Noleggio di un Film (rentAMovie):
+>>- Scrivere un test per verificare che un film disponibile possa essere noleggiato correttamente.
+>>- Dopo il noleggio, verificare che il film non sia più disponibile.
+>>- Verificare che il film noleggiato appaia nella lista dei film noleggiati dal cliente.
+>>
+>>Testare il Noleggio di un Film Non Disponibile:
+>>- Noleggiare un film con un cliente.
+>>- Provare a noleggiare lo stesso film con un altro cliente e verificare che non sia possibile.
+>>
+>>Testare la Restituzione di un Film (giveBack):
+>>- Noleggiare un film e poi restituirlo.
+>>- Verificare che il film restituito sia nuovamente disponibile.
+>>- Verificare che il film restituito non sia più nella lista dei film noleggiati dal cliente.
+>>
+>>Testare il Calcolo della Penale di Ritardo (calcolaPenaleRitardo):
+>>- Scrivere test per verificare il calcolo della penale di ritardo per film di diversi generi (azione, commedia, dramma).
+>>
+>>Testare la Stampa dei Film Disponibili (printMovies):
+>>- Verificare che la lista dei film disponibili contenga i titoli corretti.
+>>
+>>Testare la Stampa dei Film Noleggiati da un Cliente (printRentMovies):
+>>- Noleggiare uno o più film per un cliente.
+>>- Verificare che la stampa dei film noleggiati contenga i titoli corretti.
+>>
+> ---
+---
 </details>
 <br>
 <details>
