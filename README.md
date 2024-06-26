@@ -921,7 +921,7 @@ describing each test and your prediction for the results of each test. Your code
 >
 > ---
 ---
->######  26/06/2024 - Esercizio Classi, Ereditarietà, UnitTest
+>######  12/06/2024 - Esercizio Classi, Ereditarietà, UnitTest
 >
 ><details>
 > <summary>lezione 17</summary>
