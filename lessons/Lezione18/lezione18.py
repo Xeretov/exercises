@@ -1,6 +1,6 @@
 import math
 import string
-from modules import terminal_codes as tc
+#from modules import terminal_codes as tc
 
 def safe_sqrt(number: float) -> float:
     try:
@@ -29,9 +29,11 @@ def validate_password(password: str) -> bool:
     if countup < 3 or countsp < 4:
         raise InvalidPasswordError
     return True
-
-validate_password("A!menoUnC@cc@$lmjklm")
-validate_password("Ahaheah")
+try:
+    validate_password("A!menoUnC@cc@$lmjklm")
+    validate_password("Ahaheah")
+except InvalidPasswordError as e:
+    print(e)
 
 try:
     with open("terminal_codes.py", 'r') as f:
@@ -70,7 +72,7 @@ class Date:
         return date
     
     def __eq__(self, otherDate: 'Date') -> bool:
-        return self.day == otherDate.day and self.month == otherDate.month and self.year == otherDate.year:
+        return self.day == otherDate.day and self.month == otherDate.month and self.year == otherDate.years
 
     def __str__(self) -> str:
         return f"{self.day}.{self.month}.{self.year}"
@@ -117,13 +119,13 @@ class DataBase:
         return result
 
 
-class FormulaError(Expection):
+class FormulaError(Exception):
     pass
 
 def calculator():
     while True:
         string: str = input("Insert Formula (or 'exit' to exit) > ")
-        tc.delete_lines()
+#        tc.delete_lines()
         if string == 'exit':
             return
         num1, op, num2 = string.split()
@@ -158,14 +160,13 @@ def calculator():
             result = num2**(1/num1)
         print(f"{num1} {op} {num2} = {result}")
         
+class denominatorError(Exception):
+    pass
+        
+class fractionStructureError(Exception):
+    pass
 
 class fractions:
-
-    class denominatorError(Exception):
-        pass
-        
-    class fractionStructureError(Exception):
-        pass
         
     @staticmethod
     def simplify(num: int, den: int) -> int:
@@ -173,13 +174,13 @@ class fractions:
         simplify numerator and denominator of a fraction
         '''
         if any(x < 2 for x in [num,den]):
-            return num, dem
+            return num, den
         minim: int = min(num, den)
         for i in range(minim, 1, -1):
             if num % i == 0 and den % i == 0:
                 num //= i
                 den //= i
-        return num, dem
+        return num, den
 
     @staticmethod
     def find_nums(string: str) -> int:
@@ -196,7 +197,7 @@ class fractions:
         return fractions.greatest_common_fact(b % a, b)
         
     @staticmethod
-    def least_common_den(a: int, b: int) -> int
+    def least_common_den(a: int, b: int) -> int:
         return (a * b) / fractions.greatest_common_fact(a, b)
     
     @staticmethod
@@ -287,7 +288,7 @@ class fractions:
         num2, den2 = fractions.simplify(num2, den2)
         num = num1 * num2
         den = den1 * den2
-        num, den = Fractions.simplify(num, den)
+        num, den = fractions.simplify(num, den)
         if formula:
             return f"{string1} / {string2} = {num}/{den}"
         return f"{num}/{den}"
@@ -309,7 +310,8 @@ class fractions:
 class DataStructureIntegrityError(Exception):
     pass
 
-
+class dataStructureLinkedList:
+    pass
 '''
  Custom Exception for Data Structure Integrity: Define a custom exception class DataStructureIntegrityError.
  Define the custom data structure linked list use classes with methods to append, remove and access a given element, and write functions that operate on that
