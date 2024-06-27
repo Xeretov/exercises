@@ -307,14 +307,113 @@ class fractions:
             return True
         return False
 
+
+print("\n\n")
 class DataStructureIntegrityError(Exception):
+    """Raised when the data structure's integrity is compromised"""
     pass
 
-class dataStructureLinkedList:
-    pass
-'''
- Custom Exception for Data Structure Integrity: Define a custom exception class DataStructureIntegrityError.
- Define the custom data structure linked list use classes with methods to append, remove and access a given element, and write functions that operate on that
- (i.e., print the list,  reverse the list, and check whether the list is ordered).
- Raise this exception if the data structure's integrity is compromised (e.g., empty list access, index error).
- '''
+# Define the custom linked list data structure
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def append(self, value):
+        if not self.head:
+            self.head = Node(value)
+        else:
+            current = self.head
+            while current.next:
+                current = current.next
+            current.next = Node(value)
+
+    def remove(self, value):
+        if not self.head:
+            raise DataStructureIntegrityError("Cannot remove from an empty list")
+        current = self.head
+        previous = None
+        while current:
+            if current.value == value:
+                if previous:
+                    previous.next = current.next
+                else:
+                    self.head = current.next
+                return
+            previous = current
+            current = current.next
+        raise DataStructureIntegrityError("Value not found in the list")
+
+    def access(self, index):
+        if not self.head:
+            raise DataStructureIntegrityError("Cannot access an empty list")
+        current = self.head
+        count = 0
+        while current:
+            if count == index:
+                return current.value
+            count += 1
+            current = current.next
+        raise DataStructureIntegrityError("Index out of range")
+
+# Functions that operate on the linked list
+def print_list(linked_list):
+    current = linked_list.head
+    while current:
+        print(current.value, end=" ")
+        current = current.next
+    print()
+
+def reverse_list(linked_list):
+    previous = None
+    current = linked_list.head
+    while current:
+        next_node = current.next
+        current.next = previous
+        previous = current
+        current = next_node
+    linked_list.head = previous
+
+def is_ordered(linked_list):
+    current = linked_list.head
+    previous_value = None
+    while current:
+        if previous_value and current.value < previous_value:
+            return False
+        previous_value = current.value
+        current = current.next
+    return True
+
+# Example usage
+linked_list = LinkedList()
+linked_list.append(1)
+linked_list.append(2)
+linked_list.append(3)
+linked_list.append(4)
+linked_list.append(5)
+
+print_list(linked_list)  # Output: 1 2 3 4 5
+
+reverse_list(linked_list)
+print_list(linked_list)  # Output: 5 4 3 2 1
+
+print(is_ordered(linked_list))  # Output: False
+
+reverse_list(linked_list)
+print(is_ordered(linked_list)) # Output: True
+
+try:
+    linked_list.access(5)
+except DataStructureIntegrityError as e:
+    print(e)  # Output: Index out of range
+
+try:
+    linked_list.remove(6)
+except DataStructureIntegrityError as e:
+    print(e)  # Output: Value not found in the list
+
+print()
