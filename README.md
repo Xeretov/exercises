@@ -829,6 +829,44 @@ describing each test and your prediction for the results of each test. Your code
 >
 >---
 ---
+>###### 28/06/2024 - Ereditarietà e Polimorfismo
+>
+><details>
+>   <summary>Lezione 8 - aggiuntivi </summary>
+>
+> 1. The Number of Beautiful Subsets:<br> write a function with an array nums of positive integers and a positive integer k given as inputs.<br> A subset of nums is beautiful if it does not contain two integers with an absolute difference equal to k.<br> Return the number of non-empty beautiful subsets of the array nums.<br> A subset of nums is an array that can be obtained by deleting some (possibly none) elements from nums.<br> Two subsets are different if and only if the chosen indices to delete are different.
+>     ```
+>     Example 1:
+>     Input: nums = [2,4,6], k = 2
+>     Output: 4
+>     
+>     Example 2:
+>     Input: nums = [1], k = 1
+>     Output: 1
+>     ```
+> 2. Combinations:<br> given two integers n and k, return all possible combinations of k numbers chosen from the range [1, n].<br> You may return the answer in any order.
+>     ```
+>     Example 1:
+>     Input: n = 4, k = 2
+>     Output: [[1,2],[1,3],[1,4],[2,3],[2,4],[3,4]]
+>     
+>     Example 2:
+>     Input: n = 1, k = 1
+>     Output: [[1]]
+>     ```
+>
+> 3. Generate Parentheses:<br> Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+>     ```
+>     Example 1:
+>     Input: n = 3
+>     Output: ["((()))","(()())","(())()","()(())","()()()"]
+>     
+>     Example 2:
+>     Input: n = 1
+>     Output: ["()"]
+>     ```
+>---
+---
 >###### 25/05/2024 - Esercitazione sulle Classi
 >
 ><details>
@@ -1164,6 +1202,88 @@ Creare una sola classe di test chiamata TestFilm che eredita da unittest.TestCas
 >
 > <b>Custom Exception for Data Structure Integrity</b>: Define a custom exception class DataStructureIntegrityError.  Define the custom data structure linked list use classes with methods to append, remove and access a given element, and write functions that operate on that (i.e., print the list,  reverse the list, and check whether the list is ordered). Raise this exception if the data structure's integrity is compromised (e.g., empty list access, index error).
 >
+> ---
+---
+> ###### 12/06/2024 - Classi Astratte, Ereditarietà, Polimorfismo
+>
+> <details>
+>   <summary> Lezione 20 </summary>
+>
+> 1. <b>GESTIONALE PAGAMENTO</b><br>
+> Si definisca una nuova classe <b>Pagamento</b> che contiene un attributo privato e di tipo float che memorizza l'importo del pagamento e si definiscano appropriati metodi get() e set().<br> L'importo non è un parametro da passare in input alla classe Pagamento ma deve essere inizializzato utilizzando il metodo set() dove opportuno.<br> Si crei inoltre un metodo <b>dettagliPagamento()</b> che visualizza una frase che descrive l'importo del pagamento, ad esempio:
+>    ```python
+>     "Importo del pagamento: €20.00" 
+>    ```
+>    Quando viene stampato, l'importo è sempre con 2 cifre   decimali.<br><br>
+> Successivamente, si definisca una classe <b>PagamentoContanti</b> che sia derivata da Pagamento e definisca l'importo.<br> Questa classe dovrebbe ridefinire il metodo <b>dettagliPagamento()</b> per indicare che il pagamento è in contanti.<br> Si definisca inoltre il metodo <b>inPezziDa()</b> che stampa a schermo quante banconote da 500 euro, 200 euro, 100 euro, 50 euro, 20 euro, 10 euro, 5 euro e/o in quante monete da 2 euro, 1 euro, 0,50 euro, 0,20 euro, 0,10 euro, 0,05 euro, 0,01 euro sono necessarie per pagare l'importo in contanti.<br><br>
+> Si definisca una classe <b>PagamentoCartaDiCredito</b> derivata anch'essa da Pagamento e che definisce l'importo.<br> Questa classe deve contenere gli attributi per il nome del titolare della carta, la data di scadenza, e il numero della carta di credito.<br> Infine, si ridefinisca il metodo <b>dettagliPagamento()</b> per includere tutte le informazioni della carta di credito oltre all'importo del pagamento.<br>
+> Per il test, si creino almeno due oggetti di tipo PagamentoContanti e due di tipo PagamentoCartaDiCredito con valori differenti e si invochi dettagliPagamento() per ognuno di essi.<br>
+> <b>Esempio di output</b>:
+>     ```
+>     Pagamento in contanti di: €150.00
+>     150.00 euro da pagare in contanti con:
+>     1 banconota da 100 euro
+>     1 banconota da 50 euro
+>   
+>     Pagamento in contanti di: €95.25
+>     95.25 euro da pagare in contanti con:
+>     1 banconota da 50 euro
+>     2 banconote da 20 euro
+>     1 banconota da 5 euro
+>     1 moneta da 0.2 euro
+>     1 moneta da 0.05 euro
+>   
+>     Pagamento di: €200.00 effettuato con la carta di credito
+>     Nome sulla carta: Mario Rossi
+>     Data di scadenza: 12/24
+>     Numero della carta: 1234567890123456
+>   
+>     Pagamento di: €500.00 effettuato con la carta di credito
+>     Nome sulla carta: Luigi Bianchi
+>     Data di scadenza: 01/25
+>     Numero della carta: 6543210987654321
+>     ``` 
+> 2. <b>RENDERING GRAFICO</b><br>
+>Si vuole sviluppare un sistema in Python per gestire il rendering di diverse forme geometriche. Il sistema dovrà supportare almeno tre tipi di forme: quadrati, rettangoli, e triangoli rettangoli.<br>
+>Definire la classe astratta <b>Forma</b> che sarà utilizzata per definire l'attributo corrispondente al nome della forma e le funzionalità base di ogni forma, come i metodi astratti <b>getArea()</b> per calcolare l'area e <b>render()</b> per disegnare su schermo la forma.<br><br>
+>Definire la classe <b>Quadrato</b> che estende la classe Forma e aggiunge specifiche circa la lunghezza di un suo lato.<br>
+>Il costruttore della classe deve ricevere come argomento solo il lato del quadrato, ed impostare il nome della forma su "Quadrato".<br>
+>Il metodo getArea() deve calcolare l'area del quadrato.<br>
+>Il metodo render() deve stampare su schermo un quadrato avente lato pari al valore passato nel costruttore.<br> Il quadrato da stampare deve essere un quadrato vuoto (" "), avente degli asterischi ("\*") lungo il suo perimetro. (Vedi Esempio di output)<br><br>
+>Definire la classe <b>Rettangolo</b> che estende la classe Forma e aggiunge specifiche circa la lunghezza della sua base e della sua altezza.<br>
+>Il costruttore della classe deve ricevere come argomento solo la base e l'altezza del rettangolo, ed impostare il nome della forma su "Rettangolo".<br>
+>Il metodo getArea() deve calcolare l'area del rettangolo.<br>
+>Il metodo render() deve stampare su schermo un rettangolo avente base ed altezza pari ai valori passati nel costruttore.<br> Il rettangolo da stampare deve essere un rettangolo vuoto (" "), avente degli asterischi ("\*") lungo il suo perimetro. (Vedi Esempio di output)<br><br>
+>Definire la classe <b>Triangolo</b> che estende la classe Forma e aggiunge specifiche circa la dimensione di un lato del triangolo (per semplicità, si suppone che il triangolo in questione sia un triangolo rettangolo).<br>
+>Il costruttore della classe deve ricevere come argomento solo il lato del triangolo, ed impostare il nome della forma su "Triangolo".<br>
+>Il metodo getArea() deve calcolare l'area del triangolo.<br>
+>Il metodo render() deve stampare su schermo un triangolo rettangolo avente i due cateti di lunghezza pari ai valori passati nel costruttore.<br> Il triangolo da stampare deve essere un triangolo vuoto (" "), avente degli asterischi ("\*") lungo il suo perimetro. (Vedi Esempio di output)<br><br>
+> *Hint: per il disegno utilizzare print("\*", end=" "), dato che l'argomento end = " " permette di controllare come termina ogni chiamata a print, e impostandolo a uno spazio si può fare in modo che tutte le stampe successive siano sulla stessa riga, separate da uno spazio.*
+>
+><b>Esempi di output</b>:<br>
+>```
+>Ecco un Quadrato di lato 4!
+>
+>* * * *
+>*      *
+>*      *
+>* * * *
+>L'area di questo quadrato vale: 16
+>
+>Ecco un Rettangolo avente base 8 ed altezza 4!
+>* * * * * * * *
+>*                *
+>*                *
+>* * * * * * * *
+>L'area di questo rettangolo vale: 32
+>
+>Ecco un Triangolo avente base 4 ed altezza 4!
+>*      
+>* *    
+>*   *  
+>* * * *
+>L'area di questo triangolo vale: 8.0
+> ```
 > ---
 ---
 </details>
