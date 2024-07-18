@@ -79,13 +79,18 @@ class CifratoreACombinazione(CodificatoreMessaggio, DecodificatoreMessaggio):
         self.n: int = n
     
     def __combinazione(self, testo: str) -> str:
-        length: int = len(testo)//2
-        half1: str = testo[:length+1]
-        half2: str = testo[length+1:]
+        if len(testo)%2 == 0:
+            length: int = len(testo)//2
+        else:
+            length: int = len(testo)//2 + 1
+        half1: str = testo[:length]
+        half2: str = testo[length:]
         result: str = ""
-        for i in range(length):
+        for i in range(len(half2)):
             result += half1[i] + half2[i]
-        return result + half1[length:]
+        if len(testo)%2 != 0:
+            result += half1[length-1]
+        return result
     
     def __decodifica_combinazione(self, testo: str) -> str:
         length: int = len(testo)
