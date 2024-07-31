@@ -2,29 +2,17 @@
 # 18/07/2024
 
 from abc import ABC, abstractmethod
-# # Codificatori Messaggio
-# Si crei una classe astratta chiamata CodificatoreMessaggio 
-# che ha un solo metodo astratto codifica(testoInChiaro),
-# dove testoInChiaro sarà il messaggio da codificare. Il metodo restituirà il messaggio codificato.
+
 class CodificatoreMessaggio(ABC):
     @abstractmethod
     def codifica(self, testoInChiaro: str):
         pass
-# Si crei una classe astratta chiamata DecodificatoreMessaggio
-# che abbia un solo metodo decodifica(testoCodificato),
-# dove testoCodificato sarà il messaggio da decodificare. Il metodo ritornerà il messaggio decodificato.
+
 class DecodificatoreMessaggio(ABC):
     @abstractmethod
     def decodifica(self, testoCodificato: str):
         pass
 
-# Si crei una classe CifratoreAScorrimento che implementa le classi astratte CodificatoreMessaggio e DecodificatoreMessaggio.
-#  Il costruttore dovrebbe ricevere un numero intero chiamato chiave.
-#  Si definisca il metodo codifica(testoInChiaro) così che ogni lettera del testo sia spostata dal valore contenuto in chiave.
-# Per esempio, se chiave è uguale a 3, la lettera 'a' sarà sostituita da 'd',
-#  la lettera 'b' sarà sostituita da 'e', la lettera 'c' sarà sostituita da 'f' e così via.
-#  Suggerimento: si potrebbe definire un metodo privato sposta_carattere(c) che restituisca la codifica di un singolo carattere c
-#  da concatenare agli altri per costruire il messaggio codificato nel metodo codifica(testoInChiaro).
 class CifratoreAScorrimento(CodificatoreMessaggio, DecodificatoreMessaggio):
     def __init__(self, chiave: int):
         self.chiave: int = chiave
@@ -65,15 +53,6 @@ class CifratoreAScorrimento(CodificatoreMessaggio, DecodificatoreMessaggio):
         with open(path, 'w') as file:
             file.write(testo)
 
-# Si crei una classe CifratoreACombinazione che implementa le classi astratte CodificatoreMessaggio e DecodificatoreMessaggio.
-#  Il costruttore dovrebbe ricevere un numero intero chiamato n.
-#  Si definisca il metodo codifica(testoInChiaro) così che il messaggio sia combinato n volte.
-#  Per eseguire una singola combinazione, si divide il messaggio a metà e poi si prendono i caratteri da ognuna delle metà in modo
-#  alternato. Per esempio, se il messaggio è 'abcdefghi', le metà sono 'abcde' e 'fghi'
-#  (nel caso in cui la lunghezza del testo da decifrare sia un numero dispari, la prima metà deve essere più lunga della seconda metà).
-#  Il messaggio combinato è 'afbgchdie'.
-# Suggerimento: si potrebbe definire un metodo privato combinazione(testo) che esegue la combinazione del testo e ritorni
-#  il testo cifrato da usare nel metodo codifica(testoInChiaro).
 class CifratoreACombinazione(CodificatoreMessaggio, DecodificatoreMessaggio):
     def __init__(self, n: int):
         self.n: int = n
@@ -118,45 +97,22 @@ class CifratoreACombinazione(CodificatoreMessaggio, DecodificatoreMessaggio):
     def scrivi_file(self, path: str, testo: str):
         with open(path, 'w') as file:
             file.write(testo)
-    
-# Si scriva il metodo decodifica(testoCodificato) per ognuna delle classi CifrarioAScorrimento e CifrarioACombinazione.
 
-# Suggerimento: definire il metodo privato decodifica_carattere() per la classe CifrarioAScorrimento
-#  che compie un'azione inversa al metodo sposta_carattere().
-# Suggerimento: definire il metodo privato decodifica_combinazione() per la classe CifrarioACombinazione che compie un'azione inversa al metodo combinazione().
+if __name__ == "__main__":
+    cifratoreScorrimento: CifratoreAScorrimento = CifratoreAScorrimento(3)
+    testoInChiaro: str = cifratoreScorrimento.leggi_file("lessons\Lezione26\codificare.txt")
+    testoCodificato: str = cifratoreScorrimento.codifica(testoInChiaro)
+    cifratoreScorrimento.scrivi_file("lessons\Lezione26\codificatoScorrimento.txt", testoCodificato)
+    print(testoCodificato)
 
-# Infine, si implementi anche un metodo per leggere il testo da cifrare da un file
-# e un metodo per scrivere il testo cifrato su un file per entrambe le classi CifratoreAScorrimento e CifratoreACombinazione.
+    testoDecodificato: str = cifratoreScorrimento.decodifica(testoCodificato)
+    print(testoDecodificato)
 
-# ### Test tramite codice driver:
-# Test del Cifratore a Scorrimento:
-# - Inizializzazione: Viene creato un oggetto CifratoreAScorrimento con una chiave di scorrimento di 3.
-cifratoreScorrimento: CifratoreAScorrimento = CifratoreAScorrimento(3)
-# - Lettura del testo: Il testo in chiaro viene letto da un file.
-testoInChiaro: str = cifratoreScorrimento.leggi_file("lessons\Lezione26\codificare.txt")
-# - Codifica: Il testo in chiaro viene codificato utilizzando il cifratore a scorrimento.
-testoCodificato: str = cifratoreScorrimento.codifica(testoInChiaro)
-# - Scrittura del testo codificato: Il testo codificato viene scritto su un file.
-cifratoreScorrimento.scrivi_file("lessons\Lezione26\codificatoScorrimento.txt", testoCodificato)
-# - Stampa del testo codificato: Il testo codificato viene stampato.
-print(testoCodificato)
-# - Decodifica: Il testo codificato viene decodificato.
-testoDecodificato: str = cifratoreScorrimento.decodifica(testoCodificato)
-# - Stampa del testo decodificato: Il testo decodificato viene stampato.
-print(testoDecodificato)
+    cifratoreCombinazione: CifratoreACombinazione = CifratoreACombinazione(3)
+    testoInChiaro = cifratoreCombinazione.leggi_file("lessons\Lezione26\codificare.txt")
+    testoCodificato = cifratoreCombinazione.codifica(testoInChiaro)
+    cifratoreCombinazione.scrivi_file("lessons\Lezione26\codificatoCombinazione.txt", testoCodificato)
+    print(testoCodificato)
 
-# Test del Cifratore a Combinazione:
-# - Inizializzazione: Viene creato un oggetto CifratoreACombinazione con 3 combinazioni.
-cifratoreCombinazione: CifratoreACombinazione = CifratoreACombinazione(3)
-# - Lettura del testo: Il testo in chiaro viene letto da un file.
-testoInChiaro = cifratoreCombinazione.leggi_file("lessons\Lezione26\codificare.txt")
-# - Codifica: Il testo in chiaro viene codificato utilizzando il cifratore a combinazione.
-testoCodificato = cifratoreCombinazione.codifica(testoInChiaro)
-# - Scrittura del testo codificato: Il testo codificato viene scritto su un file.
-cifratoreCombinazione.scrivi_file("lessons\Lezione26\codificatoCombinazione.txt", testoCodificato)
-# - Stampa del testo codificato: Il testo codificato viene stampato.
-print(testoCodificato)
-# - Decodifica: Il testo codificato viene decodificato.
-testoDecodificato = cifratoreCombinazione.decodifica(testoCodificato)
-# - Stampa del testo decodificato: Il testo decodificato viene stampato.
-print(testoDecodificato)
+    testoDecodificato = cifratoreCombinazione.decodifica(testoCodificato)
+    print(testoDecodificato)
